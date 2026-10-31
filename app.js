@@ -3,12 +3,13 @@ import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https:/
 
 // MASUKKAN CONFIG FIREBASE ASLI ANDA DI BAWAH INI (Lihat dari Screenshot sebelumnya)
 const firebaseConfig = {
-  apiKey: "API_KEY_ANDA",
-  authDomain: "PROJECT_ID.firebaseapp.com",
-  projectId: "PROJECT_ID",
-  storageBucket: "PROJECT_ID.firebasestorage.app",
-  messagingSenderId: "SENDER_ID",
-  appId: "APP_ID"
+   apiKey: "AIzaSyBJ8U8SCUQaJCNt6NkiolsRN_VP-r0I1Ps",
+  authDomain: "manasik-umrah-interaktif.firebaseapp.com",
+  projectId: "manasik-umrah-interaktif",
+  storageBucket: "manasik-umrah-interaktif.firebasestorage.app",
+  messagingSenderId: "698727319813",
+  appId: "1:698727319813:web:9ac9dd6c10a4036932cf6c",
+  measurementId: "G-9FQQMYHV0N"
 };
 
 const app = initializeApp(firebaseConfig);
