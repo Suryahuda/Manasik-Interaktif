@@ -1,62 +1,83 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInAnonymously, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-// MASUKKAN CONFIG FIREBASE ANDA DI SINI
+// MASUKKAN CONFIG FIREBASE ASLI ANDA DI BAWAH INI (Lihat dari Screenshot sebelumnya)
 const firebaseConfig = {
-  apiKey: "AIzaSyBJ8U8SCUQaJCNt6NkiolsRN_VP-r0I1Ps",
-  authDomain: "manasik-umrah-interaktif.firebaseapp.com",
-  projectId: "manasik-umrah-interaktif",
-  storageBucket: "manasik-umrah-interaktif.firebasestorage.app",
-  messagingSenderId: "698727319813",
-  appId: "1:698727319813:web:9ac9dd6c10a4036932cf6c",
-  measurementId: "G-9FQQMYHV0N"
+  apiKey: "API_KEY_ANDA",
+  authDomain: "PROJECT_ID.firebaseapp.com",
+  projectId: "PROJECT_ID",
+  storageBucket: "PROJECT_ID.firebasestorage.app",
+  messagingSenderId: "SENDER_ID",
+  appId: "APP_ID"
 };
 
-// Inisialisasi Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Elemen UI
+// Elemen UI Utama
 const btnLogin = document.getElementById('btnLogin');
 const btnLogout = document.getElementById('btnLogout');
-const pageLogin = document.getElementById('page-login');
-const pageDashboard = document.getElementById('page-dashboard');
 
-// Logika Ganti Halaman (SPA Routing)
+// Fungsi Routing Sederhana (Berpindah Halaman)
 window.showPage = function(pageId) {
-    // Sembunyikan semua section
-    const pages = ['page-login', 'page-dashboard', 'page-miqat', 'page-tawaf', 'page-sai', 'page-tahalul'];
-    pages.forEach(id => document.getElementById(id).classList.add('hidden'));
+    const pages = ['page-login', 'page-dashboard', 'page-doa', 'page-kuis', 'page-miqat', 'page-tawaf', 'page-sai', 'page-tahalul'];
     
-    // Tampilkan halaman yang dituju
+    pages.forEach(id => {
+        document.getElementById(id).classList.add('hidden');
+    });
+    
     document.getElementById(pageId).classList.remove('hidden');
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Pantau Status Login Jemaah
+// Fitur Baru: Cek Kuis Pemahaman
+window.cekKuis = function() {
+    const q1 = document.querySelector('input[name="q1"]:checked');
+    const q2 = document.querySelector('input[name="q2"]:checked');
+    const hasilDiv = document.getElementById('hasilKuis');
+    
+    if (!q1 || !q2) {
+        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-yellow-100 text-yellow-800 border border-yellow-300 block";
+        hasilDiv.innerHTML = "Harap jawab semua pertanyaan terlebih dahulu!";
+        return;
+    }
+    
+    let skor = 0;
+    if (q1.value === 'benar') skor += 50;
+    if (q2.value === 'benar') skor += 50;
+    
+    if (skor === 100) {
+        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-emerald-100 text-emerald-800 border border-emerald-300 block";
+        hasilDiv.innerHTML = "Luar Biasa! Skor Anda 100. Anda sudah siap secara keilmuan!";
+    } else {
+        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-red-100 text-red-800 border border-red-300 block";
+        hasilDiv.innerHTML = `Skor Anda ${skor}. Mari pelajari lagi panduan manasik di dasbor utama.`;
+    }
+}
+
+// Pantau Sesi Login
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    // Jika jemaah sudah login
     btnLogin.classList.add('hidden');
     btnLogout.classList.remove('hidden');
     showPage('page-dashboard');
   } else {
-    // Jika jemaah belum login
     btnLogin.classList.remove('hidden');
     btnLogout.classList.add('hidden');
     showPage('page-login');
   }
 });
 
-// Fungsi Tombol Login (Menggunakan Anonymous untuk kemudahan akses jemaah)
+// Aksi Login & Logout
 btnLogin.addEventListener('click', () => {
+  btnLogin.innerText = "Memuat...";
   signInAnonymously(auth).catch((error) => {
     console.error("Gagal Login:", error);
-    alert("Gagal masuk sistem. Periksa koneksi Anda.");
+    alert("Gagal masuk. Pastikan Firebase Authentication Anonymous sudah diaktifkan.");
+    btnLogin.innerText = "Masuk";
   });
 });
 
-// Fungsi Tombol Logout
 btnLogout.addEventListener('click', () => {
   signOut(auth);
 });
