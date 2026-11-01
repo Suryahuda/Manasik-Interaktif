@@ -84,76 +84,87 @@
         <main id="main-content" class="flex-1 overflow-y-auto p-6 lg:p-8 bg-slate-50 dark:bg-luxury-900 relative z-0">
             
             <!-- Halaman Login / Gerbang Akses -->
-            <section id="page-login" class="text-center bg-white/95 dark:bg-luxury-800 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-2xl border-t-4 border-red-600 max-w-md mx-auto mt-10">
-                <div class="inline-block p-4 rounded-full bg-red-50 dark:bg-luxury-900 text-red-600 border border-red-100 dark:border-luxury-900 mb-4 shadow-sm">
-                    <div class="text-5xl">🕋</div>
+            <section id="page-login" class="text-center bg-white dark:bg-luxury-800 p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none border border-slate-100 dark:border-luxury-900 max-w-md mx-auto mt-10 transition-colors duration-300">
+                
+                <!-- Ikon Utama -->
+                <div class="inline-flex justify-center items-center w-20 h-20 rounded-full bg-slate-50 dark:bg-luxury-900 border border-slate-100 dark:border-luxury-800 mb-6 shadow-sm">
+                    <div class="text-4xl">🕋</div>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-red-700 dark:text-red-500">MUYASSAR</h2>
-                <p class="text-lg font-bold text-slate-500 dark:text-slate-400 mb-6 border-b border-slate-200 dark:border-luxury-900 pb-4 inline-block tracking-wide">Platform Manasik Interaktif</p>
-                <div class="mb-8 px-4">
-                    <p class="text-slate-800 dark:text-slate-200 font-bold text-xl mb-3">"Berilmu sebelum berucap dan beramal."</p>
-                    <p class="text-slate-500 dark:text-slate-400 font-medium leading-relaxed">Silakan masukkan Kode Akses dari agen travel Anda<br>untuk memulai simulasi.</p>
+                
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">MUYASSAR</h2>
+                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-8 tracking-wide uppercase">Platform Manasik Interaktif</p>
+                
+                <div class="mb-8">
+                    <p class="text-slate-800 dark:text-slate-200 font-bold text-lg mb-2">"Berilmu sebelum berucap dan beramal."</p>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed px-4">Silakan masukkan Kode Akses dari agen travel Anda untuk memulai simulasi.</p>
                 </div>
-                <div class="max-w-xs mx-auto">
-                    <input type="text" id="kodeAkses" placeholder="Kode Akses" class="w-full px-5 py-4 rounded-xl text-center text-slate-800 font-bold text-lg border-2 border-slate-200 focus:outline-none focus:border-red-500 focus:ring-4 focus:ring-red-100 mb-4 bg-white dark:bg-luxury-900 dark:text-white dark:border-luxury-800" autocomplete="off">
-                    <button id="btnMulaiSimulasi" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-5 py-4 rounded-xl font-bold text-lg shadow-lg shadow-red-500/30 transition-all transform hover:-translate-y-1">
+                
+                <div class="w-full">
+                    <input type="text" id="kodeAkses" placeholder="Kode Akses" class="w-full px-5 py-4 rounded-xl text-center text-slate-900 dark:text-white font-bold text-lg border border-slate-200 dark:border-luxury-700 bg-slate-50 dark:bg-luxury-900 focus:outline-none focus:border-slate-800 dark:focus:border-slate-400 focus:ring-1 focus:ring-slate-800 dark:focus:ring-slate-400 mb-4 transition-all" autocomplete="off">
+                    
+                    <button id="btnMulaiSimulasi" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-black dark:hover:bg-slate-200 px-5 py-4 rounded-xl font-bold text-lg shadow-md hover:shadow-lg transition-all">
                         Mulai Simulasi
                     </button>
                 </div>
-                <p class="text-xs text-slate-400 mt-6">Belum memiliki kode akses? <a href="#" class="text-red-500 font-bold underline hover:text-red-700">Hubungi Admin</a></p>
+                
+                <p class="text-xs text-slate-400 dark:text-slate-500 mt-6">Belum memiliki kode akses? <a href="#" class="font-bold text-slate-900 dark:text-white hover:underline">Hubungi Admin</a></p>
             </section>
 
             <!-- Halaman Personalisasi (Muncul setelah Login) -->
-            <section id="page-personalisasi" class="hidden text-center bg-white/95 dark:bg-luxury-800 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-2xl border-t-4 border-red-600 max-w-lg mx-auto mt-10 fade-in">
-                <h2 class="text-2xl font-extrabold text-slate-800 dark:text-white mb-2">Sesuaikan Panduan Anda</h2>
-                <p class="text-slate-500 dark:text-slate-400 mb-6 text-sm leading-relaxed">Pilih profil agar sistem dapat menyesuaikan instruksi rukun dan sunnah khusus untuk Anda.</p>
+            <section id="page-personalisasi" class="hidden text-center bg-white dark:bg-luxury-800 p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none border border-slate-100 dark:border-luxury-900 max-w-lg mx-auto mt-10 fade-in transition-colors duration-300">
+                
+                <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2">Sesuaikan Panduan Anda</h2>
+                <p class="text-slate-500 dark:text-slate-400 mb-8 text-sm leading-relaxed px-4">Pilih profil agar sistem dapat menyesuaikan instruksi rukun dan sunnah khusus untuk Anda.</p>
+                
                 <!-- Pilihan Jenis Kelamin -->
-                <div class="mb-6 text-left">
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-2">Jenis Kelamin</label>
+                <div class="mb-8 text-left">
+                    <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-wider">Jenis Kelamin</label>
                     <div class="grid grid-cols-2 gap-4">
                         <label class="cursor-pointer">
                             <input type="radio" name="gender" value="laki-laki" class="peer sr-only" checked>
-                            <div class="p-4 rounded-xl border-2 border-slate-200 dark:border-luxury-900 peer-checked:border-red-600 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/20 text-center hover:bg-slate-50 dark:hover:bg-luxury-900 transition">
-                                <div class="text-3xl mb-1">👨</div>
-                                <div class="font-bold text-slate-700 dark:text-slate-300">Laki-laki</div>
+                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 text-center hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all">
+                                <div class="text-3xl mb-2">👨</div>
+                                <div class="font-bold text-slate-900 dark:text-white">Laki-laki</div>
                             </div>
                         </label>
                         <label class="cursor-pointer">
                             <input type="radio" name="gender" value="perempuan" class="peer sr-only">
-                            <div class="p-4 rounded-xl border-2 border-slate-200 dark:border-luxury-900 peer-checked:border-red-600 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/20 text-center hover:bg-slate-50 dark:hover:bg-luxury-900 transition">
-                                <div class="text-3xl mb-1">🧕</div>
-                                <div class="font-bold text-slate-700 dark:text-slate-300">Perempuan</div>
+                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 text-center hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all">
+                                <div class="text-3xl mb-2">🧕</div>
+                                <div class="font-bold text-slate-900 dark:text-white">Perempuan</div>
                             </div>
                         </label>
                     </div>
                 </div>
+                
                 <!-- Pilihan Rute Keberangkatan -->
-                <div class="mb-8 text-left">
-                    <label class="block font-bold text-slate-700 dark:text-slate-300 mb-2">Rute Keberangkatan</label>
+                <div class="mb-10 text-left">
+                    <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-wider">Rute Keberangkatan</label>
                     <div class="grid grid-cols-1 gap-4">
                         <label class="cursor-pointer">
                             <input type="radio" name="rute" value="madinah" class="peer sr-only" checked>
-                            <div class="p-4 rounded-xl border-2 border-slate-200 dark:border-luxury-900 peer-checked:border-red-600 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/20 hover:bg-slate-50 dark:hover:bg-luxury-900 transition flex justify-between items-center">
+                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all flex justify-between items-center">
                                 <div>
-                                    <div class="font-bold text-slate-700 dark:text-slate-300">Dari Madinah (Bir Ali)</div>
-                                    <div class="text-xs text-slate-500 mt-1">Gelombang 1</div>
+                                    <div class="font-bold text-slate-900 dark:text-white">Dari Madinah (Bir Ali)</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Gelombang 1</div>
                                 </div>
-                                <div class="text-2xl">🕌</div>
+                                <div class="text-3xl opacity-80">🕌</div>
                             </div>
                         </label>
                         <label class="cursor-pointer">
                             <input type="radio" name="rute" value="jeddah" class="peer sr-only">
-                            <div class="p-4 rounded-xl border-2 border-slate-200 dark:border-luxury-900 peer-checked:border-red-600 peer-checked:bg-red-50 dark:peer-checked:bg-red-900/20 hover:bg-slate-50 dark:hover:bg-luxury-900 transition flex justify-between items-center">
+                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all flex justify-between items-center">
                                 <div>
-                                    <div class="font-bold text-slate-700 dark:text-slate-300">Langsung ke Makkah</div>
-                                    <div class="text-xs text-slate-500 mt-1">Gelombang 2</div>
+                                    <div class="font-bold text-slate-900 dark:text-white">Langsung ke Makkah</div>
+                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Gelombang 2</div>
                                 </div>
-                                <div class="text-2xl">✈️</div>
+                                <div class="text-3xl opacity-80">✈️</div>
                             </div>
                         </label>
                     </div>
                 </div>
-                <button id="btnSimpanProfil" class="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-500 hover:to-red-600 text-white px-5 py-4 rounded-xl font-bold text-lg shadow-lg shadow-red-500/30 transition-all">
+                
+                <button id="btnSimpanProfil" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-black dark:hover:bg-slate-200 px-5 py-4 rounded-xl font-bold text-lg shadow-md hover:shadow-lg transition-all">
                     Simpan & Lanjutkan
                 </button>
             </section>
