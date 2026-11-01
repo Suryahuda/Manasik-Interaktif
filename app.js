@@ -16,7 +16,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 // Elemen UI Utama
-const btnLogin = document.getElementById('btnLogin');
+const btnLogin = document.getElementById('btnMulaiSimulasi');
 const btnLogout = document.getElementById('btnLogout');
 
 // Fungsi Routing Sederhana (Berpindah Halaman)
