@@ -21,7 +21,8 @@ const btnLogout = document.getElementById('btnLogout');
 
 // Fungsi Routing Sederhana (Berpindah Halaman)
 window.showPage = function(pageId) {
-    const pages = ['page-login', 'page-dashboard', 'page-doa', 'page-kuis', 'page-miqat', 'page-tawaf', 'page-sai', 'page-tahalul'];
+    // Menambahkan 'page-personalisasi' ke dalam array agar bisa disembunyikan/ditampilkan
+    const pages = ['page-login', 'page-personalisasi', 'page-dashboard', 'page-doa', 'page-kuis', 'page-miqat', 'page-tawaf', 'page-sai', 'page-tahalul'];
     
     pages.forEach(id => {
         document.getElementById(id).classList.add('hidden');
@@ -69,14 +70,36 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-// Aksi Login & Logout
+// Aksi Tombol Mulai Simulasi (Mengecek Kode Akses Sementara)
 btnLogin.addEventListener('click', () => {
-  btnLogin.innerText = "Memuat...";
-  signInAnonymously(auth).catch((error) => {
-    console.error("Gagal Login:", error);
-    alert("Gagal masuk. Pastikan Firebase Authentication Anonymous sudah diaktifkan.");
-    btnLogin.innerText = "Masuk";
-  });
+    const kode = document.getElementById('kodeAkses').value;
+    
+    // Nanti logika validasi kode kita buat lebih canggih pakai Firebase
+    if(kode.trim() === "") {
+        alert("Silakan masukkan Kode Akses terlebih dahulu!");
+        return;
+    }
+
+    btnLogin.innerText = "Memeriksa...";
+    // Simulasi loading 1 detik, lalu pindah ke halaman personalisasi
+    setTimeout(() => {
+        btnLogin.innerText = "Mulai Simulasi";
+        showPage('page-personalisasi');
+    }, 1000);
+});
+
+// Aksi Tombol Simpan Profil (Menuju Dasbor Utama)
+document.getElementById('btnSimpanProfil').addEventListener('click', () => {
+    // Mengambil data pilihan jamaah (Laki/Perempuan dan Rute)
+    const userGender = document.querySelector('input[name="gender"]:checked').value;
+    const userRute = document.querySelector('input[name="rute"]:checked').value;
+    
+    // Menyimpan data secara lokal di browser jamaah
+    localStorage.setItem('userGender', userGender);
+    localStorage.setItem('userRute', userRute);
+    
+    // Lanjut ke dasbor
+    showPage('page-dashboard');
 });
 
 btnLogout.addEventListener('click', () => {
