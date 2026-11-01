@@ -89,17 +89,50 @@ btnLogin.addEventListener('click', () => {
 });
 
 // Aksi Tombol Simpan Profil (Menuju Dasbor Utama)
+// Fungsi Cerdas untuk Mengatur Tampilan Dasbor Sesuai Profil
+function perbaruiDashboardUI() {
+    // Ambil data yang disimpan jamaah (jika belum ada, setel ke default)
+    const gender = localStorage.getItem('userGender') || 'laki-laki';
+    const rute = localStorage.getItem('userRute') || 'madinah';
+    
+    // Ubah Teks Header Dasbor
+    const teksProfil = document.getElementById('teksProfilJamaah');
+    const ikonGender = gender === 'laki-laki' ? '👨 Jemaah Laki-laki' : '🧕 Jemaah Perempuan';
+    const teksRute = rute === 'madinah' ? 'via Madinah' : 'via Jeddah (Langsung)';
+    if(teksProfil) teksProfil.innerText = `${ikonGender} • ${teksRute}`;
+    
+    // Ubah Detail Miqat Berdasarkan Rute
+    const teksMiqat = document.getElementById('teksMiqatRute');
+    if(teksMiqat) {
+        teksMiqat.innerText = rute === 'madinah' ? 'Miqat: Dzulhulaifah (Bir Ali)' : 'Miqat: Yalamlam / Qarnul Manazil';
+    }
+}
+
+// Aksi Tombol Simpan Profil
 document.getElementById('btnSimpanProfil').addEventListener('click', () => {
-    // Mengambil data pilihan jamaah (Laki/Perempuan dan Rute)
+    // 1. Simpan Pilihan
     const userGender = document.querySelector('input[name="gender"]:checked').value;
     const userRute = document.querySelector('input[name="rute"]:checked').value;
-    
-    // Menyimpan data secara lokal di browser jamaah
     localStorage.setItem('userGender', userGender);
     localStorage.setItem('userRute', userRute);
     
-    // Lanjut ke dasbor
+    // 2. Perbarui Teks Dasbor
+    perbaruiDashboardUI();
+    
+    // 3. Lanjut ke dasbor
     showPage('page-dashboard');
+});
+
+// Panggil fungsi perbaruiDashboardUI juga di dalam onAuthStateChanged jika pengguna sudah pernah login
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    document.getElementById('btnMulaiSimulasi').innerText = "Mulai Simulasi";
+    // Jika sudah masuk, pastikan dasbor diupdate lalu ditampilkan
+    perbaruiDashboardUI(); 
+    showPage('page-dashboard');
+  } else {
+    showPage('page-login');
+  }
 });
 
 btnLogout.addEventListener('click', () => {

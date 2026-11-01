@@ -131,35 +131,100 @@
             </button>
         </section>
         <!-- Dasbor Utama -->
-        <section id="page-dashboard" class="hidden grid grid-cols-2 gap-4">
-            <div class="col-span-2 bg-white p-6 rounded-2xl shadow-md border-l-4 border-emerald-500 mb-2">
-                <h2 class="text-xl font-bold text-slate-800">Peta Ibadah Anda</h2>
-                <p class="text-sm text-slate-500 mt-1">Syarat diterimanya ibadah: Ikhlas & Mutaba'ah (Sesuai Sunnah).</p>
+       <!-- Dasbor Utama (Desain Premium & Card UI) -->
+        <section id="page-dashboard" class="hidden fade-in max-w-4xl mx-auto w-full">
+            
+            <!-- Header & Progress Bar -->
+            <div class="bg-white p-6 rounded-3xl shadow-lg border-t-4 border-red-600 mb-6">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-slate-800">Manasik Umrah</h2>
+                        <!-- Teks ini akan diubah otomatis oleh JavaScript berdasarkan pilihan jamaah -->
+                        <p id="teksProfilJamaah" class="text-sm text-slate-500 font-medium mt-1">Memuat profil...</p>
+                    </div>
+                    <div class="text-4xl bg-slate-50 p-3 rounded-2xl border border-slate-100 shadow-sm">🕋</div>
+                </div>
+                
+                <div class="mb-2 flex justify-between text-sm font-bold text-slate-700">
+                    <span>Progres Simulasi</span>
+                    <span id="teksProgress">0%</span>
+                </div>
+                <div class="w-full bg-slate-100 rounded-full h-3 mb-2 shadow-inner border border-slate-200 overflow-hidden">
+                    <div id="barProgress" class="bg-gradient-to-r from-red-500 to-red-700 h-full rounded-full transition-all duration-1000" style="width: 0%"></div>
+                </div>
+                <p class="text-xs text-slate-400">Selesaikan seluruh tahapan untuk membuka Sertifikat Mabrur.</p>
             </div>
 
-            <!-- Tombol Fitur Utama -->
-            <button onclick="showPage('page-doa')" class="col-span-2 p-4 bg-gradient-to-r from-indigo-500 to-blue-500 text-white rounded-2xl shadow-md hover:scale-105 transition transform text-left flex items-center">
-                <span class="text-3xl mr-4">🤲</span>
-                <div><span class="font-bold text-lg">Kumpulan Doa</span><br><span class="text-sm opacity-90">Bekal doa dari rumah hingga Makkah</span></div>
-            </button>
-            <button onclick="showPage('page-kuis')" class="col-span-2 p-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-2xl shadow-md hover:scale-105 transition transform text-left flex items-center mb-4">
-                <span class="text-3xl mr-4">📝</span>
-                <div><span class="font-bold text-lg">Kuis Pemahaman</span><br><span class="text-sm opacity-90">Uji ilmu manasik Anda</span></div>
-            </button>
+            <!-- Grid Modul Materi -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                
+                <!-- Modul 1: Persiapan -->
+                <div class="bg-white rounded-3xl shadow-md p-6 border border-slate-100">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="text-red-600 text-2xl">01</span> Persiapan & Miqat
+                    </h3>
+                    <button onclick="showPage('page-miqat')" class="w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-red-500 hover:bg-red-50 transition flex items-center gap-4 group">
+                        <div class="text-3xl bg-white p-2 rounded-lg shadow-sm border border-slate-100 group-hover:border-red-200">🚿</div>
+                        <div>
+                            <div class="font-bold text-slate-700 group-hover:text-red-700">Niat & Ihram</div>
+                            <div class="text-xs text-slate-500" id="teksMiqatRute">Titik Miqat</div>
+                        </div>
+                        <div class="ml-auto text-slate-300 group-hover:text-red-500 font-bold">▶</div>
+                    </button>
+                </div>
 
-            <!-- Tombol Rukun Umrah -->
-            <button onclick="showPage('page-miqat')" class="col-span-1 p-4 bg-white border border-slate-200 rounded-2xl shadow hover:shadow-lg transition text-center">
-                <div class="text-3xl mb-2">🚿</div><span class="font-bold text-emerald-700">1. Miqat</span>
-            </button>
-            <button onclick="showPage('page-tawaf')" class="col-span-1 p-4 bg-white border border-slate-200 rounded-2xl shadow hover:shadow-lg transition text-center">
-                <div class="text-3xl mb-2">🕋</div><span class="font-bold text-blue-700">2. Tawaf</span>
-            </button>
-            <button onclick="showPage('page-sai')" class="col-span-1 p-4 bg-white border border-slate-200 rounded-2xl shadow hover:shadow-lg transition text-center">
-                <div class="text-3xl mb-2">🚶</div><span class="font-bold text-yellow-600">3. Sa'i</span>
-            </button>
-            <button onclick="showPage('page-tahalul')" class="col-span-1 p-4 bg-white border border-slate-200 rounded-2xl shadow hover:shadow-lg transition text-center">
-                <div class="text-3xl mb-2">✂️</div><span class="font-bold text-slate-700">4. Tahalul</span>
-            </button>
+                <!-- Modul 2: Rukun Inti Makkah -->
+                <div class="bg-white rounded-3xl shadow-md p-6 border border-slate-100">
+                    <h3 class="text-lg font-bold text-slate-800 mb-4 flex items-center gap-2">
+                        <span class="text-red-600 text-2xl">02</span> Rukun Inti
+                    </h3>
+                    <div class="space-y-3">
+                        <button onclick="showPage('page-tawaf')" class="w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-red-500 hover:bg-red-50 transition flex items-center gap-4 group">
+                            <div class="text-3xl bg-white p-2 rounded-lg shadow-sm border border-slate-100">🕋</div>
+                            <div>
+                                <div class="font-bold text-slate-700 group-hover:text-red-700">Tawaf 360°</div>
+                                <div class="text-xs text-slate-500">7 Putaran Keliling Ka'bah</div>
+                            </div>
+                            <div class="ml-auto text-slate-300 group-hover:text-red-500 font-bold">▶</div>
+                        </button>
+                        <button onclick="showPage('page-sai')" class="w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-red-500 hover:bg-red-50 transition flex items-center gap-4 group">
+                            <div class="text-3xl bg-white p-2 rounded-lg shadow-sm border border-slate-100">🚶</div>
+                            <div>
+                                <div class="font-bold text-slate-700 group-hover:text-red-700">Sa'i 360°</div>
+                                <div class="text-xs text-slate-500">Bukit Safa ke Marwah</div>
+                            </div>
+                            <div class="ml-auto text-slate-300 group-hover:text-red-500 font-bold">▶</div>
+                        </button>
+                        <button onclick="showPage('page-tahalul')" class="w-full text-left p-4 rounded-xl border-2 border-slate-100 hover:border-red-500 hover:bg-red-50 transition flex items-center gap-4 group">
+                            <div class="text-3xl bg-white p-2 rounded-lg shadow-sm border border-slate-100">✂️</div>
+                            <div>
+                                <div class="font-bold text-slate-700 group-hover:text-red-700">Tahalul</div>
+                                <div class="text-xs text-slate-500">Gugurnya Larangan Ihram</div>
+                            </div>
+                            <div class="ml-auto text-slate-300 group-hover:text-red-500 font-bold">▶</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modul Ekstra -->
+            <h3 class="text-lg font-bold text-slate-800 mb-4 px-2">Fitur Tambahan</h3>
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="showPage('page-doa')" class="p-4 bg-gradient-to-br from-slate-800 to-slate-700 text-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-left flex flex-col justify-between min-h-[110px]">
+                    <span class="text-3xl mb-1">🤲</span>
+                    <div>
+                        <span class="font-bold">Kumpulan Doa</span><br>
+                        <span class="text-xs opacity-75">Teks Lengkap</span>
+                    </div>
+                </button>
+                <button onclick="showPage('page-kuis')" class="p-4 bg-gradient-to-br from-red-600 to-red-800 text-white rounded-2xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 text-left flex flex-col justify-between min-h-[110px]">
+                    <span class="text-3xl mb-1">📝</span>
+                    <div>
+                        <span class="font-bold">Kuis Manasik</span><br>
+                        <span class="text-xs opacity-75">Uji Pemahaman</span>
+                    </div>
+                </button>
+            </div>
         </section>
 
         <!-- Halaman Kumpulan Doa -->
