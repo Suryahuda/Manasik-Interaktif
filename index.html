@@ -25,13 +25,9 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         
         .bg-kabah-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://images.unsplash.com/photo-1565552643954-14eb015975bb?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            z-index: -1;
-            opacity: 0.05;
+            background-size: cover; background-position: center; z-index: -1; opacity: 0.05;
         }
     </style>
 </head>
@@ -66,117 +62,51 @@
         <!-- HEADER ATAS (DENGAN MULTI-BAHASA) -->
         <header class="bg-white/90 dark:bg-luxury-800/90 backdrop-blur-md border-b border-slate-200 dark:border-luxury-900 px-6 py-4 flex justify-between items-center z-10">
             <div class="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
-                <span data-i18n="portal_title">Portal Manasik</span> <span class="mx-2">/</span> <span class="text-slate-900 dark:text-white" data-i18n="app_title">MUYASSAR Pro</span>
+                <span data-i18n="portal_title">Portal Manasik</span> <span class="mx-2">/</span> <span class="text-slate-900 dark:text-white">MUYASSAR Pro</span>
             </div>
             
             <div class="flex items-center gap-3">
-                <!-- Pilihan Bahasa -->
                 <div class="flex bg-slate-100 dark:bg-luxury-900 p-1 rounded-xl border border-slate-200 dark:border-luxury-700 text-xs font-bold">
                     <button onclick="changeLanguage('id')" id="lang-id" class="px-2.5 py-1 rounded-lg bg-white dark:bg-luxury-800 text-slate-900 dark:text-white shadow-sm transition">ID</button>
                     <button onclick="changeLanguage('en')" id="lang-en" class="px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition">EN</button>
                     <button onclick="changeLanguage('ar')" id="lang-ar" class="px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition">AR</button>
                 </div>
-
-                <!-- Tombol Mode Gelap -->
                 <button id="btnDarkMode" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-luxury-900 transition text-lg">☀️</button>
-                
-                <div class="w-9 h-9 bg-slate-800 dark:bg-white rounded-full flex items-center justify-center text-white dark:text-slate-900 text-sm font-bold shadow-md">
-                    US
-                </div>
             </div>
         </header>
 
         <!-- RUANG SCROLL HALAMAN -->
         <main id="main-content" class="flex-1 overflow-y-auto p-6 lg:p-8 bg-slate-50/80 dark:bg-luxury-900/80 relative z-0">
             
-            <!-- 1. HALAMAN LOGIN -->
-            <section id="page-login" class="text-center bg-white dark:bg-luxury-800 p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none border border-slate-100 dark:border-luxury-900 max-w-md mx-auto mt-10 transition-colors duration-300">
-                <div class="inline-flex justify-center items-center w-20 h-20 rounded-full bg-slate-50 dark:bg-luxury-900 border border-slate-100 dark:border-luxury-800 mb-6 shadow-sm">
+            <!-- HALAMAN LOGIN -->
+            <section id="page-login" class="text-center bg-white dark:bg-luxury-800 p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 dark:border-luxury-900 max-w-md mx-auto mt-10 transition-colors duration-300">
+                <div class="inline-flex justify-center items-center w-20 h-20 rounded-full bg-slate-50 dark:bg-luxury-900 border border-slate-100 mb-6">
                     <div class="text-4xl">🕋</div>
                 </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-1">MUYASSAR</h2>
-                <p class="text-sm font-semibold text-slate-500 dark:text-slate-400 mb-8 tracking-wide uppercase" data-i18n="login_subtitle">Platform Manasik Interaktif</p>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-1">MUYASSAR</h2>
+                <p class="text-sm font-semibold text-slate-500 mb-8" data-i18n="login_subtitle">Platform Manasik Interaktif</p>
                 <div class="mb-8">
                     <p class="text-slate-800 dark:text-slate-200 font-bold text-lg mb-2" data-i18n="login_quote">"Berilmu sebelum berucap dan beramal."</p>
-                    <p class="text-slate-500 dark:text-slate-400 text-sm leading-relaxed px-4" data-i18n="login_desc">Silakan masukkan Kode Akses dari agen travel Anda untuk memulai simulasi.</p>
+                    <p class="text-slate-500 text-sm px-4" data-i18n="login_desc">Silakan masukkan Kode Akses dari agen travel Anda.</p>
                 </div>
                 <div class="w-full">
-                    <input type="text" id="kodeAkses" placeholder="Kode Akses" class="w-full px-5 py-4 rounded-xl text-center text-slate-900 dark:text-white font-bold text-lg border border-slate-200 dark:border-luxury-700 bg-slate-50 dark:bg-luxury-900 focus:outline-none focus:border-slate-800 dark:focus:border-slate-400 mb-4 transition-all" autocomplete="off">
-                    <button id="btnMulaiSimulasi" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-black dark:hover:bg-slate-200 px-5 py-4 rounded-xl font-bold text-lg shadow-md hover:shadow-lg transition-all" data-i18n="btn_start">
+                    <input type="text" id="kodeAkses" placeholder="Kode Akses" class="w-full px-5 py-4 rounded-xl text-center text-slate-900 dark:text-white font-bold text-lg border border-slate-200 dark:border-luxury-700 bg-slate-50 dark:bg-luxury-900 focus:outline-none mb-4" autocomplete="off">
+                    <button id="btnMulaiSimulasi" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl shadow-md transition-all" data-i18n="btn_start">
                         Mulai Simulasi
                     </button>
                 </div>
             </section>
 
-            <!-- 2. HALAMAN PERSONALISASI -->
-            <section id="page-personalisasi" class="hidden text-center bg-white dark:bg-luxury-800 p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] dark:shadow-none border border-slate-100 dark:border-luxury-900 max-w-lg mx-auto mt-10 fade-in transition-colors duration-300">
-                <h2 class="text-2xl font-extrabold text-slate-900 dark:text-white mb-2" data-i18n="pers_title">Sesuaikan Panduan Anda</h2>
-                <p class="text-slate-500 dark:text-slate-400 mb-8 text-sm leading-relaxed px-4" data-i18n="pers_desc">Pilih profil agar sistem dapat menyesuaikan instruksi rukun dan sunnah khusus untuk Anda.</p>
-                
-                <div class="mb-8 text-left">
-                    <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-wider" data-i18n="pers_gender">Jenis Kelamin</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <label class="cursor-pointer">
-                            <input type="radio" name="gender" value="laki-laki" class="peer sr-only" checked>
-                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 text-center hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all">
-                                <div class="text-3xl mb-2">👨</div>
-                                <div class="font-bold text-slate-900 dark:text-white" data-i18n="gender_male">Laki-laki</div>
-                            </div>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="radio" name="gender" value="perempuan" class="peer sr-only">
-                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 text-center hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all">
-                                <div class="text-3xl mb-2">🧕</div>
-                                <div class="font-bold text-slate-900 dark:text-white" data-i18n="gender_female">Perempuan</div>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                
-                <div class="mb-10 text-left">
-                    <label class="block text-xs font-bold text-slate-500 dark:text-slate-400 mb-3 uppercase tracking-wider" data-i18n="pers_route">Rute Keberangkatan</label>
-                    <div class="grid grid-cols-1 gap-4">
-                        <label class="cursor-pointer">
-                            <input type="radio" name="rute" value="madinah" class="peer sr-only" checked>
-                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all flex justify-between items-center">
-                                <div>
-                                    <div class="font-bold text-slate-900 dark:text-white" data-i18n="route_madinah">Dari Madinah (Bir Ali)</div>
-                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Gelombang 1</div>
-                                </div>
-                                <div class="text-3xl opacity-80">🕌</div>
-                            </div>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="radio" name="rute" value="jeddah" class="peer sr-only">
-                            <div class="p-5 rounded-2xl border-2 border-slate-100 dark:border-luxury-700 peer-checked:border-slate-900 dark:peer-checked:border-white peer-checked:bg-slate-50 dark:peer-checked:bg-luxury-900 hover:bg-slate-50 dark:hover:bg-luxury-900 transition-all flex justify-between items-center">
-                                <div>
-                                    <div class="font-bold text-slate-900 dark:text-white" data-i18n="route_jeddah">Langsung ke Makkah</div>
-                                    <div class="text-xs text-slate-500 dark:text-slate-400 mt-1 font-medium">Gelombang 2</div>
-                                </div>
-                                <div class="text-3xl opacity-80">✈️</div>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-                <button id="btnSimpanProfil" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 hover:bg-black dark:hover:bg-slate-200 px-5 py-4 rounded-xl font-bold text-lg shadow-md hover:shadow-lg transition-all" data-i18n="btn_save">
-                    Simpan & Lanjutkan
-                </button>
-            </section>
-
-            <!-- 3. DASBOR UTAMA -->
+            <!-- DASBOR UTAMA -->
             <section id="page-dashboard" class="hidden max-w-5xl mx-auto space-y-8 fade-in">
                 <div class="bg-slate-900 dark:bg-black rounded-3xl p-8 lg:p-10 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
-                    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(white 1px, transparent 1px); background-size: 20px 20px;"></div>
-                    <div class="w-full md:w-1/3 flex justify-center z-10">
-                        <div class="text-9xl drop-shadow-2xl">🕋</div>
-                    </div>
+                    <div class="w-full md:w-1/3 flex justify-center z-10"><div class="text-9xl drop-shadow-2xl">🕋</div></div>
                     <div class="w-full md:w-2/3 z-10 text-white">
                         <h2 class="text-3xl font-serif mb-4" data-i18n="dash_hero_title">Manasik Virtual</h2>
-                        <p class="text-slate-300 text-sm mb-6 leading-relaxed" data-i18n="dash_hero_desc">Berlatih umrah dan haji langkah demi langkah: berihram di miqat, thawaf, sa'i, sampai tahalul.</p>
-                        <div class="bg-white/10 border border-white/20 p-5 rounded-2xl mb-6 backdrop-blur-md">
+                        <p class="text-slate-300 text-sm mb-6" data-i18n="dash_hero_desc">Berlatih umrah langkah demi langkah: berihram di miqat, thawaf, sa'i, sampai tahalul.</p>
+                        <div class="bg-white/10 p-5 rounded-2xl mb-6 backdrop-blur-md">
                             <p class="text-2xl font-arabic text-right mb-3">وَأَذِّن فِي النَّاسِ بِالْحَجِّ...</p>
-                            <p class="text-xs text-slate-300 mb-4">"Dan serulah manusia untuk mengerjakan haji..." QS al-Hajj [22]: 27</p>
-                            <button class="bg-white/20 hover:bg-white/30 text-white text-xs px-4 py-2 rounded-full transition flex items-center gap-2" data-i18n="btn_audio">▶ Dengarkan QS al-Hajj ayat 27</button>
+                            <p class="text-xs text-slate-300">QS al-Hajj [22]: 27</p>
                         </div>
                     </div>
                 </div>
@@ -184,420 +114,268 @@
                 <div>
                     <h3 class="font-serif text-xl font-bold mb-4 text-slate-900 dark:text-white" data-i18n="dash_choose_title">Pilih ibadah yang ingin dipelajari</h3>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white dark:bg-luxury-800 rounded-3xl p-8 border border-slate-200 dark:border-luxury-900 shadow-sm hover:shadow-md transition">
+                        <div class="bg-white dark:bg-luxury-800 rounded-3xl p-8 shadow-sm">
                             <div class="text-5xl mb-6">🕋</div>
-                            <h4 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-2">Umrah</h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-4" data-i18n="umrah_card_desc">Ihram, thawaf, sa'i, dan tahallul. Dapat dikerjakan sepanjang tahun.</p>
-                            <p class="text-xs text-slate-400 mb-8 font-medium">11 tahap latihan</p>
-                            <button onclick="showPage('page-modul-umrah')" class="bg-slate-800 hover:bg-slate-900 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition" data-i18n="btn_start_umrah">
-                                Mulai umrah
-                            </button>
-                        </div>
-                        <div class="bg-white dark:bg-luxury-800 rounded-3xl p-8 border border-slate-200 dark:border-luxury-900 shadow-sm opacity-60">
-                            <div class="text-5xl mb-6">⛺</div>
-                            <h4 class="text-2xl font-serif font-bold text-slate-900 dark:text-white mb-2">Haji</h4>
-                            <p class="text-sm text-slate-500 dark:text-slate-400 mb-8">Rangkaian haji lengkap, dari miqat sampai thawaf wada'.</p>
-                            <button class="bg-slate-200 dark:bg-luxury-900 text-slate-500 px-6 py-2.5 rounded-lg font-bold text-sm cursor-not-allowed" data-i18n="btn_coming_soon">Segera Hadir</button>
+                            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="umrah_title">Umrah</h4>
+                            <p class="text-sm text-slate-500 mb-8" data-i18n="umrah_card_desc">Panduan interaktif lengkap.</p>
+                            <button onclick="showPage('page-modul-umrah')" class="bg-slate-800 dark:bg-white dark:text-slate-900 text-white px-6 py-2.5 rounded-lg font-bold text-sm" data-i18n="btn_start_umrah">Mulai umrah</button>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!-- 4. HALAMAN PETA MODUL UMRAH (11 KARTU LENGKAP & DAPAT DIKLIK) -->
+            <!-- PETA MODUL UMRAH (11 KARTU LENGKAP) -->
             <section id="page-modul-umrah" class="hidden max-w-5xl mx-auto space-y-8 fade-in">
-                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6">
-                    <div>
-                        <button onclick="showPage('page-dashboard')" class="text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white font-medium text-sm flex items-center gap-2 mb-3 transition">
-                            <span>←</span> <span data-i18n="btn_back_dash">Kembali ke Dashboard</span>
-                        </button>
-                        <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2" data-i18n="umrah_map_title">Perjalanan Umrah</h2>
-                        <p class="text-slate-500 dark:text-slate-400 text-sm">11 Tahap • <span id="teksProfilModul">Laki-laki, Dari Madinah (Bir Ali)</span></p>
-                    </div>
+                <div class="mb-6">
+                    <button onclick="showPage('page-dashboard')" class="text-slate-500 font-medium text-sm mb-3">← <span data-i18n="btn_back_dash">Kembali</span></button>
+                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white" data-i18n="umrah_map_title">Perjalanan Umrah</h2>
                 </div>
-
-                <!-- GRID 11 KARTU -->
+                
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    
                     <!-- Kartu 1 -->
-                    <div onclick="showPage('page-mengenal')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-mengenal')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border shadow-sm cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">📖</div>
                         <div class="flex justify-between items-start mb-4">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">1</div>
-                            <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-1 rounded-md">Pengantar</span>
+                            <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold">1</div>
                         </div>
-                        <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">1. Mengenal Umrah</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Rukun dan wajib umrah, serta urutan yang harus tertib.</p>
+                        <h3 class="font-serif font-bold text-lg mb-2 dark:text-white" data-i18n="card1_title">1. Mengenal Umrah</h3>
+                        <p class="text-sm text-slate-500 line-clamp-2" data-i18n="card1_desc">Pondasi, hukum, dan rukun.</p>
                     </div>
 
                     <!-- Kartu 2 -->
-                    <div onclick="showPage('page-persiapan-ihram')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-persiapan-ihram')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🚿</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">2</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">2. Persiapan Ihram</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Bersuci, memakai wewangian di badan, dan mengenakan pakaian ihram.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Bersuci, wewangian, dan kain ihram.</p>
                     </div>
 
                     <!-- Kartu 3 -->
-                    <div onclick="showPage('page-miqat')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-miqat')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🕌</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">3</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">3. Miqat dan Niat</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Batas tempat berihram, lafaz niat, dan talbiyah.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Batas berihram dan lafaz niat.</p>
                     </div>
 
                     <!-- Kartu 4 -->
-                    <div onclick="showPage('page-larangan-ihram')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-larangan-ihram')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🚫</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">4</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">4. Larangan Ihram</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Hal yang terlarang selama ihram dan konsekuensinya (Dam).</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Hal yang dilarang saat berihram.</p>
                     </div>
 
                     <!-- Kartu 5 -->
-                    <div onclick="showPage('page-masjidilharam')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-masjidilharam')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🏛️</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">5</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">5. Memasuki Masjidil Haram</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Masuk dengan doa, pandangan pertama ke Ka'bah, dan persiapan tawaf.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Doa masuk dan melihat Ka'bah.</p>
                     </div>
 
                     <!-- Kartu 6 -->
-                    <div onclick="showPage('page-tawaf')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-tawaf')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🕋</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">6</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">6. Thawaf Umrah</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Tujuh putaran mengelilingi Ka'bah, dimulai dari Hajar Aswad.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Tujuh putaran mengelilingi Ka'bah.</p>
                     </div>
 
                     <!-- Kartu 7 -->
-                    <div onclick="showPage('page-maqam-zamzam')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-maqam-zamzam')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🥤</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">7</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">7. Maqam Ibrahim & Zamzam</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Sholat 2 rakaat di belakang Maqam Ibrahim dan minum air Zamzam.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Sholat 2 rakaat dan minum zamzam.</p>
                     </div>
 
                     <!-- Kartu 8 -->
-                    <div onclick="showPage('page-sai')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-sai')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🚶</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">8</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">8. Sa'i Umrah</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Tujuh perjalanan berjalan/berlari kecil dari bukit Shafa ke Marwah.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Tujuh perjalanan Shafa-Marwah.</p>
                     </div>
 
                     <!-- Kartu 9 -->
-                    <div onclick="showPage('page-tahalul')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-tahalul')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">✂️</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">9</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">9. Tahallul Umrah</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Mencukur atau memendekkan rambut sebagai akhir ibadah umrah.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Memotong rambut akhir ibadah.</p>
                     </div>
 
                     <!-- Kartu 10 -->
-                    <div onclick="showPage('page-tawaf-wada')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-tawaf-wada')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🚶‍♂️</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">10</div>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">10. Thawaf Wada'</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Thawaf perpisahan sebelum meninggalkan kota suci Makkah.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Thawaf perpisahan Makkah.</p>
                     </div>
 
                     <!-- Kartu 11 -->
-                    <div onclick="showPage('page-selesai')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:border-slate-400 dark:hover:border-slate-500 hover:-translate-y-1 transition-all">
+                    <div onclick="showPage('page-selesai')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border border-slate-200 dark:border-luxury-700 shadow-sm relative overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                         <div class="absolute top-0 right-0 p-4 opacity-10 text-6xl">🎓</div>
                         <div class="flex justify-between items-start mb-4">
                             <div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white flex items-center justify-center font-bold text-sm">11</div>
                             <span class="text-xs font-bold text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/30 px-2.5 py-1 rounded-md">Evaluasi</span>
                         </div>
                         <h3 class="font-serif font-bold text-lg text-slate-900 dark:text-white mb-2">11. Selesai & Sertifikat</h3>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Rangkuman perjalanan, uji kuis pemahaman, dan penerbitan sertifikat.</p>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">Rangkuman dan sertifikat.</p>
                     </div>
-
                 </div>
             </section>
 
-            <!-- CONTAINER MATERI (11 SEKSI MATERI LENGKAP) -->
+            <!-- KUMPULAN MATERI (TERMASUK MATERI NOMOR 1 YANG LENGKAP) -->
             <div class="max-w-3xl mx-auto">
-                
-               <!-- 1. Mengenal Umrah -->
+                <!-- 1. Mengenal Umrah -->
                 <section id="page-mengenal" class="hidden bg-white dark:bg-luxury-800 p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-bold mb-6 flex items-center gap-2 transition">← Kembali ke Peta Modul</button>
+                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white font-bold mb-6 flex items-center gap-2 transition">← <span data-i18n="btn_back_map">Kembali ke Peta Modul</span></button>
                     
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">1. Mengenal Umrah</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-8">Memahami pondasi awal, hukum, dan rukun sebelum melaksanakan ibadah umrah.</p>
+                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2" data-i18n="card1_title">1. Mengenal Umrah</h2>
+                    <p class="text-slate-600 dark:text-slate-400 mb-8" data-i18n="materi1_subtitle">Memahami pondasi awal, hukum, dan rukun sebelum melaksanakan ibadah umrah.</p>
                     
-                    <!-- Sub-Kartu A: Definisi Umrah -->
+                    <!-- Definisi Umrah -->
                     <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border border-slate-100 dark:border-luxury-700 mb-6 shadow-sm">
-                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-4">Memahami Makna Umrah</h3>
+                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-4" data-i18n="def_title">Memahami Makna Umrah</h3>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-                            <div class="p-5 bg-white dark:bg-luxury-800 rounded-xl shadow-sm border-l-4 border-amber-500">
-                                <h4 class="font-bold text-amber-700 dark:text-amber-500 mb-2">Secara Bahasa</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-400">Umrah berarti <span class="italic">Az-Ziarah</span>, yaitu berkunjung atau berziarah.</p>
+                            <div class="p-5 bg-white dark:bg-luxury-800 rounded-xl border-l-4 border-amber-500">
+                                <h4 class="font-bold text-amber-700 dark:text-amber-500 mb-2" data-i18n="def_lang_title">Secara Bahasa</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="def_lang_desc">Umrah berarti <span class="italic">Az-Ziarah</span>, yaitu berkunjung atau berziarah.</p>
                             </div>
-                            <div class="p-5 bg-white dark:bg-luxury-800 rounded-xl shadow-sm border-l-4 border-emerald-500">
-                                <h4 class="font-bold text-emerald-700 dark:text-emerald-500 mb-2">Secara Istilah</h4>
-                                <p class="text-sm text-slate-600 dark:text-slate-400">Mengunjungi Masjidil Haram untuk melaksanakan amalan-amalan khusus dalam rangka mendekatkan diri (<span class="italic">taqarrub</span>) kepada Allah.</p>
+                            <div class="p-5 bg-white dark:bg-luxury-800 rounded-xl border-l-4 border-emerald-500">
+                                <h4 class="font-bold text-emerald-700 dark:text-emerald-500 mb-2" data-i18n="def_term_title">Secara Istilah</h4>
+                                <p class="text-sm text-slate-600 dark:text-slate-400" data-i18n="def_term_desc">Mengunjungi Masjidil Haram untuk melaksanakan amalan khusus dalam rangka mendekatkan diri kepada Allah.</p>
                             </div>
+                        </div>
+                        <div class="flex justify-center items-center gap-4 flex-wrap">
+                            <div class="text-center opacity-70"><div class="text-4xl mb-2">🕋</div><div class="text-xs font-bold text-slate-600">Masjidil Haram</div></div>
+                            <div class="text-slate-300">→</div>
+                            <div class="text-center opacity-70"><div class="text-4xl mb-2">🔄</div><div class="text-xs font-bold text-slate-600">Tawaf</div></div>
+                            <div class="text-slate-300">→</div>
+                            <div class="text-center opacity-70"><div class="text-4xl mb-2">🚶</div><div class="text-xs font-bold text-slate-600">Sa'i</div></div>
+                            <div class="text-slate-300">→</div>
+                            <div class="text-center opacity-70"><div class="text-4xl mb-2">✂️</div><div class="text-xs font-bold text-slate-600">Tahallul</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Hukum Umrah (Dengan Suara AI) -->
+                    <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border border-slate-100 dark:border-luxury-700 mb-6 shadow-sm">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white" data-i18n="law_title">Hukum Umrah</h3>
+                            <button onclick="playAudio('hukum')" class="bg-slate-800 dark:bg-white text-white dark:text-slate-900 px-3 py-1.5 rounded-full text-xs font-bold transition flex gap-2">
+                                🔊 <span data-i18n="btn_listen">Dengarkan AI</span>
+                            </button>
                         </div>
                         
-                        <!-- Ikon Visual Representasi Umrah -->
-                        <div class="flex justify-center items-center gap-4 md:gap-8 flex-wrap">
-                            <div class="text-center opacity-70 hover:opacity-100 transition"><div class="text-4xl mb-2">🕋</div><div class="text-xs font-bold text-slate-600 dark:text-slate-400">Masjidil Haram</div></div>
-                            <div class="text-slate-300 dark:text-slate-600">→</div>
-                            <div class="text-center opacity-70 hover:opacity-100 transition"><div class="text-4xl mb-2">🔄</div><div class="text-xs font-bold text-slate-600 dark:text-slate-400">Tawaf</div></div>
-                            <div class="text-slate-300 dark:text-slate-600">→</div>
-                            <div class="text-center opacity-70 hover:opacity-100 transition"><div class="text-4xl mb-2">🚶</div><div class="text-xs font-bold text-slate-600 dark:text-slate-400">Sa'i</div></div>
-                            <div class="text-slate-300 dark:text-slate-600">→</div>
-                            <div class="text-center opacity-70 hover:opacity-100 transition"><div class="text-4xl mb-2">✂️</div><div class="text-xs font-bold text-slate-600 dark:text-slate-400">Tahallul</div></div>
-                        </div>
-                    </div>
-
-                    <!-- Sub-Kartu B: Hukum Umrah -->
-                    <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border border-slate-100 dark:border-luxury-700 mb-6 shadow-sm">
-                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-2">Hukum Umrah</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 font-medium">Kewajiban Sekali Seumur Hidup Bagi yang Mampu.</p>
-                        <div class="bg-white dark:bg-luxury-800 border border-amber-200 dark:border-amber-900/50 p-6 rounded-xl text-center shadow-inner">
-                            <p class="font-arabic text-2xl mb-4 text-slate-800 dark:text-white leading-loose">وَتَحُجَّ الْبَيْتَ وَتَعْتَمِرَ، وَتَغْتَسِلَ مِنَ الْجَنَابَةِ، وَتُتِمَّ الْوُضُوءَ، وَتَصُومَ رَمَضَانَ</p>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 italic">"...mendirikan salat, menunaikan zakat, berhaji ke Baitullah dan berumrah, mandi dari junub, menyempurnakan wudu, serta berpuasa di bulan Ramadan."<br><span class="font-bold">(HR. Ad-Daraquthni, dishahihkan oleh Syaikh Al-Albani)</span></p>
-                        </div>
-                    </div>
-
-                    <!-- Sub-Kartu C: Keutamaan Umrah -->
-                    <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border border-slate-100 dark:border-luxury-700 mb-6 shadow-sm">
-                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-4">Keutamaan Agung Ibadah Umrah</h3>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div class="bg-white dark:bg-luxury-800 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-luxury-700">
-                                <div class="text-3xl mb-3 text-amber-500">🤲</div>
-                                <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-2">Tamu Allah</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Orang yang berhaji dan umrah adalah delegasi istimewa Allah. Doa mereka diijabah dan permintaan dikabulkan. (HR. Al-Bazzar)</p>
-                            </div>
-                            <div class="bg-white dark:bg-luxury-800 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-luxury-700">
-                                <div class="text-3xl mb-3 text-sky-500">💧</div>
-                                <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-2">Penggugur Dosa</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Umrah yang satu ke umrah berikutnya menjadi penghapus dosa di antara keduanya. (HR. Bukhari)</p>
-                            </div>
-                            <div class="bg-white dark:bg-luxury-800 p-5 rounded-xl shadow-sm border border-slate-100 dark:border-luxury-700">
-                                <div class="text-3xl mb-3 text-rose-500">✨</div>
-                                <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-2">Menghilangkan Kefakiran</h4>
-                                <p class="text-xs text-slate-500 dark:text-slate-400">Mampu mengangkat kemiskinan dan membersihkan dosa laksana api memurnikan logam mulia. (Shahih At-Targhib)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Sub-Kartu D: Syarat Wajib -->
-                    <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border border-slate-100 dark:border-luxury-700 mb-6 shadow-sm">
-                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-4">Syarat Wajib Pelaksanaan Umrah</h3>
-                        <div class="flex flex-wrap gap-3 mb-4">
-                            <span class="bg-white dark:bg-luxury-800 border border-slate-200 dark:border-luxury-700 px-4 py-2 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-300 shadow-sm flex items-center gap-2">🌙 1. Islam</span>
-                            <span class="bg-white dark:bg-luxury-800 border border-slate-200 dark:border-luxury-700 px-4 py-2 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-300 shadow-sm flex items-center gap-2">🧍 2. Baligh</span>
-                            <span class="bg-white dark:bg-luxury-800 border border-slate-200 dark:border-luxury-700 px-4 py-2 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-300 shadow-sm flex items-center gap-2">🧠 3. Aqil</span>
-                            <span class="bg-white dark:bg-luxury-800 border border-slate-200 dark:border-luxury-700 px-4 py-2 rounded-lg text-sm font-bold text-slate-700 dark:text-slate-300 shadow-sm flex items-center gap-2">🕊️ 4. Merdeka</span>
-                            <span class="bg-white dark:bg-luxury-800 border border-amber-200 dark:border-amber-900/50 px-4 py-2 rounded-lg text-sm font-bold text-amber-700 dark:text-amber-500 shadow-sm flex items-center gap-2">💼 5. Mampu (Istitha'ah)</span>
-                        </div>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg border border-amber-100 dark:border-amber-900/30">
-                            <b>*Catatan Kemampuan:</b> Mencakup aspek finansial (biaya perjalanan dan nafkah keluarga), kesehatan fisik, dan keamanan selama perjalanan.
+                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-4" data-i18n="law_desc">
+                            Terdapat perbedaan pendapat ulama (Imam Abu Hanifah dan Malik berpendapat sunnah). Namun, kami mengambil pendapat Imam Syafi'i, Ahmad, dan mayoritas Sahabat bahwa hukum umrah adalah <b>Wajib sekali seumur hidup bagi yang mampu</b>.
                         </p>
+                        <div class="bg-white dark:bg-luxury-800 border p-5 rounded-xl mb-4">
+                            <h4 class="font-bold text-sm text-slate-800 dark:text-white mb-2" data-i18n="law_evidence_title">Dalil Kewajiban:</h4>
+                            <ul class="list-disc pl-5 text-sm text-slate-600 dark:text-slate-400 space-y-2">
+                                <li data-i18n="law_ev1"><b>Hadits Aisyah:</b> "Ya, atas mereka ada jihad tanpa peperangan: Haji dan Umrah."</li>
+                                <li data-i18n="law_ev2"><b>Hadits Jibril:</b> "...berhaji ke Baitullah dan berumrah..."</li>
+                                <li data-i18n="law_ev3"><b>Perkataan Ibnu Abbas:</b> "Umrah adalah qarinah fardhu haji di Kitabullah."</li>
+                            </ul>
+                        </div>
+                        <a href="https://islamqa.info/ar/answers/39524/حكم-العمرة" target="_blank" class="text-xs text-blue-500">🔗 Referensi Fatwa IslamQA</a>
                     </div>
 
-                    <!-- Sub-Kartu E: Rukun Umrah -->
+                    <!-- Syarat Wajib & Rukun -->
                     <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border border-slate-100 dark:border-luxury-700 mb-8 shadow-sm">
-                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-2">Rukun Umrah (Rangkaian Inti)</h3>
-                        <p class="text-sm text-slate-600 dark:text-slate-400 mb-6">Pilar utama yang harus dilaksanakan secara berurutan. Meninggalkan salah satunya akan membatalkan umrah.</p>
-                        
+                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-4" data-i18n="syarat_title">Syarat Wajib Umrah</h3>
+                        <div class="flex flex-wrap gap-3 mb-6">
+                            <span class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">🌙 1. Islam</span>
+                            <span class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">🧍 2. Baligh</span>
+                            <span class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">🧠 3. Aqil</span>
+                            <span class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm">🕊️ 4. Merdeka</span>
+                            <span class="bg-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm text-amber-600">💼 5. Mampu</span>
+                        </div>
+
+                        <h3 class="font-serif text-xl font-bold text-slate-800 dark:text-white mb-2" data-i18n="pillars_title">Rukun Umrah</h3>
                         <div class="space-y-4">
-                            <!-- Rukun 1 -->
-                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border border-slate-100 dark:border-luxury-700 shadow-sm">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg">1</div>
-                                <div>
-                                    <h4 class="font-bold text-sm md:text-base text-slate-800 dark:text-white">Ihram</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">Niat memulai ibadah dari Miqat.</p>
-                                </div>
-                                <div class="ml-auto text-3xl opacity-50">🚿</div>
+                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">1</div>
+                                <div><h4 class="font-bold text-sm" data-i18n="pillar_1">Ihram</h4></div>
                             </div>
-                            <!-- Rukun 2 -->
-                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border border-slate-100 dark:border-luxury-700 shadow-sm">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg">2</div>
-                                <div>
-                                    <h4 class="font-bold text-sm md:text-base text-slate-800 dark:text-white">Tawaf</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">Mengelilingi Ka'bah sebanyak 7 putaran.</p>
-                                </div>
-                                <div class="ml-auto text-3xl opacity-50">🔄</div>
+                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">2</div>
+                                <div><h4 class="font-bold text-sm" data-i18n="pillar_2">Tawaf</h4></div>
                             </div>
-                            <!-- Rukun 3 -->
-                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border border-slate-100 dark:border-luxury-700 shadow-sm">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg">3</div>
-                                <div>
-                                    <h4 class="font-bold text-sm md:text-base text-slate-800 dark:text-white">Sa'i</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">Berjalan dan berlari kecil antara bukit Safa dan Marwah 7 kali.</p>
-                                </div>
-                                <div class="ml-auto text-3xl opacity-50">🚶</div>
+                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">3</div>
+                                <div><h4 class="font-bold text-sm" data-i18n="pillar_3">Sa'i</h4></div>
                             </div>
-                            <!-- Rukun 4 -->
-                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border border-slate-100 dark:border-luxury-700 shadow-sm">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg">4</div>
-                                <div>
-                                    <h4 class="font-bold text-sm md:text-base text-slate-800 dark:text-white">Tahallul</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">Mencukur/memotong sebagian rambut tanda berakhirnya ihram.</p>
-                                </div>
-                                <div class="ml-auto text-3xl opacity-50">✂️</div>
+                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">4</div>
+                                <div><h4 class="font-bold text-sm" data-i18n="pillar_4">Tahallul</h4></div>
                             </div>
-                            <!-- Rukun 5 -->
-                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border border-slate-100 dark:border-luxury-700 shadow-sm">
-                                <div class="w-12 h-12 flex-shrink-0 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-lg">5</div>
-                                <div>
-                                    <h4 class="font-bold text-sm md:text-base text-slate-800 dark:text-white">Tertib</h4>
-                                    <p class="text-xs text-slate-500 dark:text-slate-400">Melaksanakan semua rukun di atas secara berurutan.</p>
-                                </div>
-                                <div class="ml-auto text-3xl opacity-50">📋</div>
+                            <div class="flex items-center gap-4 bg-white dark:bg-luxury-800 p-4 rounded-xl border">
+                                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">5</div>
+                                <div><h4 class="font-bold text-sm" data-i18n="pillar_5">Tertib</h4></div>
                             </div>
                         </div>
                     </div>
 
-                    <button onclick="showPage('page-persiapan-ihram')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl shadow-md hover:shadow-lg transition-all">Lanjut ke Persiapan Ihram →</button>
+                    <button onclick="showPage('page-persiapan-ihram')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Persiapan Ihram →</button>
                 </section>
 
-                <!-- 2. Persiapan Ihram -->
+                <!-- 2-11. TEMPAT MATERI LAINNYA (Dipersiapkan) -->
                 <section id="page-persiapan-ihram" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">2. Persiapan Sebelum Ihram</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Sunnah-sunnah yang dianjurkan sebelum berniat ihram di Miqat.</p>
-                    <ul class="list-disc pl-5 space-y-2 text-sm text-slate-600 dark:text-slate-400 mb-6">
-                        <li>Memotong kuku, kumis, dan merapikan bulu badan.</li>
-                        <li>Mandi sunnah ihram.</li>
-                        <li>Memakai wewangian pada anggota badan (bukan pada kain ihram).</li>
-                        <li>Memakai 2 lembar kain ihram putih berunsur tidak berjahit (untuk laki-laki).</li>
-                    </ul>
-                    <button onclick="showPage('page-miqat')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Miqat & Niat →</button>
+                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button>
+                    <h2 class="text-3xl font-serif font-bold mb-2">2. Persiapan Sebelum Ihram</h2>
+                    <p class="text-slate-600 mb-6">Materi sedang dipersiapkan...</p>
+                    <button onclick="showPage('page-miqat')" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl">Lanjut →</button>
                 </section>
+                <section id="page-miqat" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">3. Miqat</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-larangan-ihram" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">4. Larangan Ihram</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-masjidilharam" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">5. Masuk Masjidil Haram</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-tawaf" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">6. Tawaf</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-maqam-zamzam" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">7. Maqam Ibrahim & Zamzam</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-sai" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">8. Sa'i</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-tahalul" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">9. Tahallul</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-tawaf-wada" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">10. Tawaf Wada'</h2><p>Materi dipersiapkan...</p></section>
+                <section id="page-selesai" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in text-center"><h2 class="text-3xl font-serif font-bold mb-2">11. Selesai</h2><p>Sertifikat dipersiapkan...</p></section>
 
-                <!-- 3. Miqat dan Niat -->
-                <section id="page-miqat" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">3. Miqat dan Niat</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Miqat adalah batas tempat/waktu untuk memulai niat ihram umrah.</p>
-                    <div class="p-6 bg-slate-900 dark:bg-white rounded-2xl mb-6">
-                        <h3 class="font-bold text-white dark:text-slate-900 mb-2">Lafaz Niat Umrah:</h3>
-                        <p class="text-3xl text-right font-arabic my-4 text-white dark:text-slate-900">لَبَّيْكَ اللَّهُمَّ عُمْرَةً</p>
-                        <p class="text-sm text-slate-300 dark:text-slate-600">"Aku penuhi panggilan-Mu ya Allah untuk melaksanakan umrah."</p>
-                    </div>
-                    <button onclick="showPage('page-larangan-ihram')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Larangan Ihram →</button>
-                </section>
-
-                <!-- 4. Larangan Ihram -->
-                <section id="page-larangan-ihram" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">4. Larangan Selama Ihram</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Hal-hal yang wajib dihindari setelah berniat di Miqat hingga Tahallul.</p>
-                    <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-2xl border border-red-100 dark:border-red-900/30 mb-6 text-sm text-red-900 dark:text-red-300 space-y-2">
-                        <p>❌ Memotong rambut/kuku.</p>
-                        <p>❌ Memakai wewangian setelah niat.</p>
-                        <p>❌ Memakai pakaian berjahit/penutup kepala melekat (Khusus Laki-laki).</p>
-                        <p>❌ Menutup muka/sarung tangan (Khusus Wanita).</p>
-                        <p>❌ Jima' (hubungan suami istri) dan berburu hewan.</p>
-                    </div>
-                    <button onclick="showPage('page-masjidilharam')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Masuk Masjidil Haram →</button>
-                </section>
-
-                <!-- 5. Memasuki Masjidil Haram -->
-                <section id="page-masjidilharam" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">5. Memasuki Masjidil Haram</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Masuk dengan mendahulukan kaki kanan dan membaca doa masuk masjid.</p>
-                    <button onclick="showPage('page-tawaf')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Thawaf →</button>
-                </section>
-
-                <!-- 6. Thawaf -->
-                <section id="page-tawaf" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">6. Thawaf Umrah</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Mengelilingi Ka'bah sebanyak 7 kali putaran dimulai dari Hajar Aswad.</p>
-                    <div class="video-container shadow-lg mb-6 border-4 border-slate-100 dark:border-luxury-900 rounded-2xl">
-                        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <button onclick="showPage('page-maqam-zamzam')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Maqam Ibrahim & Zamzam →</button>
-                </section>
-
-                <!-- 7. Maqam Ibrahim dan Zamzam -->
-                <section id="page-maqam-zamzam" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">7. Maqam Ibrahim & Air Zamzam</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Sholat 2 rakaat sunnah thawaf di belakang Maqam Ibrahim, dilanjutkan minum air Zamzam.</p>
-                    <button onclick="showPage('page-sai')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Sa'i →</button>
-                </section>
-
-                <!-- 8. Sa'i -->
-                <section id="page-sai" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">8. Sa'i Umrah</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Tujuh kali berjalan antara bukit Shafa dan Marwah.</p>
-                    <div class="video-container shadow-lg mb-6 border-4 border-slate-100 dark:border-luxury-900 rounded-2xl">
-                        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <button onclick="showPage('page-tahalul')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Tahallul →</button>
-                </section>
-
-                <!-- 9. Tahalul -->
-                <section id="page-tahalul" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">9. Tahallul Umrah</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Bercukur/memotong rambut sebagai tanda bebasnya dari larangan ihram.</p>
-                    <button onclick="showPage('page-tawaf-wada')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Thawaf Wada' →</button>
-                </section>
-
-                <!-- 10. Thawaf Wada' -->
-                <section id="page-tawaf-wada" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 dark:text-slate-400 font-bold mb-6 flex items-center gap-2">← Kembali ke Peta Modul</button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">10. Thawaf Wada'</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6">Thawaf perpisahan sebelum meninggalkan kota Makkah menuju tanah air.</p>
-                    <button onclick="showPage('page-selesai')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Lanjut ke Selesai →</button>
-                </section>
-
-                <!-- 11. Selesai -->
-                <section id="page-selesai" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in text-center">
-                    <div class="text-6xl mb-4">🎉</div>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2">11. Simulasi Umrah Selesai!</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-8">Alhamdulillah, seluruh tahapan materi manasik telah dipelajari.</p>
-                    <button onclick="showPage('page-modul-umrah')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl">Kembali ke Peta Modul</button>
-                </section>
-
-                <!-- Kumpulan Doa -->
-                <section id="page-doa" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-6" data-i18n="doa_title">Kumpulan Doa</h2>
-                    <div class="space-y-4">
-                        <div class="p-6 bg-slate-50 dark:bg-luxury-900 rounded-2xl border border-slate-100 dark:border-luxury-700">
-                            <h3 class="font-bold text-slate-800 dark:text-white">Talbiyah</h3>
-                            <p class="text-right text-2xl font-arabic my-4 text-slate-900 dark:text-white">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ...</p>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">Aku menjawab panggilan-Mu ya Allah...</p>
-                        </div>
+                <!-- FITUR TAMBAHAN: DOA -->
+                <section id="page-doa" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in">
+                    <h2 class="text-3xl font-serif font-bold mb-6" data-i18n="doa_title">Kumpulan Doa</h2>
+                    <div class="p-6 bg-slate-50 rounded-2xl border">
+                        <h3 class="font-bold">Talbiyah</h3>
+                        <p class="text-right text-2xl font-arabic my-4">لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ...</p>
+                        <p class="text-sm text-slate-600">Aku menjawab panggilan-Mu ya Allah...</p>
                     </div>
                 </section>
 
-                <!-- Kuis Pemahaman -->
-                <section id="page-kuis" class="hidden bg-white dark:bg-luxury-800 p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-6" data-i18n="kuis_title">Kuis Pemahaman</h2>
+                <!-- FITUR TAMBAHAN: KUIS -->
+                <section id="page-kuis" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in">
+                    <h2 class="text-3xl font-serif font-bold mb-6" data-i18n="kuis_title">Kuis Pemahaman</h2>
                     <form id="quizForm" class="space-y-6">
                         <div>
-                            <p class="font-bold text-slate-800 dark:text-slate-200 mb-3">1. Apa syarat utama agar umrah diterima?</p>
-                            <label class="block bg-slate-50 dark:bg-luxury-900 p-4 rounded-xl border border-slate-100 dark:border-luxury-700 cursor-pointer"><input type="radio" name="q1" value="benar" class="mr-3">Ikhlas dan Sesuai Sunnah (Mutaba'ah)</label>
+                            <p class="font-bold mb-3">1. Apa syarat utama umrah diterima?</p>
+                            <label class="block bg-slate-50 p-4 rounded-xl border cursor-pointer"><input type="radio" name="q1" value="benar" class="mr-3">Ikhlas dan Sesuai Sunnah</label>
                         </div>
-                        <button type="button" onclick="cekKuis()" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl transition">Kirim Jawaban</button>
+                        <button type="button" onclick="cekKuis()" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl">Kirim Jawaban</button>
                     </form>
                     <div id="hasilKuis" class="hidden mt-6 p-4 rounded-xl font-bold text-center"></div>
                 </section>
