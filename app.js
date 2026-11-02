@@ -15,27 +15,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// ELEMEN UI UTAMA
 const btnLogin = document.getElementById('btnMulaiSimulasi');
-const btnLogout = document.getElementById('btnLogout'); // Jika nanti tombol logout ditambahkan kembali
 
-// FUNGSI ROUTING (BERPINDAH HALAMAN & ATUR SIDEBAR)
+// FUNGSI ROUTING UTAMA (Berpindah Halaman)
 window.showPage = function(pageId) {
-    const pages = ['page-login', 'page-personalisasi', 'page-dashboard', 'page-doa', 'page-kuis', 'page-miqat', 'page-tawaf', 'page-sai', 'page-tahalul'];
+    const pages = [
+        'page-login', 'page-personalisasi', 'page-dashboard', 
+        'page-modul-umrah', 'page-doa', 'page-kuis', 
+        'page-miqat', 'page-tawaf', 'page-sai', 'page-tahalul'
+    ];
     
-    // Sembunyikan semua halaman
+    // Sembunyikan semua section
     pages.forEach(id => {
         const el = document.getElementById(id);
         if (el) el.classList.add('hidden');
     });
     
-    // Tampilkan halaman yang dituju
+    // Tampilkan section target
     const target = document.getElementById(pageId);
     if (target) target.classList.remove('hidden');
 
-    // Atur visibilitas Sidebar dan Header (Sembunyikan di halaman Login & Personalisasi)
+    // Atur visibilitas Sidebar dan Header
     const sidebar = document.querySelector('aside');
     const header = document.querySelector('header');
+    
     if (pageId === 'page-login' || pageId === 'page-personalisasi') {
         if (sidebar) sidebar.classList.replace('md:flex', 'md:hidden');
         if (header) header.classList.add('hidden');
@@ -44,28 +47,48 @@ window.showPage = function(pageId) {
         if (header) header.classList.remove('hidden');
     }
 
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Scroll ke atas dengan halus
+    const mainContent = document.getElementById('main-content');
+    if(mainContent) {
+        mainContent.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 }
 
-// FITUR DARK MODE (MODE GELAP)
+// FITUR DARK MODE TAHAP LANJUT
 const btnDarkMode = document.getElementById('btnDarkMode');
 if (btnDarkMode) {
+    // Setel Ikon saat halaman pertama dimuat
+    if(document.documentElement.classList.contains('dark')) {
+        btnDarkMode.innerText = "☀️";
+    }
+
     btnDarkMode.addEventListener('click', () => {
         document.documentElement.classList.toggle('dark');
         btnDarkMode.innerText = document.documentElement.classList.contains('dark') ? "☀️" : "🌙";
     });
 }
 
-// FUNGSI UPDATE UI DASBOR (PERSONALISASI)
+// FUNGSI UPDATE UI BERDASARKAN PROFIL
 function perbaruiDashboardUI() {
     const gender = localStorage.getItem('userGender') || 'laki-laki';
     const rute = localStorage.getItem('userRute') || 'madinah';
     
-    // Nanti kita akan hubungkan ini dengan ID elemen di Dasbor yang baru
-    // Untuk saat ini, fungsi ini menyimpan data ke memori lokal
+    // Kapitalisasi huruf pertama (Laki-laki / Perempuan)
+    const genderTeks = gender.charAt(0).toUpperCase() + gender.slice(1);
+    
+    // Rute teks (Dari Madinah / Langsung Jeddah)
+    const ruteTeks = rute === 'madinah' ? 'Dari Madinah (Bir Ali)' : 'Langsung ke Makkah';
+    
+    // Perbarui teks di Peta Modul Umrah
+    const teksProfilModul = document.getElementById('teksProfilModul');
+    if (teksProfilModul) {
+        teksProfilModul.innerText = `${genderTeks}, ${ruteTeks}`;
+    }
 }
 
-// AKSI TOMBOL MULAI SIMULASI (CEK KODE)
+// AKSI TOMBOL LOGIN (CEK KODE)
 if (btnLogin) {
     btnLogin.addEventListener('click', () => {
         const kode = document.getElementById('kodeAkses').value;
@@ -74,7 +97,6 @@ if (btnLogin) {
             alert("Silakan masukkan Kode Akses terlebih dahulu!");
             return;
         }
-
         btnLogin.innerText = "Memeriksa...";
         setTimeout(() => {
             btnLogin.innerText = "Mulai Simulasi";
@@ -87,56 +109,47 @@ if (btnLogin) {
 const btnSimpanProfil = document.getElementById('btnSimpanProfil');
 if (btnSimpanProfil) {
     btnSimpanProfil.addEventListener('click', () => {
-        const userGender = document.querySelector('input[name="gender"]:checked').value;
-        const userRute = document.querySelector('input[name="rute"]:checked').value;
+        const selectedGender = document.querySelector('input[name="gender"]:checked');
+        const selectedRute = document.querySelector('input[name="rute"]:checked');
         
-        localStorage.setItem('userGender', userGender);
-        localStorage.setItem('userRute', userRute);
-        
-        perbaruiDashboardUI();
-        showPage('page-dashboard');
+        if(selectedGender && selectedRute) {
+            localStorage.setItem('userGender', selectedGender.value);
+            localStorage.setItem('userRute', selectedRute.value);
+            
+            perbaruiDashboardUI();
+            showPage('page-dashboard');
+        }
     });
 }
 
 // FITUR KUIS
 window.cekKuis = function() {
     const q1 = document.querySelector('input[name="q1"]:checked');
-    const q2 = document.querySelector('input[name="q2"]:checked');
     const hasilDiv = document.getElementById('hasilKuis');
     
-    if (!q1 || !q2) {
+    if (!q1) {
         hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-yellow-100 text-yellow-800 border border-yellow-300 block";
-        hasilDiv.innerHTML = "Harap jawab semua pertanyaan terlebih dahulu!";
+        hasilDiv.innerHTML = "Harap jawab pertanyaan terlebih dahulu!";
         return;
     }
     
-    let skor = 0;
-    if (q1.value === 'benar') skor += 50;
-    if (q2.value === 'benar') skor += 50;
-    
-    if (skor === 100) {
-        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-emerald-100 dark:bg-emerald-900 text-emerald-800 dark:text-emerald-200 border border-emerald-300 block";
-        hasilDiv.innerHTML = "Luar Biasa! Skor Anda 100. Anda sudah siap secara keilmuan!";
+    if (q1.value === 'benar') {
+        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-emerald-100 text-emerald-800 border border-emerald-300 block";
+        hasilDiv.innerHTML = "Luar Biasa! Jawaban Anda Benar.";
     } else {
-        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 border border-red-300 block";
-        hasilDiv.innerHTML = `Skor Anda ${skor}. Mari pelajari lagi panduan manasik di dasbor utama.`;
+        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-red-100 text-red-800 border border-red-300 block";
+        hasilDiv.innerHTML = "Jawaban kurang tepat. Mari pelajari lagi!";
     }
 }
 
-// PANTAU SESI LOGIN FIREBASE
+// JALANKAN SAAT HALAMAN DIMUAT (CEK SESI)
 onAuthStateChanged(auth, (user) => {
     if (user) {
         if (btnLogin) btnLogin.innerText = "Mulai Simulasi";
         perbaruiDashboardUI(); 
         showPage('page-dashboard');
     } else {
+        // Jika belum ada user Firebase, mulai dari awal
         showPage('page-login');
     }
 });
-
-// LOGOUT
-if (btnLogout) {
-    btnLogout.addEventListener('click', () => {
-        signOut(auth);
-    });
-}
