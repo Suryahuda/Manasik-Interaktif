@@ -14,13 +14,14 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const btnLogin = document.getElementById('btnMulaiSimulasi');
 
-// KAMUS LENGKAP (Termasuk Dalil Pop-up & Catatan Samping)
+// KAMUS LENGKAP (Termasuk Syarat Wajib & Kuis Mini)
 const translations = {
     id: {
         menu_dashboard: "Dashboard", menu_modul: "Modul Umrah", menu_doa: "Kumpulan Doa", menu_kuis: "Kuis Pemahaman",
         portal_title: "Portal Manasik", login_subtitle: "Platform Manasik Interaktif",
         login_quote: '"Berilmu sebelum berucap dan beramal."', login_desc: "Masukkan Kode Akses dari agen travel Anda.",
         btn_start: "Mulai Simulasi", dash_hero_title: "Manasik Virtual", dash_hero_desc: "Berlatih umrah langkah demi langkah.",
+        btn_play_quran: "Dengarkan Syaikh", quran_trans_22_27: '"Dan berserulah kepada manusia untuk mengerjakan haji, niscaya mereka akan datang kepadamu dengan berjalan kaki, dan mengendarai unta yang kurus yang datang dari segenap penjuru yang jauh."',
         dash_choose_title: "Pilih ibadah yang dipelajari", umrah_title: "Umrah", umrah_card_desc: "Panduan interaktif lengkap.",
         btn_start_umrah: "Mulai umrah", btn_back_dash: "Kembali", umrah_map_title: "Perjalanan Umrah",
         card1_title: "1. Mengenal Umrah", card1_desc: "Pondasi, hukum, dan rukun.", btn_back_map: "Kembali ke Peta Modul",
@@ -30,21 +31,24 @@ const translations = {
         law_title: "Hukum Umrah", btn_listen: "Dengarkan AI",
         law_desc: "Terdapat perbedaan pendapat ulama terkait wajib tidaknya umrah. Namun, kami mengambil pendapat Imam Syafi'i, Imam Ahmad, dan mayoritas Sahabat bahwa hukum umrah adalah <b>Wajib sekali seumur hidup bagi yang mampu</b>.",
         law_evidence_title: "Dalil Kewajiban (Klik untuk detail):",
-        law_ev1_btn: "📖 Hadits Aisyah radhiyallahu 'anha", law_ev2_btn: "📖 Hadits Jibril ('Umar bin Khattab)", law_ev3_btn: "📖 Perkataan Ibnu Abbas",
+        law_ev1_btn: "📖 Hadits Aisyah", law_ev2_btn: "📖 Hadits Jibril", law_ev3_btn: "📖 Perkataan Ibnu Abbas",
         syarat_title: "Syarat Wajib Umrah",
         syarat_desc: "Yang dimaksud syarat wajib umrah adalah: <b>ketika seseorang sudah terpenuhi padanya lima syarat di bawah ini, maka wajib baginya untuk melaksanakan ibadah umrah.</b>",
+        syarat_1: "🌙 1. Islam", syarat_2: "🧍 2. Baligh", syarat_3: "🧠 3. Aqil", syarat_4: "🕊️ 4. Merdeka", 
+        syarat_5: "💼 5. Mampu (Secara fisik, finansial, dan kondisi aman)",
         note_title: "📌 Yang perlu diingat",
         note_1: "Umrah dapat dikerjakan kapan saja sepanjang tahun.",
         note_2: "<b>Rukun umrah:</b> ihram, thawaf, sa'i, bercukur, dan tertib. Bila ditinggalkan, umrah tidak sah.",
         note_3: "<b>Wajib umrah:</b> berihram dari miqat dan menjauhi larangan ihram. Bila dilanggar, wajib membayar dam.",
         doa_title: "Kumpulan Doa", kuis_title: "Kuis Pemahaman",
         
-        // Data Isi Modal Dalil
+        qz_title: "Rukun atau wajib umrah?", qz_card_text: "Kartu", qz_btn_rukun: "Rukun", qz_btn_wajib: "Wajib", qz_btn_next: "Kartu berikutnya",
+        
         modal_aisyah_title: "Hadits Aisyah",
         modal_aisyah_trans: "Aku bertanya, 'Wahai Rasulullah, apakah ada kewajiban jihad bagi para wanita?' Beliau menjawab: 'Ya, atas mereka ada jihad yang tidak ada peperangan di dalamnya, yaitu Haji dan Umrah.'",
         modal_aisyah_ref: "HR. Ibnu Majah (2901), dishahihkan oleh Al-Albani",
         modal_jibril_title: "Hadits Jibril",
-        modal_jibril_trans: "Islam adalah engkau bersaksi bahwa tidak ada tuhan yang berhak disembah selain Allah dan Muhammad adalah utusan Allah, mendirikan salat, menunaikan zakat, berhaji ke Baitullah dan berumrah, mandi junub, menyempurnakan wudhu, dan berpuasa Ramadan.",
+        modal_jibril_trans: "Islam adalah engkau bersaksi bahwa tidak ada tuhan selain Allah dan Muhammad utusan Allah, mendirikan salat, menunaikan zakat, berhaji ke Baitullah dan berumrah...",
         modal_jibril_ref: "HR. Ad-Daraquthni, isnad shahih",
         modal_abbas_title: "Perkataan Ibnu Abbas",
         modal_abbas_trans: "Sesungguhnya umrah adalah qarinah (gandengan) fardhu haji di dalam Kitabullah (Al-Baqarah: 196).",
@@ -55,32 +59,37 @@ const translations = {
         portal_title: "Manasik Portal", login_subtitle: "Interactive Manasik Platform",
         login_quote: '"Knowledge precedes words and deeds."', login_desc: "Enter your Access Code to begin.",
         btn_start: "Start Simulation", dash_hero_title: "Virtual Manasik", dash_hero_desc: "Practice Umrah step-by-step.",
+        btn_play_quran: "Listen to Sheikh", quran_trans_22_27: '"And proclaim to the people the Hajj; they will come to you on foot and on every lean camel; they will come from every distant pass."',
         dash_choose_title: "Select ritual to study", umrah_title: "Umrah", umrah_card_desc: "Complete interactive guide.",
         btn_start_umrah: "Start Umrah", btn_back_dash: "Go Back", umrah_map_title: "Umrah Journey",
-        card1_title: "1. Introduction to Umrah", card1_desc: "Foundations, rulings, and pillars.", btn_back_map: "Back to Map",
+        card1_title: "1. Introduction", card1_desc: "Foundations, rulings, and pillars.", btn_back_map: "Back to Map",
         materi1_subtitle: "Understanding the basic foundations, rulings, and pillars before performing Umrah.",
         def_title: "Understanding Umrah", def_lang_title: "Linguistically", def_lang_desc: "Umrah means Az-Ziarah, which is to visit.",
         def_term_title: "Terminologically", def_term_desc: "Visiting Masjid al-Haram to perform specific rituals to draw closer to Allah.",
         law_title: "Ruling on Umrah", btn_listen: "Listen to AI",
         law_desc: "Scholars differ on whether Umrah is obligatory. However, we adopt the view of Shafi'i, Ahmad, and the majority of Companions that Umrah is <b>Obligatory once in a lifetime for those able</b>.",
-        law_evidence_title: "Evidence for Obligation (Click for details):",
+        law_evidence_title: "Evidence (Click for details):",
         law_ev1_btn: "📖 Hadith of Aisha", law_ev2_btn: "📖 Hadith of Jibril", law_ev3_btn: "📖 Statement of Ibn Abbas",
         syarat_title: "Conditions for Obligation",
-        syarat_desc: "The meaning of conditions for obligation is: <b>when a person fulfills these five conditions below, it becomes obligatory for them to perform Umrah.</b>",
+        syarat_desc: "The meaning is: <b>when a person fulfills these five conditions below, it becomes obligatory for them to perform Umrah.</b>",
+        syarat_1: "🌙 1. Islam", syarat_2: "🧍 2. Puberty", syarat_3: "🧠 3. Sanity", syarat_4: "🕊️ 4. Freedom", 
+        syarat_5: "💼 5. Ability (Physically, Financially, and Safety)",
         note_title: "📌 Things to remember",
         note_1: "Umrah can be performed at any time throughout the year.",
         note_2: "<b>Pillars of Umrah:</b> ihram, tawaf, sa'i, shaving, and sequence. If missed, Umrah is invalid.",
-        note_3: "<b>Obligations of Umrah:</b> entering ihram from miqat and avoiding prohibitions. If violated, a penalty (dam) is required.",
+        note_3: "<b>Obligations of Umrah:</b> entering ihram from miqat and avoiding prohibitions.",
         doa_title: "Prayers", kuis_title: "Quiz",
         
+        qz_title: "Pillar or Obligation?", qz_card_text: "Card", qz_btn_rukun: "Pillar (Rukun)", qz_btn_wajib: "Oblig. (Wajib)", qz_btn_next: "Next Card",
+
         modal_aisyah_title: "Hadith of Aisha",
         modal_aisyah_trans: "I asked, 'O Messenger of Allah, is jihad obligatory upon women?' He said: 'Yes, upon them is a jihad in which there is no fighting: Hajj and Umrah.'",
-        modal_aisyah_ref: "Sunan Ibn Majah (2901), authenticated by Al-Albani",
+        modal_aisyah_ref: "Sunan Ibn Majah (2901)",
         modal_jibril_title: "Hadith of Jibril",
         modal_jibril_trans: "Islam is to testify that there is no deity worthy of worship except Allah and Muhammad is His messenger, establish prayer, pay zakat, perform Hajj to the House and Umrah...",
-        modal_jibril_ref: "Narrated by Ad-Daraquthni, authentic chain",
+        modal_jibril_ref: "Narrated by Ad-Daraquthni",
         modal_abbas_title: "Statement of Ibn Abbas",
-        modal_abbas_trans: "Verily, Umrah is the companion of the obligatory Hajj in the Book of Allah (Al-Baqarah: 196).",
+        modal_abbas_trans: "Verily, Umrah is the companion of the obligatory Hajj in the Book of Allah.",
         modal_abbas_ref: "Sahih Al-Bukhari"
     },
     ar: {
@@ -88,6 +97,7 @@ const translations = {
         portal_title: "بوابة المناسك", login_subtitle: "منصة المناسك التفاعلية",
         login_quote: '"العلم قبل القول والعمل"', login_desc: "أدخل رمز الوصول الخاص بك للبدء.",
         btn_start: "بدء المحاكاة", dash_hero_title: "المناسك الافتراضية", dash_hero_desc: "تدرب على العمرة خطوة بخطوة.",
+        btn_play_quran: "استمع للشيخ", quran_trans_22_27: "", // Kosong di bahasa arab agar terjemahan tidak muncul
         dash_choose_title: "اختر العبادة للتعلم", umrah_title: "العمرة", umrah_card_desc: "دليل تفاعلي شامل.",
         btn_start_umrah: "بدء العمرة", btn_back_dash: "رجوع", umrah_map_title: "رحلة العمرة",
         card1_title: "١. التعرف على العمرة", card1_desc: "الأسس، الأحكام، والأركان.", btn_back_map: "العودة للخريطة",
@@ -96,15 +106,19 @@ const translations = {
         def_term_title: "اصطلاحاً", def_term_desc: "زيارة المسجد الحرام لأداء مناسك مخصوصة تقرباً إلى الله.",
         law_title: "حكم العمرة", btn_listen: "استمع",
         law_desc: "اختلف العلماء في وجوبها. لكننا نأخذ بقول الشافعي وأحمد وجمهور الصحابة أن العمرة <b>واجبة مرة في العمر على المستطيع</b>.",
-        law_evidence_title: "أدلة الوجوب (انقر للتفاصيل):",
-        law_ev1_btn: "📖 حديث عائشة رضي الله عنها", law_ev2_btn: "📖 حديث جبريل (عمر بن الخطاب)", law_ev3_btn: "📖 قول ابن عباس",
+        law_evidence_title: "أدلة الوجوب:",
+        law_ev1_btn: "📖 حديث عائشة", law_ev2_btn: "📖 حديث جبريل", law_ev3_btn: "📖 قول ابن عباس",
         syarat_title: "شروط الوجوب",
         syarat_desc: "المقصود بشروط الوجوب: <b>إذا تحققت في الشخص هذه الشروط الخمسة أدناه، وجب عليه أداء العمرة.</b>",
+        syarat_1: "🌙 ١. الإسلام", syarat_2: "🧍 ٢. البلوغ", syarat_3: "🧠 ٣. العقل", syarat_4: "🕊️ ٤. الحرية", 
+        syarat_5: "💼 ٥. الاستطاعة (بدنياً ومالياً وأمنياً)",
         note_title: "📌 أمور يجب تذكرها",
         note_1: "يمكن أداء العمرة في أي وقت طوال العام.",
-        note_2: "<b>أركان العمرة:</b> الإحرام، الطواف، السعي، الحلق، والترتيب. إذا تُرك أحدها بطلت العمرة.",
-        note_3: "<b>واجبات العمرة:</b> الإحرام من الميقات واجتناب المحظورات. إذا خولفت وجب الدم.",
+        note_2: "<b>أركان العمرة:</b> الإحرام، الطواف، السعي، الحلق، والترتيب.",
+        note_3: "<b>واجبات العمرة:</b> الإحرام من الميقات واجتناب المحظورات.",
         doa_title: "الأدعية", kuis_title: "الاختبار",
+        
+        qz_title: "ركن أم واجب؟", qz_card_text: "بطاقة", qz_btn_rukun: "ركن", qz_btn_wajib: "واجب", qz_btn_next: "البطاقة التالية",
 
         modal_aisyah_title: "حديث عائشة",
         modal_aisyah_trans: "قُلْتُ يَا رَسُولَ اللَّهِ عَلَى النِّسَاءِ جِهَادٌ ؟ قَالَ: نَعَمْ ، عَلَيْهِنَّ جِهَادٌ لا قِتَالَ فِيهِ الْحَجُّ وَالْعُمْرَةُ.",
@@ -121,7 +135,7 @@ const translations = {
 window.changeLanguage = function(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (translations[lang] && translations[lang][key]) {
+        if (translations[lang] && translations[lang][key] !== undefined) {
             el.innerHTML = translations[lang][key]; 
         }
     });
@@ -135,6 +149,7 @@ window.changeLanguage = function(lang) {
             : "px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition font-normal";
     });
     localStorage.setItem('userLang', lang);
+    renderMiniQuiz(); // Render ulang kuis menyesuaikan bahasa jika perlu (soal kuis dikunci dalam bahasa ID sementara)
 }
 
 // LOGIKA TAMPIL HALAMAN
@@ -175,6 +190,20 @@ if (btnLogin) {
     });
 }
 
+// ============================================
+// AUDIO AL-QURAN SYAIKH (BUKAN AI)
+// ============================================
+let quranAudio = new Audio('https://everyayah.com/data/Alafasy_128kbps/022027.mp3');
+window.playQuranAudio = function() {
+    if(quranAudio.paused) { 
+        quranAudio.play(); 
+    } else { 
+        quranAudio.pause(); 
+        quranAudio.currentTime = 0; 
+        quranAudio.play(); 
+    }
+}
+
 // DATA ARABIC DALIL (Konstan)
 const arabicTexts = {
     aisyah: "عَنْ عَائِشَةَ قَالَتْ : قُلْتُ يَا رَسُولَ اللَّهِ عَلَى النِّسَاءِ جِهَادٌ ؟ قَالَ: نَعَمْ ، عَلَيْهِنَّ جِهَادٌ لا قِتَالَ فِيهِ الْحَجُّ وَالْعُمْرَةُ",
@@ -185,30 +214,74 @@ const arabicTexts = {
 // LOGIKA MODAL DALIL
 window.openDalilModal = function(id) {
     const lang = localStorage.getItem('userLang') || 'id';
-    
     document.getElementById('modalTitle').innerText = translations[lang][`modal_${id}_title`];
     document.getElementById('modalArabic').innerText = arabicTexts[id];
     document.getElementById('modalTranslation').innerText = translations[lang][`modal_${id}_trans`];
     document.getElementById('modalRef').innerText = translations[lang][`modal_${id}_ref`];
-    
     document.getElementById('dalilModal').classList.remove('hidden');
 }
+window.closeDalilModal = function() { document.getElementById('dalilModal').classList.add('hidden'); }
 
-window.closeDalilModal = function() {
-    document.getElementById('dalilModal').classList.add('hidden');
+// ============================================
+// KUIS MINI (RUKUN VS WAJIB) - 6 SOAL
+// ============================================
+const miniQuizData = [
+    { term: "Ihram (niat)", type: "rukun", explRukun: "Tepat. Tanpa niat ihram, umrah tidak dimulai.", explWajib: "Belum tepat — jawabannya rukun. Tanpa niat ihram, umrah tidak dimulai." },
+    { term: "Thawaf umrah", type: "rukun", explRukun: "Tepat. Tujuh putaran mengelilingi Ka'bah.", explWajib: "Belum tepat — jawabannya rukun. Thawaf adalah pilar utama." },
+    { term: "Sa'i", type: "rukun", explRukun: "Tepat. Berjalan antara bukit Shafa dan Marwah.", explWajib: "Belum tepat — jawabannya rukun. Sa'i tidak bisa diganti dengan dam." },
+    { term: "Bercukur (Tahallul)", type: "rukun", explRukun: "Tepat. Tanda berakhirnya ibadah umrah.", explWajib: "Belum tepat — jawabannya rukun. Tahallul wajib dilakukan untuk mengakhiri umrah." },
+    { term: "Ihram dari Miqat", type: "wajib", explRukun: "Belum tepat — jawabannya wajib. Jika terlewat, umrah sah namun wajib membayar dam.", explWajib: "Tepat. Harus dilakukan di batas tempat miqat, jika dilanggar wajib bayar dam." },
+    { term: "Menjauhi larangan ihram", type: "wajib", explRukun: "Belum tepat — jawabannya wajib. Jika dilanggar wajib membayar fidyah/dam.", explWajib: "Tepat. Pelanggaran terhadap larangan ihram mengharuskan pembayaran dam." }
+];
+let mqIdx = 0;
+
+window.renderMiniQuiz = function() {
+    if(mqIdx >= miniQuizData.length) {
+        document.getElementById('qz-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900">Kuis Selesai! 🎉</h4>`;
+        document.getElementById('qz-feedback-container').classList.add('hidden');
+        document.getElementById('qz-btn-container').classList.add('hidden');
+        document.getElementById('qz-next-container').classList.add('hidden');
+        return;
+    }
+    document.getElementById('qz-curr').innerText = mqIdx + 1;
+    document.getElementById('qz-term').innerText = miniQuizData[mqIdx].term;
+    document.getElementById('qz-card').className = "bg-white rounded-2xl p-10 md:p-14 text-center shadow-lg border-4 border-transparent transition-all duration-300 flex items-center justify-center min-h-[150px]";
+    document.getElementById('qz-feedback-container').classList.add('hidden');
+    document.getElementById('qz-btn-container').classList.remove('hidden');
+    document.getElementById('qz-next-container').classList.add('hidden');
 }
 
-// SUARA AI
-window.playAudio = function(section) {
+window.answerMiniQuiz = function(ans) {
+    const q = miniQuizData[mqIdx];
+    const isCorrect = (ans === q.type);
+    const fbContainer = document.getElementById('qz-feedback-container');
+    const fbText = document.getElementById('qz-feedback-text');
+    const card = document.getElementById('qz-card');
+
+    fbContainer.classList.remove('hidden');
+    document.getElementById('qz-btn-container').classList.add('hidden');
+    document.getElementById('qz-next-container').classList.remove('hidden');
+
+    if(isCorrect) {
+        card.classList.replace('border-transparent', 'border-emerald-500');
+        fbText.innerText = q.type === 'rukun' ? q.explRukun : q.explWajib;
+    } else {
+        card.classList.replace('border-transparent', 'border-rose-500');
+        fbText.innerText = q.type === 'rukun' ? q.explWajib : q.explRukun;
+    }
+}
+
+window.nextMiniQuiz = function() {
+    mqIdx++;
+    renderMiniQuiz();
+}
+
+// SUARA AI UNTUK MATERI HUKUM
+window.playAI = function(section) {
     if ('speechSynthesis' in window) {
         speechSynthesis.cancel(); 
         const lang = localStorage.getItem('userLang') || 'id';
-        let text = "";
-        
-        if(section === 'hukum') {
-            const rawText = translations[lang].law_desc;
-            text = rawText.replace(/<[^>]*>?/gm, ''); 
-        }
+        let text = translations[lang].law_desc.replace(/<[^>]*>?/gm, ''); 
         
         const utterance = new SpeechSynthesisUtterance(text);
         if(lang === 'id') utterance.lang = 'id-ID';
@@ -222,6 +295,7 @@ window.playAudio = function(section) {
     }
 }
 
+// KUIS UMUM DI HALAMAN KUIS
 window.cekKuis = function() {
     const q1 = document.querySelector('input[name="q1"]:checked');
     const hasilDiv = document.getElementById('hasilKuis');
@@ -247,5 +321,6 @@ if (btnDarkMode) {
 onAuthStateChanged(auth, (user) => {
     const savedLang = localStorage.getItem('userLang') || 'id';
     changeLanguage(savedLang);
+    renderMiniQuiz(); // Inisialisasi kuis mini
     if (user) { showPage('page-dashboard'); } else { showPage('page-login'); }
 });
