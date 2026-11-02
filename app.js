@@ -20,115 +20,88 @@ const translations = {
         portal_title: "Portal Manasik", login_subtitle: "Platform Manasik Interaktif",
         login_quote: '"Berilmu sebelum berucap dan beramal."', login_desc: "Masukkan Kode Akses dari agen travel Anda.",
         btn_start: "Mulai Simulasi", dash_hero_title: "Manasik Virtual", dash_hero_desc: "Berlatih umrah langkah demi langkah.",
-        btn_play_quran: "Dengarkan Syaikh", quran_trans_22_27: '"Dan berserulah kepada manusia untuk mengerjakan haji, niscaya mereka akan datang kepadamu dengan berjalan kaki, dan mengendarai unta yang kurus yang datang dari segenap penjuru yang jauh."',
+        btn_play_quran: "Dengarkan Syaikh", quran_trans_22_27: '"Dan berserulah kepada manusia untuk mengerjakan haji..."',
         dash_choose_title: "Pilih ibadah yang dipelajari", umrah_title: "Umrah", umrah_card_desc: "Panduan interaktif lengkap.",
         btn_start_umrah: "Mulai umrah", btn_back_dash: "Kembali", umrah_map_title: "Perjalanan Umrah",
         card1_title: "1. Mengenal Umrah", card1_desc: "Pondasi, hukum, dan rukun.", btn_back_map: "Kembali ke Peta Modul",
         materi1_subtitle: "Memahami pondasi awal, hukum, dan rukun sebelum melaksanakan ibadah umrah.",
-        def_title: "Memahami Makna Umrah", def_lang_title: "Secara Bahasa", def_lang_desc: "Umrah berarti Az-Ziarah, yaitu berkunjung atau berziarah.",
-        def_term_title: "Secara Istilah", def_term_desc: "Mengunjungi Masjidil Haram untuk melaksanakan amalan khusus dalam rangka mendekatkan diri kepada Allah.",
-        law_title: "Hukum Umrah", btn_listen: "Dengarkan AI",
-        law_desc: "Terdapat perbedaan pendapat ulama terkait wajib tidaknya umrah. Namun, kami mengambil pendapat Imam Syafi'i, Imam Ahmad, dan mayoritas Sahabat bahwa hukum umrah adalah <b>Wajib sekali seumur hidup bagi yang mampu</b>.",
-        law_evidence_title: "Dalil Kewajiban (Klik untuk detail):",
-        law_ev1_btn: "📖 Hadits Aisyah", law_ev2_btn: "📖 Hadits Jibril", law_ev3_btn: "📖 Perkataan Ibnu Abbas",
-        keutamaan_title: "Keutamaan Umrah",
-        syarat_title: "Syarat Wajib & Rukun",
-        note_title: "📌 Yang perlu diingat",
-        note_1: "Umrah dapat dikerjakan kapan saja sepanjang tahun.",
-        note_2: "<b>Rukun umrah:</b> ihram, thawaf, sa'i, bercukur, dan tertib. Bila ditinggalkan, umrah tidak sah.",
-        note_3: "<b>Wajib umrah:</b> berihram dari miqat dan menjauhi larangan ihram. Bila dilanggar, wajib membayar dam.",
-        doa_title: "Kumpulan Doa", kuis_title: "Kuis Pemahaman",
-        qz_card_text: "Kartu", qz_btn_next: "Kartu berikutnya",
         
-        modal_aisyah_title: "Hadits Aisyah", modal_aisyah_trans: "Aku bertanya, 'Wahai Rasulullah, apakah ada kewajiban jihad bagi para wanita?' Beliau menjawab: 'Ya, atas mereka ada jihad yang tidak ada peperangan di dalamnya, yaitu Haji dan Umrah.'", modal_aisyah_ref: "HR. Ibnu Majah (2901)",
-        modal_jibril_title: "Hadits Jibril", modal_jibril_trans: "Islam adalah engkau bersaksi bahwa tidak ada tuhan selain Allah dan Muhammad utusan Allah... berhaji ke Baitullah dan berumrah...", modal_jibril_ref: "HR. Ad-Daraquthni",
-        modal_abbas_title: "Perkataan Ibnu Abbas", modal_abbas_trans: "Sesungguhnya umrah adalah qarinah (gandengan) fardhu haji di dalam Kitabullah (Al-Baqarah: 196).", modal_abbas_ref: "HR. Bukhari",
-        
-        // 8 Keutamaan 
-        modal_k1_title: "1. Menghapuskan Dosa", modal_k1_trans: "Antara umrah yang satu dan umrah lainnya, itu akan menghapuskan dosa di antara keduanya. Dan haji mabrur tidak ada balasannya melainkan surga.", modal_k1_ref: "HR. Bukhari (1773) dan Muslim (1349)",
-        modal_k2_title: "2. Menjadi Tamu Allah", modal_k2_trans: "Orang yang berperang di jalan Allah, orang yang berhaji serta berumroh adalah tamu-tamu Allah. Allah memanggil mereka, mereka pun memenuhi panggilan. Oleh karena itu, jika mereka meminta kepada Allah pasti akan Allah beri.", modal_k2_ref: "HR. Ibnu Majah (2893)",
-        modal_k3_title: "3. Menghapuskan dosa besar & kecil", modal_k3_trans: "Ikutkanlah umrah dengan haji, karena keduanya dapat menghapus kemiskinan dan dosa, seperti api yang membersihkan karat dari besi, emas, dan perak.", modal_k3_ref: "HR. An Nasai (2631)",
-        modal_k4_title: "4. Menghilangkan Kefakiran", modal_k4_trans: "Umrah itu menjadikan seseorang menjadi kaya atau rezekinya tambah berkah karena umrah dapat menghilangkan kefakiran.", modal_k4_ref: "HR. Tirmidzi (810)",
-        modal_k5_title: "5. Setara dengan Jihad bagi Wanita", modal_k5_trans: "Wahai Rasulullah, kami memandang bahwa jihad adalah amalan yang paling afdhol. Apakah berarti kami harus berjihad? Nabi bersabda: Tidak. Jihad yang paling utama adalah haji mabrur.", modal_k5_ref: "HR. Bukhari (1520)",
-        modal_k6_title: "6. Shalat Berlipat Ganda", modal_k6_trans: "Shalat di masjidku (Masjid Nabawi) lebih utama daripada 1000 shalat di masjid lainnya selain Masjidil Harom. Shalat di Masjidil Harom lebih utama daripada 100.000 shalat di masjid lainnya.", modal_k6_ref: "HR. Ahmad 3/343",
-        modal_k7_title: "7. Thawaf Menghapus Dosa", modal_k7_trans: "Barang siapa yang thawaf di sekitar Kabah 7 putaran... Setiap kali ia mengangkat dan meletakkan kakinya, Allah mencatat 1 kebaikan, menghapus 1 kesalahan, dan mengangkat 1 derajat.", modal_k7_ref: "HR. Tirmidzi (959)",
-        modal_k8_title: "8. Pahala Disesuaikan Usaha", modal_k8_trans: "Namun sesungguhnya (pahala) itu sesuai dengan nafkah yang kamu keluarkan atau kesulitan yang kamu alami.", modal_k8_ref: "HR. Bukhari (1787)"
+        // CARD 2: PERSIAPAN IHRAM
+        c2_title: "2. Persiapan Ihram",
+        c2_desc: "Sunnah dan pakaian sebelum miqat.",
+        c2_subtitle: "Mari bersiap memasuki ihram. Ihram adalah niat memulai ibadah, dan persiapannya dikerjakan sebelum tiba di miqat.",
+        c2_sunnah_title: "Sunnah Sebelum Berihram",
+        c2_sunnah_1: "Memotong kuku, merapikan kumis, mencabut bulu.",
+        c2_sunnah_2: "Mandi besar (Ghusl) dengan niat mandi sunnah ihram.",
+        c2_sunnah_3: "Memakai wewangian di badan (bukan di pakaian ihram).",
+        c2_pakaian_title: "Ketentuan Pakaian Ihram",
+        c2_pak_m: "Dua lembar kain putih tanpa jahitan. Kain bawah disebut <b>Izar</b> dan kain atas disebut <b>Rida'</b>. Kepala dibiarkan terbuka.",
+        c2_pak_f: "Pakaian syar'i yang menutup seluruh aurat, kecuali wajah dan telapak tangan.",
+        c2_game_title: "Simulasi Pakaian Ihram Laki-Laki",
+        c2_game_desc: "Sekarang kenakan pakaian ihram. Sentuh perlengkapan yang benar untuk memakainya. Perlengkapan yang keliru akan dijelaskan alasannya.",
+        c2_game_success: "Pakaian ihram lengkap. Anda siap berniat di miqat.",
+        c2_note_1: "Mandi sunnah ihram, rapikan kuku dan rambut, pakai wewangian di badan sebelum niat.",
+        c2_note_2: "Dua helai kain tanpa jahitan (izar dan rida'), kepala terbuka, sandal yang tidak menutupi mata kaki.",
+        c2_note_3: "Jemaah yang terbang langsung ke Mekkah dianjurkan sudah berpakaian ihram sejak di pesawat.",
+        qz2_title: "Kuis Persiapan Ihram",
     },
     en: {
         menu_dashboard: "Dashboard", menu_modul: "Umrah Modules", menu_doa: "Prayers", menu_kuis: "Quiz",
         portal_title: "Manasik Portal", login_subtitle: "Interactive Manasik Platform",
         login_quote: '"Knowledge precedes words and deeds."', login_desc: "Enter your Access Code to begin.",
         btn_start: "Start Simulation", dash_hero_title: "Virtual Manasik", dash_hero_desc: "Practice Umrah step-by-step.",
-        btn_play_quran: "Listen to Sheikh", quran_trans_22_27: '"And proclaim to the people the Hajj; they will come to you on foot and on every lean camel; they will come from every distant pass."',
+        btn_play_quran: "Listen to Sheikh", quran_trans_22_27: '"And proclaim to the people the Hajj..."',
         dash_choose_title: "Select ritual to study", umrah_title: "Umrah", umrah_card_desc: "Complete interactive guide.",
         btn_start_umrah: "Start Umrah", btn_back_dash: "Go Back", umrah_map_title: "Umrah Journey",
         card1_title: "1. Introduction", card1_desc: "Foundations, rulings, and pillars.", btn_back_map: "Back to Map",
-        materi1_subtitle: "Understanding the basic foundations, rulings, and pillars before performing Umrah.",
-        def_title: "Understanding Umrah", def_lang_title: "Linguistically", def_lang_desc: "Umrah means Az-Ziarah, which is to visit.",
-        def_term_title: "Terminologically", def_term_desc: "Visiting Masjid al-Haram to perform specific rituals to draw closer to Allah.",
-        law_title: "Ruling on Umrah", btn_listen: "Listen to AI",
-        law_desc: "Scholars differ on whether Umrah is obligatory. However, we adopt the view of Shafi'i, Ahmad, and the majority of Companions that Umrah is <b>Obligatory once in a lifetime for those able</b>.",
-        law_evidence_title: "Evidence (Click for details):",
-        law_ev1_btn: "📖 Hadith of Aisha", law_ev2_btn: "📖 Hadith of Jibril", law_ev3_btn: "📖 Statement of Ibn Abbas",
-        keutamaan_title: "Virtues of Umrah",
-        syarat_title: "Conditions & Pillars",
-        note_title: "📌 Things to remember",
-        note_1: "Umrah can be performed at any time throughout the year.",
-        note_2: "<b>Pillars of Umrah:</b> ihram, tawaf, sa'i, shaving, and sequence. If missed, Umrah is invalid.",
-        note_3: "<b>Obligations of Umrah:</b> entering ihram from miqat and avoiding prohibitions.",
-        doa_title: "Prayers", kuis_title: "Quiz",
-        qz_card_text: "Card", qz_btn_next: "Next Card",
-
-        modal_aisyah_title: "Hadith of Aisha", modal_aisyah_trans: "I asked, 'O Messenger of Allah, is jihad obligatory upon women?' He said: 'Yes, upon them is a jihad in which there is no fighting: Hajj and Umrah.'", modal_aisyah_ref: "Sunan Ibn Majah",
-        modal_jibril_title: "Hadith of Jibril", modal_jibril_trans: "Islam is to testify that there is no deity worthy of worship except Allah... perform Hajj to the House and Umrah...", modal_jibril_ref: "Ad-Daraquthni",
-        modal_abbas_title: "Statement of Ibn Abbas", modal_abbas_trans: "Verily, Umrah is the companion of the obligatory Hajj in the Book of Allah.", modal_abbas_ref: "Sahih Al-Bukhari",
+        materi1_subtitle: "Understanding the basic foundations, rulings, and pillars.",
         
-        modal_k1_title: "1. Expiation of Sins", modal_k1_trans: "From one Umrah to another is an expiation for what comes between them.", modal_k1_ref: "Bukhari",
-        modal_k2_title: "2. Guests of Allah", modal_k2_trans: "The pilgrims performing Hajj and Umrah are the guests of Allah.", modal_k2_ref: "Ibn Majah",
-        modal_k3_title: "3. Removes Poverty & Sins", modal_k3_trans: "Perform Hajj and Umrah consecutively; they remove poverty and sin.", modal_k3_ref: "An Nasai",
-        modal_k4_title: "4. Removes Poverty", modal_k4_trans: "Umrah makes one rich or increases the blessing of their sustenance.", modal_k4_ref: "Tirmidhi",
-        modal_k5_title: "5. Equal to Jihad for Women", modal_k5_trans: "The best Jihad for women is an accepted Hajj.", modal_k5_ref: "Bukhari",
-        modal_k6_title: "6. Multiplied Prayer Rewards", modal_k6_trans: "One prayer in Al-Masjid Al-Haram is better than 100,000 prayers elsewhere.", modal_k6_ref: "Ahmad",
-        modal_k7_title: "7. Tawaf Elevates Status", modal_k7_trans: "Whoever circles the Kaaba 7 times... Allah writes a good deed for every step.", modal_k7_ref: "Tirmidhi",
-        modal_k8_title: "8. Reward matches effort", modal_k8_trans: "The reward is according to your expenses and your hardship.", modal_k8_ref: "Bukhari"
+        c2_title: "2. Ihram Preparation",
+        c2_desc: "Sunnahs and clothing before miqat.",
+        c2_subtitle: "Let's prepare for Ihram. Ihram is the intention to start the ritual, prepared before arriving at the miqat.",
+        c2_sunnah_title: "Sunnahs Before Ihram",
+        c2_sunnah_1: "Clip nails, trim mustache, remove unwanted hair.",
+        c2_sunnah_2: "Perform a ritual bath (Ghusl) for Ihram.",
+        c2_sunnah_3: "Apply perfume on the body (not on Ihram garments).",
+        c2_pakaian_title: "Ihram Clothing Rules",
+        c2_pak_m: "Two seamless white cloths. The bottom is <b>Izar</b> and the top is <b>Rida'</b>. The head must remain uncovered.",
+        c2_pak_f: "Syar'i clothing covering the entire aura, except face and hands.",
+        c2_game_title: "Men's Ihram Simulation",
+        c2_game_desc: "Now wear the Ihram. Select the correct items. Wrong items will explain why they are forbidden.",
+        c2_game_success: "Ihram attire complete. You are ready for intention at miqat.",
+        c2_note_1: "Perform ghusl, trim hair/nails, apply perfume on body before intention.",
+        c2_note_2: "Two seamless cloths, uncovered head, sandals not covering ankles.",
+        c2_note_3: "Pilgrims flying directly to Mecca are advised to wear Ihram on the plane.",
+        qz2_title: "Ihram Prep Quiz",
     },
     ar: {
         menu_dashboard: "لوحة التحكم", menu_modul: "وحدات العمرة", menu_doa: "مجموعة الأدعية", menu_kuis: "الاختبار",
         portal_title: "بوابة المناسك", login_subtitle: "منصة المناسك التفاعلية",
         login_quote: '"العلم قبل القول والعمل"', login_desc: "أدخل رمز الوصول الخاص بك للبدء.",
         btn_start: "بدء المحاكاة", dash_hero_title: "المناسك الافتراضية", dash_hero_desc: "تدرب على العمرة خطوة بخطوة.",
-        btn_play_quran: "استمع للشيخ", quran_trans_22_27: "", // Kosong agar terjemahan hilang
+        btn_play_quran: "استمع للشيخ", quran_trans_22_27: "",
         dash_choose_title: "اختر العبادة للتعلم", umrah_title: "العمرة", umrah_card_desc: "دليل تفاعلي شامل.",
         btn_start_umrah: "بدء العمرة", btn_back_dash: "رجوع", umrah_map_title: "رحلة العمرة",
         card1_title: "١. التعرف على العمرة", card1_desc: "الأسس، الأحكام، والأركان.", btn_back_map: "العودة للخريطة",
         materi1_subtitle: "فهم الأسس والأحكام والأركان قبل أداء مناسك العمرة.",
-        def_title: "معنى العمرة", def_lang_title: "لغة", def_lang_desc: "العمرة تعني الزيارة.",
-        def_term_title: "اصطلاحاً", def_term_desc: "زيارة المسجد الحرام لأداء مناسك مخصوصة تقرباً إلى الله.",
-        law_title: "حكم العمرة", btn_listen: "استمع",
-        law_desc: "اختلف العلماء في وجوبها. لكننا نأخذ بقول الشافعي وأحمد وجمهور الصحابة أن العمرة <b>واجبة مرة في العمر على المستطيع</b>.",
-        law_evidence_title: "أدلة الوجوب:",
-        law_ev1_btn: "📖 حديث عائشة", law_ev2_btn: "📖 حديث جبريل", law_ev3_btn: "📖 قول ابن عباس",
-        keutamaan_title: "فضائل العمرة",
-        syarat_title: "الشروط والأركان",
-        note_title: "📌 أمور يجب تذكرها",
-        note_1: "يمكن أداء العمرة في أي وقت طوال العام.",
-        note_2: "<b>أركان العمرة:</b> الإحرام، الطواف، السعي، الحلق، والترتيب.",
-        note_3: "<b>واجبات العمرة:</b> الإحرام من الميقات واجتناب المحظورات.",
-        doa_title: "الأدعية", kuis_title: "الاختبار",
-        qz_card_text: "بطاقة", qz_btn_next: "البطاقة التالية",
-
-        modal_aisyah_title: "حديث عائشة", modal_aisyah_trans: "قُلْتُ يَا رَسُولَ اللَّهِ عَلَى النِّسَاءِ جِهَادٌ ؟ قَالَ: نَعَمْ ، عَلَيْهِنَّ جِهَادٌ لا قِتَالَ فِيهِ الْحَجُّ وَالْعُمْرَةُ.", modal_aisyah_ref: "ابن ماجه",
-        modal_jibril_title: "حديث جبريل", modal_jibril_trans: "الإسلام أن تشهد أن لا إله إلا الله... وتحج البيت وتعتمر...", modal_jibril_ref: "الدارقطني",
-        modal_abbas_title: "قول ابن عباس", modal_abbas_trans: "إِنَّهَا لَقَرِينَتُهَا فِي كِتَابِ اللَّهِ.", modal_abbas_ref: "البخاري",
         
-        modal_k1_title: "١. كفارة للذنوب", modal_k1_trans: "العمرة إلى العمرة كفارة لما بينهما.", modal_k1_ref: "البخاري ومسلم",
-        modal_k2_title: "٢. وفد الله", modal_k2_trans: "الغازي في سبيل الله والحاج والمعتمر وفد الله.", modal_k2_ref: "ابن ماجه",
-        modal_k3_title: "٣. تنفي الفقر والذنوب", modal_k3_trans: "تابعوا بين الحج والعمرة فإنهما ينفيان الفقر والذنوب.", modal_k3_ref: "النسائي",
-        modal_k4_title: "٤. إزالة الفقر", modal_k4_trans: "العمرة تزيل الفقر.", modal_k4_ref: "الترمذي",
-        modal_k5_title: "٥. جهاد النساء", modal_k5_trans: "أفضل الجهاد حج مبرور.", modal_k5_ref: "البخاري",
-        modal_k6_title: "٦. مضاعفة الصلاة", modal_k6_trans: "صلاة في المسجد الحرام أفضل من مائة ألف صلاة.", modal_k6_ref: "أحمد",
-        modal_k7_title: "٧. الطواف يرفع الدرجات", modal_k7_trans: "من طاف بهذا البيت أسبوعا...", modal_k7_ref: "الترمذي",
-        modal_k8_title: "٨. الأجر على قدر المشقة", modal_k8_trans: "ولكنها على قدر نفقتك أو نصبك.", modal_k8_ref: "البخاري"
+        c2_title: "٢. الاستعداد للإحرام",
+        c2_desc: "السنن واللباس قبل الميقات.",
+        c2_subtitle: "لنتأهب للإحرام. الإحرام هو نية الدخول في النسك.",
+        c2_sunnah_title: "سنن قبل الإحرام",
+        c2_sunnah_1: "تقليم الأظافر، قص الشارب، نتف الإبط وحلق العانة.",
+        c2_sunnah_2: "الاغتسال (غسل الإحرام).",
+        c2_sunnah_3: "التطيب في البدن (وليس في ثياب الإحرام).",
+        c2_pakaian_title: "لباس الإحرام",
+        c2_pak_m: "إزار ورداء أبيضان غير مخيطين. ويبقى الرأس مكشوفاً.",
+        c2_pak_f: "لباس شرعي يغطي جميع البدن إلا الوجه والكفين.",
+        c2_game_title: "محاكاة لباس الإحرام للرجال",
+        c2_game_desc: "الآن ارتدِ الإحرام. اختر الأدوات الصحيحة.",
+        c2_game_success: "اكتمل لباس الإحرام. أنت جاهز للنية في الميقات.",
+        c2_note_1: "الاغتسال، تقليم الأظافر، التطيب في البدن قبل النية.",
+        c2_note_2: "إزار ورداء، كشف الرأس، نعلان لا يغطيان الكعبين.",
+        c2_note_3: "يُنصح من يسافر جواً مباشرة لمكة بلبس الإحرام في الطائرة.",
+        qz2_title: "اختبار الاستعداد للإحرام",
     }
 };
 
@@ -150,6 +123,7 @@ window.changeLanguage = function(lang) {
     });
     localStorage.setItem('userLang', lang);
     renderMiniQuiz();
+    renderMiniQuiz2();
 }
 
 window.showPage = function(pageId) {
@@ -187,45 +161,87 @@ window.playQuranAudio = function() {
 }
 
 const arabicTexts = {
-    aisyah: "عَنْ عَائِشَةَ قَالَتْ : قُلْتُ يَا رَسُولَ اللَّهِ عَلَى النِّسَاءِ جِهَادٌ ؟ قَالَ: نَعَمْ ، عَلَيْهِنَّ جِهَادٌ لا قِتَالَ فِيهِ الْحَجُّ وَالْعُمْرَةُ",
-    jibril: "الإسلام أن تشهد أن لا إله إلا الله وأن محمدا رسول الله، وتقيم الصلاة، وتؤتي الزكاة، وتحج البيت وتعتمر، وتغتسل من الجنابة، وتتم الوضوء، وتصوم رمضان",
-    abbas: "إِنَّهَا لَقَرِينَتُهَا فِي كِتَابِ اللَّهِ (وَأَتِمُّوا الْحَجَّ وَالْعُمْرَةَ لِلَّهِ)",
-    k1: "الْعُمْرَةُ إِلَى الْعُمْرَةِ كَفَّارَةٌ لِمَا بَيْنَهُمَا ، وَالْحَجُّ الْمَبْرُورُ لَيْسَ لَهُ جَزَاءٌ إِلاَّ الْجَنَّةُ",
-    k2: "الْغَازِى فِى سَبِيلِ اللَّهِ وَالْحَاجُّ وَالْمُعْتَمِرُ وَفْدُ اللَّهِ دَعَاهُمْ فَأَجَابُوهُ وَسَأَلُوهُ فَأَعْطَاهُمْ",
-    k3: "تَابِعُوا بَيْنَ الْحَجِّ وَالْعُمْرَةِ فَإِنَّهُمَا يَنْفِيَانِ الْفَقْرَ وَالذُّنُوبَ...",
-    k4: "تَابِعُوا بَيْنَ الْحَجِّ وَالْعُمْرَةِ فَإِنَّهُمَا يَنْفِيَانِ الْفَقْرَ...",
-    k5: "يَا رَسُولَ اللَّهِ ، نَرَى الْجِهَادَ أَفْضَلَ الْعَمَلِ ، أَفَلاَ نُجَاهِدُ قَالَ « لاَ ، لَكِنَّ أَفْضَلَ الْجِهَادِ حَجٌّ مَبْرُورٌ »",
-    k6: "صَلاَةٌ فِى مَسْجِدِى أَفْضَلُ مِنْ أَلْفِ صَلاَةٍ فِيمَا سِوَاهُ إِلاَّ الْمَسْجِدَ الْحَرَامَ...",
-    k7: "مَن طاف بِهَذا البيتِ أسبوعًا يُحصيهِ، فيُصلِّي رَكْعتينِ كانَ كعِتقِ رقَبةٍ...",
-    k8: "قالَتْ عَائِشَةُ... فقِيلَ لَهَا: ...ولَكِنَّهَا علَى قَدْرِ نَفَقَتِكِ أوْ نَصَبِكِ."
+    aisyah: "عَنْ عَائِشَةَ قَالَتْ : قُلْتُ يَا رَسُولَ اللَّهِ عَلَى النِّسَاءِ جِهَادٌ...",
+    jibril: "الإسلام أن تشهد أن لا إله إلا الله وأن محمدا رسول الله...",
+    k1: "الْعُمْرَةُ إِلَى الْعُمْرَةِ كَفَّارَةٌ لِمَا بَيْنَهُمَا...",
+    k2: "الْغَازِى فِى سَبِيلِ اللَّهِ وَالْحَاجُّ وَالْمُعْتَمِرُ وَفْدُ اللَّهِ..."
 };
 
 window.openDalilModal = function(id) {
     const lang = localStorage.getItem('userLang') || 'id';
-    document.getElementById('modalTitle').innerText = translations[lang][`modal_${id}_title`];
-    document.getElementById('modalArabic').innerText = arabicTexts[id];
-    document.getElementById('modalTranslation').innerText = translations[lang][`modal_${id}_trans`];
-    document.getElementById('modalRef').innerText = translations[lang][`modal_${id}_ref`];
+    document.getElementById('modalTitle').innerText = translations[lang][`modal_${id}_title`] || "Dalil";
+    document.getElementById('modalArabic').innerText = arabicTexts[id] || "";
+    document.getElementById('modalTranslation').innerText = translations[lang][`modal_${id}_trans`] || "";
     document.getElementById('dalilModal').classList.remove('hidden');
 }
 window.closeDalilModal = function() { document.getElementById('dalilModal').classList.add('hidden'); }
 
 // ============================================
-// KUIS MINI (ACAK - BANK SOAL)
+// GAME INTERAKTIF (PERSIAPAN IHRAM)
+// ============================================
+let ihramItems = { izar: false, rida: false, sandal: false, sabuk: false };
+
+window.toggleIhramItem = function(item) {
+    ihramItems[item] = !ihramItems[item];
+    const btn = document.getElementById(`btn-${item}`);
+    const svg = document.getElementById(`svg-${item}`);
+    const err = document.getElementById('game-error');
+    
+    err.classList.add('hidden'); // Hilangkan error jika klik yg benar
+
+    if (ihramItems[item]) {
+        btn.classList.replace('border-slate-200', 'border-emerald-500');
+        btn.classList.replace('dark:border-luxury-700', 'dark:border-emerald-500');
+        btn.classList.add('bg-emerald-50', 'dark:bg-emerald-900/30');
+        svg.classList.remove('hidden');
+        if (item === 'sandal') document.getElementById('svg-sandal2').classList.remove('hidden');
+    } else {
+        btn.classList.replace('border-emerald-500', 'border-slate-200');
+        btn.classList.replace('dark:border-emerald-500', 'dark:border-luxury-700');
+        btn.classList.remove('bg-emerald-50', 'dark:bg-emerald-900/30');
+        svg.classList.add('hidden');
+        if (item === 'sandal') document.getElementById('svg-sandal2').classList.add('hidden');
+    }
+
+    // Cek kelengkapan
+    if (ihramItems.izar && ihramItems.rida && ihramItems.sandal) {
+        document.getElementById('game-success').classList.remove('hidden');
+    } else {
+        document.getElementById('game-success').classList.add('hidden');
+    }
+}
+
+window.checkWrongIhram = function(item, msg) {
+    const btn = document.getElementById(`btn-${item}`);
+    const err = document.getElementById('game-error');
+    
+    err.innerText = "❌ " + msg;
+    err.classList.remove('hidden');
+
+    // Visual feedback merah sekejap
+    btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-800');
+    setTimeout(() => {
+        btn.classList.remove('bg-rose-100', 'border-rose-500', 'text-rose-800');
+    }, 1000);
+}
+
+window.resetIhramGame = function() {
+    ['izar', 'rida', 'sandal', 'sabuk'].forEach(i => {
+        ihramItems[i] = true; 
+        toggleIhramItem(i); 
+    });
+    document.getElementById('game-error').classList.add('hidden');
+}
+
+
+// ============================================
+// KUIS MINI 1 (MENGENAL UMRAH)
 // ============================================
 const masterQuizBank = [
-    { type: "rw", term: "Ihram (niat)", ans: "rukun", expl: "Tanpa niat ihram, umrah tidak dimulai." },
-    { type: "rw", term: "Thawaf umrah", ans: "rukun", expl: "Tujuh putaran mengelilingi Ka'bah." },
-    { type: "rw", term: "Sa'i", ans: "rukun", expl: "Berjalan antara bukit Shafa dan Marwah." },
-    { type: "rw", term: "Bercukur (Tahallul)", ans: "rukun", expl: "Tanda berakhirnya ibadah umrah." },
-    { type: "rw", term: "Ihram dari Miqat", ans: "wajib", expl: "Harus dilakukan di batas tempat miqat, jika dilanggar wajib bayar dam." },
-    { type: "rw", term: "Menjauhi larangan ihram", ans: "wajib", expl: "Pelanggaran terhadap larangan ihram mengharuskan pembayaran dam." },
-    { type: "tf", term: "Umrah hanya boleh dilakukan di bulan Dzulhijjah.", ans: "false", expl: "Umrah dapat dikerjakan kapan saja sepanjang tahun." },
-    { type: "tf", term: "Rukun umrah jika ditinggalkan maka umrahnya tidak sah.", ans: "true", expl: "Rukun umrah harus dikerjakan secara tertib dan tidak bisa diganti dam." },
-    { type: "tf", term: "Hukum umrah menurut Imam Syafi'i adalah wajib.", ans: "true", expl: "Hukumnya wajib sekali seumur hidup bagi yang mampu." },
-    { type: "tf", term: "Syarat wajib umrah hanya diperuntukkan bagi laki-laki.", ans: "false", expl: "Syarat wajib berlaku umum: Islam, Baligh, Aqil, Merdeka, dan Mampu." }
+    { type: "tf", term: "Umrah boleh dilakukan kapan saja.", ans: "true", expl: "Umrah dapat dikerjakan sepanjang tahun." },
+    { type: "rw", term: "Sa'i", ans: "rukun", expl: "Berjalan antara Shafa dan Marwah." },
+    { type: "rw", term: "Bercukur (Tahallul)", ans: "rukun", expl: "Tanda berakhirnya ihram." }
 ];
-
 let activeQuiz = [];
 let mqIdx = 0;
 
@@ -240,14 +256,13 @@ function shuffle(array) {
 }
 
 window.ulangiKuisMini = function() {
-    activeQuiz = shuffle([...masterQuizBank]).slice(0, 6);
+    activeQuiz = shuffle([...masterQuizBank]).slice(0, 3);
     mqIdx = 0;
     renderMiniQuiz();
 }
 
 window.renderMiniQuiz = function() {
-    if(activeQuiz.length === 0) activeQuiz = shuffle([...masterQuizBank]).slice(0, 6);
-    
+    if(activeQuiz.length === 0) activeQuiz = shuffle([...masterQuizBank]).slice(0, 3);
     if(mqIdx >= activeQuiz.length) {
         document.getElementById('qz-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900">Kuis Selesai! 🎉</h4>`;
         document.getElementById('qz-feedback-container').classList.add('hidden');
@@ -255,37 +270,20 @@ window.renderMiniQuiz = function() {
         document.getElementById('qz-next-container').classList.add('hidden');
         return;
     }
-    
     const q = activeQuiz[mqIdx];
     document.getElementById('qz-curr').innerText = mqIdx + 1;
-    document.getElementById('qz-card').className = "bg-white rounded-2xl p-10 md:p-14 text-center shadow-lg border-4 border-transparent transition-all duration-300 flex flex-col items-center justify-center min-h-[150px]";
-    
-    document.getElementById('qz-card').innerHTML = `
-        <h4 class="text-2xl md:text-3xl font-bold text-slate-900 mb-2">${q.term}</h4>
-        <p class="text-slate-500 text-sm font-medium ${q.type === 'tf' ? '' : 'hidden'}">Pernyataan ini Benar atau Salah?</p>
-    `;
-
+    document.getElementById('qz-card').className = "bg-white rounded-2xl p-10 text-center shadow-lg border-4 border-transparent flex flex-col items-center justify-center min-h-[150px]";
+    document.getElementById('qz-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900 mb-2">${q.term}</h4>`;
     document.getElementById('qz-feedback-container').classList.add('hidden');
     
     let btnHtml = "";
-    const lang = localStorage.getItem('userLang') || 'id';
-    
     if(q.type === 'rw') {
-        const textRukun = lang === 'en' ? 'Pillar (Rukun)' : (lang === 'ar' ? 'ركن' : 'Rukun');
-        const textWajib = lang === 'en' ? 'Oblig. (Wajib)' : (lang === 'ar' ? 'واجب' : 'Wajib');
-        btnHtml = `
-            <button onclick="answerMiniQuiz('rukun')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">${textRukun}</button>
-            <button onclick="answerMiniQuiz('wajib')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">${textWajib}</button>
-        `;
-    } else if (q.type === 'tf') {
-        const textBenar = lang === 'en' ? 'True' : (lang === 'ar' ? 'صحيح' : 'Benar');
-        const textSalah = lang === 'en' ? 'False' : (lang === 'ar' ? 'خطأ' : 'Salah');
-        btnHtml = `
-            <button onclick="answerMiniQuiz('true')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">${textBenar}</button>
-            <button onclick="answerMiniQuiz('false')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">${textSalah}</button>
-        `;
+        btnHtml = `<button onclick="answerMiniQuiz('rukun')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Rukun</button>
+                   <button onclick="answerMiniQuiz('wajib')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Wajib</button>`;
+    } else {
+        btnHtml = `<button onclick="answerMiniQuiz('true')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Benar</button>
+                   <button onclick="answerMiniQuiz('false')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Salah</button>`;
     }
-    
     document.getElementById('qz-btn-container').innerHTML = btnHtml;
     document.getElementById('qz-btn-container').classList.remove('hidden');
     document.getElementById('qz-next-container').classList.add('hidden');
@@ -297,10 +295,6 @@ window.answerMiniQuiz = function(ans) {
     const fbContainer = document.getElementById('qz-feedback-container');
     const fbText = document.getElementById('qz-feedback-text');
     const card = document.getElementById('qz-card');
-    
-    const lang = localStorage.getItem('userLang') || 'id';
-    const textTepat = lang === 'en' ? 'Correct.' : (lang === 'ar' ? 'صحيح.' : 'Tepat.');
-    const textKurang = lang === 'en' ? 'Incorrect.' : (lang === 'ar' ? 'غير صحيح.' : 'Belum Tepat.');
 
     fbContainer.classList.remove('hidden');
     document.getElementById('qz-btn-container').classList.add('hidden');
@@ -308,47 +302,77 @@ window.answerMiniQuiz = function(ans) {
 
     if(isCorrect) {
         card.classList.replace('border-transparent', 'border-emerald-500');
-        fbText.innerHTML = `<b>${textTepat}</b> ${q.expl}`;
+        fbText.innerHTML = `<b>Tepat.</b> ${q.expl}`;
     } else {
         card.classList.replace('border-transparent', 'border-rose-500');
-        fbText.innerHTML = `<b>${textKurang}</b> ${q.expl}`;
+        fbText.innerHTML = `<b>Belum Tepat.</b> ${q.expl}`;
     }
 }
+window.nextMiniQuiz = function() { mqIdx++; renderMiniQuiz(); }
 
-window.nextMiniQuiz = function() {
-    mqIdx++;
-    renderMiniQuiz();
+// ============================================
+// KUIS MINI 2 (PERSIAPAN IHRAM)
+// ============================================
+const masterQuizBank2 = [
+    { term: "Wewangian boleh disemprotkan pada kain ihram laki-laki.", ans: "false", expl: "Wewangian hanya disunnahkan di badan sebelum niat, bukan di pakaian." },
+    { term: "Memotong kuku dan mencabut bulu ketiak adalah wajib sebelum ihram.", ans: "false", expl: "Itu adalah sunnah sebelum ihram, bukan syarat wajib." },
+    { term: "Kain ihram atas untuk laki-laki disebut Rida'.", ans: "true", expl: "Tepat. Rida' menutupi bagian atas tubuh." },
+    { term: "Jemaah boleh memakai sabuk atau tas pinggang untuk menyimpan uang.", ans: "true", expl: "Memakai sabuk tidak dilarang selama bukan pakaian yang membentuk/menjahit anggota tubuh secara keseluruhan." },
+    { term: "Laki-laki boleh memakai peci hitam saat umrah untuk menghindari panas.", ans: "false", expl: "Laki-laki dilarang menutupi kepalanya dengan sesuatu yang melekat." },
+    { term: "Jemaah pesawat langsung Makkah boleh niat setelah mendarat di bandara Jeddah.", ans: "false", expl: "Pesawat akan melewati miqat di udara, sehingga harus niat di pesawat." }
+];
+let activeQuiz2 = [];
+let mqIdx2 = 0;
+
+window.ulangiKuisMini2 = function() {
+    activeQuiz2 = shuffle([...masterQuizBank2]).slice(0, 4);
+    mqIdx2 = 0;
+    renderMiniQuiz2();
 }
 
-window.playAI = function(section) {
-    if ('speechSynthesis' in window) {
-        speechSynthesis.cancel(); 
-        const lang = localStorage.getItem('userLang') || 'id';
-        let text = translations[lang].law_desc.replace(/<[^>]*>?/gm, ''); 
-        const utterance = new SpeechSynthesisUtterance(text);
-        if(lang === 'id') utterance.lang = 'id-ID';
-        if(lang === 'en') utterance.lang = 'en-US';
-        if(lang === 'ar') utterance.lang = 'ar-SA';
-        utterance.rate = 0.95; 
-        speechSynthesis.speak(utterance);
-    } else {
-        alert("Mohon maaf, browser Anda tidak mendukung fitur suara AI.");
-    }
-}
-
-window.cekKuis = function() {
-    const q1 = document.querySelector('input[name="q1"]:checked');
-    const hasilDiv = document.getElementById('hasilKuis');
-    if (!q1) {
-        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-yellow-100 text-yellow-800 block";
-        hasilDiv.innerText = "Harap jawab pertanyaan terlebih dahulu!";
+window.renderMiniQuiz2 = function() {
+    if(activeQuiz2.length === 0) activeQuiz2 = shuffle([...masterQuizBank2]).slice(0, 4);
+    if(mqIdx2 >= activeQuiz2.length) {
+        document.getElementById('qz2-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900">Kuis Selesai! 🎉</h4>`;
+        document.getElementById('qz2-feedback-container').classList.add('hidden');
+        document.getElementById('qz2-btn-container').classList.add('hidden');
+        document.getElementById('qz2-next-container').classList.add('hidden');
         return;
     }
-    if (q1.value === 'benar') {
-        hasilDiv.className = "mt-4 p-4 rounded-xl font-bold text-center bg-emerald-100 text-emerald-800 block";
-        hasilDiv.innerText = "Jawaban Anda Benar!";
+    const q = activeQuiz2[mqIdx2];
+    document.getElementById('qz2-curr').innerText = mqIdx2 + 1;
+    document.getElementById('qz2-card').className = "bg-white rounded-2xl p-10 text-center shadow-lg border-4 border-transparent flex flex-col items-center justify-center min-h-[150px]";
+    document.getElementById('qz2-term').innerText = q.term;
+    document.getElementById('qz2-feedback-container').classList.add('hidden');
+    
+    document.getElementById('qz2-btn-container').innerHTML = `
+        <button onclick="answerMiniQuiz2('true')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Benar</button>
+        <button onclick="answerMiniQuiz2('false')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Salah</button>
+    `;
+    document.getElementById('qz2-btn-container').classList.remove('hidden');
+    document.getElementById('qz2-next-container').classList.add('hidden');
+}
+
+window.answerMiniQuiz2 = function(ans) {
+    const q = activeQuiz2[mqIdx2];
+    const isCorrect = (ans === q.ans);
+    const fbContainer = document.getElementById('qz2-feedback-container');
+    const fbText = document.getElementById('qz2-feedback-text');
+    const card = document.getElementById('qz2-card');
+
+    fbContainer.classList.remove('hidden');
+    document.getElementById('qz2-btn-container').classList.add('hidden');
+    document.getElementById('qz2-next-container').classList.remove('hidden');
+
+    if(isCorrect) {
+        card.classList.replace('border-transparent', 'border-emerald-500');
+        fbText.innerHTML = `<b>Tepat.</b> ${q.expl}`;
+    } else {
+        card.classList.replace('border-transparent', 'border-rose-500');
+        fbText.innerHTML = `<b>Belum Tepat.</b> ${q.expl}`;
     }
 }
+window.nextMiniQuiz2 = function() { mqIdx2++; renderMiniQuiz2(); }
 
 const btnDarkMode = document.getElementById('btnDarkMode');
 if (btnDarkMode) {
