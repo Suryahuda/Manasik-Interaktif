@@ -52,7 +52,20 @@ const translations = {
         modal_k5_title: "5. Setara dengan Jihad bagi Wanita", modal_k5_trans: "Wahai Rasulullah, kami memandang bahwa jihad adalah amalan yang paling afdhol. Apakah berarti kami harus berjihad? Nabi bersabda: Tidak. Jihad yang paling utama adalah haji mabrur.", modal_k5_ref: "HR. Bukhari (1520)",
         modal_k6_title: "6. Shalat Berlipat Ganda", modal_k6_trans: "Shalat di masjidku (Masjid Nabawi) lebih utama daripada 1000 shalat di masjid lainnya selain Masjidil Harom. Shalat di Masjidil Harom lebih utama daripada 100.000 shalat di masjid lainnya.", modal_k6_ref: "HR. Ahmad 3/343",
         modal_k7_title: "7. Thawaf Menghapus Dosa", modal_k7_trans: "Barang siapa yang thawaf di sekitar Kabah 7 putaran... Setiap kali ia mengangkat dan meletakkan kakinya, Allah mencatat 1 kebaikan, menghapus 1 kesalahan, dan mengangkat 1 derajat.", modal_k7_ref: "HR. Tirmidzi (959)",
-        modal_k8_title: "8. Pahala Disesuaikan Usaha", modal_k8_trans: "Namun sesungguhnya (pahala) itu sesuai dengan nafkah yang kamu keluarkan atau kesulitan yang kamu alami.", modal_k8_ref: "HR. Bukhari (1787)"
+        modal_k8_title: "8. Pahala Disesuaikan Usaha", modal_k8_trans: "Namun sesungguhnya (pahala) itu sesuai dengan nafkah yang kamu keluarkan atau kesulitan yang kamu alami.", modal_k8_ref: "HR. Bukhari (1787)",
+        
+        c2_title: "2. Persiapan Ihram",
+        c2_subtitle: "Mari bersiap memasuki ihram. Ihram adalah niat memulai ibadah, dan persiapannya dikerjakan sebelum tiba di miqat.",
+        c2_sunnah_title: "Sunnah Sebelum Berihram",
+        c2_sunnah_1: "Memotong kuku, merapikan kumis, mencabut bulu.",
+        c2_sunnah_2: "Mandi besar (Ghusl) dengan niat mandi sunnah ihram.",
+        c2_sunnah_3: "Memakai wewangian di badan (bukan di pakaian ihram).",
+        c2_game_title: "Simulasi Pakaian Ihram",
+        c2_game_desc: "Sentuh perlengkapan yang benar untuk memakaikannya.",
+        c2_game_success: "Pakaian ihram lengkap. Anda siap berniat di miqat.",
+        c2_note_1: "Mandi sunnah, potong kuku, pakai wewangian di badan sebelum niat.",
+        c2_note_2: "2 helai kain tanpa jahitan, kepala terbuka, sandal terbuka.",
+        c2_note_3: "Jika terbang langsung ke Mekkah, niat diucapkan di pesawat.",
     },
     en: {
         menu_dashboard: "Dashboard", menu_modul: "Umrah Modules", menu_doa: "Prayers", menu_kuis: "Quiz",
@@ -150,6 +163,7 @@ window.changeLanguage = function(lang) {
     });
     localStorage.setItem('userLang', lang);
     renderMiniQuiz();
+renderMiniQuiz2();
 }
 
 window.showPage = function(pageId) {
@@ -363,3 +377,128 @@ onAuthStateChanged(auth, (user) => {
     changeLanguage(savedLang);
     if (user) { showPage('page-dashboard'); } else { showPage('page-login'); }
 });
+// ============================================
+// GAME INTERAKTIF (PERSIAPAN IHRAM)
+// ============================================
+let ihramItems = { izar: false, rida: false, sandal: false, sabuk: false };
+
+window.toggleIhramItem = function(item) {
+    ihramItems[item] = !ihramItems[item];
+    const btn = document.getElementById(`btn-${item}`);
+    const svg = document.getElementById(`svg-${item}`);
+    const err = document.getElementById('game-error');
+    
+    err.classList.add('hidden'); // Sembunyikan error jika klik item yang benar
+
+    if (ihramItems[item]) {
+        btn.classList.replace('border-slate-200', 'border-emerald-500');
+        btn.classList.add('bg-emerald-50');
+        svg.classList.remove('opacity-0', 'scale-95', 'translate-y-4', 'translate-y-[-10px]', 'translate-y-2');
+        svg.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+        if (item === 'sandal') {
+            const sandal2 = document.getElementById('svg-sandal2');
+            sandal2.classList.remove('opacity-0', 'translate-y-2');
+            sandal2.classList.add('opacity-100', 'translate-y-0');
+        }
+    } else {
+        btn.classList.replace('border-emerald-500', 'border-slate-200');
+        btn.classList.remove('bg-emerald-50');
+        svg.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+        svg.classList.add('opacity-0');
+        if (item === 'sandal') document.getElementById('svg-sandal2').classList.add('opacity-0');
+    }
+
+    // Cek apakah item wajib sudah lengkap
+    if (ihramItems.izar && ihramItems.rida && ihramItems.sandal) {
+        document.getElementById('game-success').classList.remove('hidden');
+    } else {
+        document.getElementById('game-success').classList.add('hidden');
+    }
+}
+
+window.checkWrongIhram = function(item, msg) {
+    const btn = document.getElementById(`btn-${item}`);
+    const err = document.getElementById('game-error');
+    
+    err.innerHTML = `<span class="text-xl">⚠️</span> <span>${msg}</span>`;
+    err.classList.remove('hidden');
+
+    // Efek merah sekejap pada tombol
+    btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+    setTimeout(() => {
+        btn.classList.remove('bg-rose-100', 'border-rose-500', 'text-rose-900');
+    }, 1500);
+}
+
+window.resetIhramGame = function() {
+    ['izar', 'rida', 'sandal', 'sabuk'].forEach(i => {
+        ihramItems[i] = true; // Paksa jadi true dulu
+        toggleIhramItem(i);   // Lalu toggle agar jadi false dan animasi berjalan mundur
+    });
+    document.getElementById('game-error').classList.add('hidden');
+}
+
+
+// ============================================
+// KUIS MINI 2 (PERSIAPAN IHRAM)
+// ============================================
+const masterQuizBank2 = [
+    { term: "Wewangian boleh disemprotkan pada kain ihram laki-laki.", ans: "false", expl: "Wewangian hanya disunnahkan di kulit badan sebelum niat, BUKAN di pakaian." },
+    { term: "Kain ihram atas untuk laki-laki disebut Rida'.", ans: "true", expl: "Tepat. Rida' menutupi bagian atas tubuh, dan Izar untuk bagian bawah." },
+    { term: "Jemaah boleh memakai sabuk atau tas pinggang untuk menyimpan uang.", ans: "true", expl: "Sabuk/tas pinggang diperbolehkan selama bukan pakaian yang dijahit membentuk tubuh secara keseluruhan." },
+    { term: "Jemaah pesawat langsung Makkah boleh niat setelah mendarat di bandara Jeddah.", ans: "false", expl: "Pesawat akan melewati miqat di udara, sehingga jemaah harus niat saat di pesawat." }
+];
+let activeQuiz2 = [];
+let mqIdx2 = 0;
+
+window.ulangiKuisMini2 = function() {
+    activeQuiz2 = shuffle([...masterQuizBank2]);
+    mqIdx2 = 0;
+    renderMiniQuiz2();
+}
+
+window.renderMiniQuiz2 = function() {
+    if(activeQuiz2.length === 0) activeQuiz2 = shuffle([...masterQuizBank2]);
+    if(mqIdx2 >= activeQuiz2.length) {
+        document.getElementById('qz2-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900">Kuis Selesai! 🎉</h4>`;
+        document.getElementById('qz2-feedback-container').classList.add('hidden');
+        document.getElementById('qz2-btn-container').classList.add('hidden');
+        document.getElementById('qz2-next-container').classList.add('hidden');
+        return;
+    }
+    const q = activeQuiz2[mqIdx2];
+    document.getElementById('qz2-curr').innerText = mqIdx2 + 1;
+    document.getElementById('qz2-term').innerText = q.term;
+    document.getElementById('qz2-feedback-container').classList.add('hidden');
+    document.getElementById('qz2-card').className = "bg-white rounded-2xl p-10 text-center shadow-lg border-4 border-transparent flex flex-col items-center justify-center min-h-[150px] transition-all";
+    
+    document.getElementById('qz2-btn-container').innerHTML = `
+        <button onclick="answerMiniQuiz2('true')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Benar</button>
+        <button onclick="answerMiniQuiz2('false')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Salah</button>
+    `;
+    document.getElementById('qz2-btn-container').classList.remove('hidden');
+    document.getElementById('qz2-next-container').classList.add('hidden');
+}
+
+window.answerMiniQuiz2 = function(ans) {
+    const q = activeQuiz2[mqIdx2];
+    const isCorrect = (ans === q.ans);
+    const fbContainer = document.getElementById('qz2-feedback-container');
+    const fbText = document.getElementById('qz2-feedback-text');
+    const card = document.getElementById('qz2-card');
+
+    fbContainer.classList.remove('hidden');
+    document.getElementById('qz2-btn-container').classList.add('hidden');
+    document.getElementById('qz2-next-container').classList.remove('hidden');
+
+    if(isCorrect) {
+        card.classList.replace('border-transparent', 'border-emerald-500');
+        fbText.innerHTML = `<b>Tepat.</b> ${q.expl}`;
+    } else {
+        card.classList.replace('border-transparent', 'border-rose-500');
+        fbText.innerHTML = `<b>Belum Tepat.</b> ${q.expl}`;
+    }
+}
+window.nextMiniQuiz2 = function() { mqIdx2++; renderMiniQuiz2(); }
+
+// JANGAN LUPA: Tambahkan renderMiniQuiz2(); di dalam fungsi window.changeLanguage Anda agar kuis 2 ter-load di awal.
