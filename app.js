@@ -529,46 +529,53 @@ window.nextMiniQuiz2 = function() { mqIdx2++; renderMiniQuiz2(); }
 // MODUL 3: SIMULASI PESAWAT, AUDIO & KUIS 3
 // ============================================
 
-// 1. AUDIO ELEMENT
-const planeAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'); // Ganti dengan URL suara pesawat Anda
-planeAudio.loop = true;
-planeAudio.volume = 0.3;
-
-const audioNiat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'); // Ganti URL audio Niat
-const audioSyarat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'); // Ganti URL audio Syarat
-const audioTalbiyah = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'); // Ganti URL audio Talbiyah
+// 1. AUDIO ELEMENT (Menggunakan link terjemahan bacaan Arab agar langsung bunyi)
+const audioNiat = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=لَبَّيْكَ+اللَّهُمَّ+عُمْرَةً'); 
+const audioSyarat = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=اللَّهُمَّ+مَحِلِّي+حَيْثُ+حَبَسْتَنِي'); 
+const audioTalbiyah = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=لَبَّيْكَ+اللَّهُمَّ+لَبَّيْكَ،+لَبَّيْكَ+لَا+شَرِيكَ+لَكَ+لَبَّيْكَ'); 
 
 window.playDoaAudio = function(type) {
-    [audioNiat, audioSyarat, audioTalbiyah].forEach(a => a.pause());
-    if(type === 'niat') { audioNiat.currentTime = 0; audioNiat.play(); }
-    if(type === 'syarat') { audioSyarat.currentTime = 0; audioSyarat.play(); }
-    if(type === 'talbiyah') { audioTalbiyah.currentTime = 0; audioTalbiyah.play(); }
+    [audioNiat, audioSyarat, audioTalbiyah].forEach(a => { a.pause(); a.currentTime = 0; });
+    if(type === 'niat') { audioNiat.play(); }
+    if(type === 'syarat') { audioSyarat.play(); }
+    if(type === 'talbiyah') { audioTalbiyah.play(); }
 }
 
-// 2. LOGIKA GAME PESAWAT
+// 2. LOGIKA GAME PESAWAT DI PETA (Bergerak Diagonal)
 let planeInterval;
-let planePosition = 0;
+let planeProgress = 0; // 0 sampai 100%
 let isGameRunning = false;
 
 window.startPlaneGame = function() {
     if (isGameRunning) return;
     
     document.getElementById('plane-result').classList.add('hidden');
-    document.getElementById('plane-icon').style.left = '0%';
-    planePosition = 0;
+    planeProgress = 0;
     isGameRunning = true;
     
-    // Mainkan suara pesawat
-    planeAudio.play().catch(e => console.log("Audio autoplay diblokir browser"));
+    // Suara pesawat lepas landas (opsional, bunyi wind/jet sederhana)
+    const jetSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
+    jetSound.volume = 0.2;
+    jetSound.play().catch(e => console.log("Auto-play diblokir"));
 
     planeInterval = setInterval(() => {
-        planePosition += 0.5; // Kecepatan pesawat
-        document.getElementById('plane-icon').style.left = planePosition + '%';
+        planeProgress += 0.5; // Kecepatan
         
-        // Jika pesawat lewat ujung
-        if (planePosition >= 100) {
+        // Kalkulasi posisi diagonal dari Tenggara (bawah-kanan) ke Jeddah (tengah-kiri)
+        // Start: left: 90%, bottom: -10%
+        // End (Jeddah approx): left: 32%, bottom: 55%
+        let currentLeft = 90 - (planeProgress * (90 - 32) / 100); 
+        let currentBottom = -10 + (planeProgress * (55 - -10) / 100);
+        
+        const planeIcon = document.getElementById('plane-icon');
+        planeIcon.style.left = currentLeft + '%';
+        planeIcon.style.bottom = currentBottom + '%';
+        
+        // Sudut kemiringan pesawat (dipertahankan menghadap barat laut)
+        planeIcon.style.transform = `rotate(-45deg)`;
+        
+        if (planeProgress >= 100) {
             clearInterval(planeInterval);
-            planeAudio.pause();
             isGameRunning = false;
             showPlaneResult("terlewat");
         }
@@ -577,18 +584,22 @@ window.startPlaneGame = function() {
 
 window.niatSekarang = function() {
     if (!isGameRunning) {
-        alert("Mulai simulasi pesawat terlebih dahulu!");
+        // Jika ditekan sebelum pesawat jalan
+        if (planeProgress === 0) {
+            showPlaneResult("terlewat_bandara");
+            return;
+        }
         return;
     }
     
     clearInterval(planeInterval);
-    planeAudio.pause();
     isGameRunning = false;
     
-    // Cek posisi
-    if (planePosition < 60) {
+    // Cek posisi berdasarkan Progress
+    // Garis hijau miqat (Yalamlam - Qarnul Manazil) dilalui sekitar progress 35% - 50%
+    if (planeProgress < 35) {
         showPlaneResult("makruh");
-    } else if (planePosition >= 60 && planePosition <= 80) {
+    } else if (planeProgress >= 35 && planeProgress <= 55) {
         showPlaneResult("sah");
     } else {
         showPlaneResult("terlewat");
@@ -597,17 +608,20 @@ window.niatSekarang = function() {
 
 function showPlaneResult(status) {
     const resBox = document.getElementById('plane-result');
-    resBox.classList.remove('hidden', 'bg-amber-100', 'bg-emerald-100', 'bg-rose-100');
+    resBox.classList.remove('hidden', 'bg-amber-100', 'bg-emerald-100', 'bg-rose-100', 'bg-red-100');
     
     if (status === "makruh") {
         resBox.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300');
-        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat. <br> <a href="https://islamqa.info/ar/answers/507420" target="_blank" class="text-amber-700 underline text-xs">🔗 Referensi IslamQA</a>`;
+        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat (masih jauh dari Yalamlam).`;
     } else if (status === "sah") {
         resBox.classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
-        resBox.innerHTML = `<b>✅ Sempurna:</b> Anda berniat tepat di atas Miqat (Yalamlam / Qarnul Manazil). Umrah Anda sah.`;
+        resBox.innerHTML = `<b>✅ Sempurna:</b> Anda berniat tepat saat pesawat melintasi garis Miqat Yalamlam. Umrah Anda sah.`;
+    } else if (status === "terlewat_bandara") {
+        resBox.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300');
+        resBox.innerHTML = `<b>🚨 Terlewat:</b> Anda sedang berada di Bandara Jeddah (sudah melewati miqat). Jika Niat sekarang, wajib kembali ke miqat atau membayar Dam.`;
     } else {
         resBox.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300');
-        resBox.innerHTML = `<b>🚨 Terlewat Miqat:</b> Anda melewati batas miqat tanpa berniat. Wajib kembali ke miqat atau membayar DAM (menyembelih seekor kambing di Makkah).`;
+        resBox.innerHTML = `<b>🚨 Terlewat Miqat:</b> Anda melewati batas miqat tanpa berniat. Pesawat sudah mau mendarat di Jeddah. Wajib membayar Dam.`;
     }
 }
 
@@ -670,8 +684,3 @@ window.answerMiniQuiz3 = function(ans) {
     }
 }
 window.nextMiniQuiz3 = function() { mqIdx3++; renderMiniQuiz3(); }
-
-// Jangan lupa untuk merender kuis 3 saat pertama dimuat.
-// Tambahkan renderMiniQuiz3(); di dalam function changeLanguage(lang) Anda.}
-
-// JANGAN LUPA: Tambahkan renderMiniQuiz2(); di dalam fungsi window.changeLanguage Anda agar kuis 2 ter-load di awal.
