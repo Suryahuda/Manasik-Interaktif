@@ -529,7 +529,7 @@ window.nextMiniQuiz2 = function() { mqIdx2++; renderMiniQuiz2(); }
 // MODUL 3: SIMULASI PESAWAT, AUDIO & KUIS 3
 // ============================================
 
-// 1. AUDIO ELEMENT (Menggunakan link terjemahan bacaan Arab agar langsung bunyi)
+// 1. AUDIO ELEMENT (Terkoneksi API agar langsung berbunyi)
 const audioNiat = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=لَبَّيْكَ+اللَّهُمَّ+عُمْرَةً'); 
 const audioSyarat = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=اللَّهُمَّ+مَحِلِّي+حَيْثُ+حَبَسْتَنِي'); 
 const audioTalbiyah = new Audio('https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=لَبَّيْكَ+اللَّهُمَّ+لَبَّيْكَ،+لَبَّيْكَ+لَا+شَرِيكَ+لَكَ+لَبَّيْكَ'); 
@@ -541,42 +541,39 @@ window.playDoaAudio = function(type) {
     if(type === 'talbiyah') { audioTalbiyah.play(); }
 }
 
-// 2. LOGIKA GAME PESAWAT DI PETA (Bergerak Diagonal)
+// 2. LOGIKA GAME PESAWAT DI PETA
 let planeInterval;
-let planeProgress = 0; // 0 sampai 100%
+let planeProgress = 0; 
 let isGameRunning = false;
 
 window.startPlaneGame = function() {
     if (isGameRunning) return;
     
     document.getElementById('plane-result').classList.add('hidden');
+    document.getElementById('btn-niat').innerHTML = '🤲 Niat Sekarang!';
     planeProgress = 0;
     isGameRunning = true;
     
-    // Suara pesawat lepas landas (opsional, bunyi wind/jet sederhana)
+    // Suara pesawat lepas landas
     const jetSound = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3');
     jetSound.volume = 0.2;
     jetSound.play().catch(e => console.log("Auto-play diblokir"));
 
     planeInterval = setInterval(() => {
-        planeProgress += 0.5; // Kecepatan
+        planeProgress += 0.5; 
         
-        // Kalkulasi posisi diagonal dari Tenggara (bawah-kanan) ke Jeddah (tengah-kiri)
-        // Start: left: 90%, bottom: -10%
-        // End (Jeddah approx): left: 32%, bottom: 55%
-        let currentLeft = 90 - (planeProgress * (90 - 32) / 100); 
-        let currentBottom = -10 + (planeProgress * (55 - -10) / 100);
+        // Pesawat terbang dari Tenggara (x:80%, y:110%) ke Jeddah (x:30%, y:75%)
+        let currentLeft = 80 - (planeProgress * (80 - 30) / 100); 
+        let currentTop = 110 - (planeProgress * (110 - 75) / 100);
         
         const planeIcon = document.getElementById('plane-icon');
         planeIcon.style.left = currentLeft + '%';
-        planeIcon.style.bottom = currentBottom + '%';
-        
-        // Sudut kemiringan pesawat (dipertahankan menghadap barat laut)
-        planeIcon.style.transform = `rotate(-45deg)`;
+        planeIcon.style.top = currentTop + '%';
         
         if (planeProgress >= 100) {
             clearInterval(planeInterval);
             isGameRunning = false;
+            document.getElementById('btn-niat').innerHTML = '🤲 Niat di bandara';
             showPlaneResult("terlewat");
         }
     }, 50);
@@ -584,22 +581,22 @@ window.startPlaneGame = function() {
 
 window.niatSekarang = function() {
     if (!isGameRunning) {
-        // Jika ditekan sebelum pesawat jalan
-        if (planeProgress === 0) {
+        if (planeProgress === 0 || planeProgress === 100) {
             showPlaneResult("terlewat_bandara");
-            return;
+        } else {
+            alert("Mulai simulasi pesawat terlebih dahulu!");
         }
         return;
     }
     
     clearInterval(planeInterval);
     isGameRunning = false;
+    document.getElementById('btn-niat').innerHTML = '🤲 Niat di bandara';
     
-    // Cek posisi berdasarkan Progress
-    // Garis hijau miqat (Yalamlam - Qarnul Manazil) dilalui sekitar progress 35% - 50%
-    if (planeProgress < 35) {
+    // Titik aman melintasi garis Miqat ada di kisaran 40% - 65% perjalanan
+    if (planeProgress < 40) {
         showPlaneResult("makruh");
-    } else if (planeProgress >= 35 && planeProgress <= 55) {
+    } else if (planeProgress >= 40 && planeProgress <= 65) {
         showPlaneResult("sah");
     } else {
         showPlaneResult("terlewat");
@@ -608,20 +605,20 @@ window.niatSekarang = function() {
 
 function showPlaneResult(status) {
     const resBox = document.getElementById('plane-result');
-    resBox.classList.remove('hidden', 'bg-amber-100', 'bg-emerald-100', 'bg-rose-100', 'bg-red-100');
+    resBox.classList.remove('hidden', 'bg-amber-100', 'bg-emerald-100', 'bg-rose-100');
     
     if (status === "makruh") {
         resBox.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300');
-        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat (masih jauh dari Yalamlam).`;
+        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat (pesawat masih jauh dari garis batas).`;
     } else if (status === "sah") {
         resBox.classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
-        resBox.innerHTML = `<b>✅ Sempurna:</b> Anda berniat tepat saat pesawat melintasi garis Miqat Yalamlam. Umrah Anda sah.`;
+        resBox.innerHTML = `<b>✅ Sempurna:</b> Anda berniat tepat saat pesawat melintasi garis Miqat (di sekitar Yalamlam/Qarnul Manazil). Umrah Anda sah.`;
     } else if (status === "terlewat_bandara") {
         resBox.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300');
-        resBox.innerHTML = `<b>🚨 Terlewat:</b> Anda sedang berada di Bandara Jeddah (sudah melewati miqat). Jika Niat sekarang, wajib kembali ke miqat atau membayar Dam.`;
+        resBox.innerHTML = `<b>🚨 Terlewat Miqat:</b> Anda sedang berada di Bandara Jeddah (melewati garis miqat). Jika Niat sekarang, Anda wajib kembali ke miqat atau membayar Dam.`;
     } else {
         resBox.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300');
-        resBox.innerHTML = `<b>🚨 Terlewat Miqat:</b> Anda melewati batas miqat tanpa berniat. Pesawat sudah mau mendarat di Jeddah. Wajib membayar Dam.`;
+        resBox.innerHTML = `<b>🚨 Terlewat Garis Miqat:</b> Anda melewati batas miqat tanpa berniat. Pesawat sudah hampir mendarat. Wajib membayar Dam (seekor kambing).`;
     }
 }
 
