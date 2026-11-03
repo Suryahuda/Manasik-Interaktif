@@ -66,6 +66,30 @@ const translations = {
         c2_note_1: "Mandi sunnah, potong kuku, pakai wewangian di badan sebelum niat.",
         c2_note_2: "2 helai kain tanpa jahitan, kepala terbuka, sandal terbuka.",
         c2_note_3: "Jika terbang langsung ke Mekkah, niat diucapkan di pesawat.",
+c3_title: "3. Miqat dan Niat",
+        c3_subtitle: "Pesawat melintasi miqat Yalamlam atau Qarnul Manazil. Sentuh tombol Niat saat berada di batas miqat.",
+        c3_map_title: "Peta Miqat Makani",
+        c3_map_desc: "Lima batas tempat untuk mulai berihram, mengelilingi Tanah Haram Makkah.",
+        c3_game_title: "Simulasi Niat di Pesawat",
+        c3_game_desc: "Perhatikan pergerakan pesawat. Klik 'Niat Sekarang' saat pesawat memasuki Zona Hijau (Batas Miqat).",
+        btn_niat: "Niat Sekarang",
+        btn_start_plane: "Mulai Simulasi Pesawat",
+        c3_doa_title: "Lafaz Niat & Talbiyah",
+        c3_doa_niat_title: "1. Niat Ihram Umrah",
+        c3_doa_niat_desc: "Diucapkan di miqat ketika memulai ihram umrah.",
+        c3_doa_niat_arab: "لَبَّيْكَ اللَّهُمَّ عُمْرَةً",
+        c3_doa_niat_latin: "Labbaika Allahumma ‘umratan.",
+        c3_doa_niat_arti: "Aku penuhi panggilan-Mu, ya Allah, untuk berumrah.",
+        c3_doa_syarat_title: "2. Niat Bersyarat (Dianjurkan)",
+        c3_doa_syarat_desc: "Bila khawatir terhalang (sakit/lansia), boleh bertahallul tanpa dam.",
+        c3_doa_syarat_arab: "اللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي",
+        c3_doa_syarat_latin: "Allahumma mahilli haitsu habastani.",
+        c3_doa_syarat_arti: "Ya Allah, tempat aku bertahallul adalah di mana Engkau menahanku.",
+        c3_doa_talbiyah_title: "3. Talbiyah (Diperbanyak)",
+        c3_doa_talbiyah_desc: "Laki-laki mengeraskan suara, perempuan cukup pelan. Berhenti saat mulai thawaf.",
+        c3_doa_talbiyah_arab: "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ...",
+        c3_doa_talbiyah_latin: "Labbaika Allahumma labbaik, labbaika la syarika laka labbaik...",
+        c3_doa_talbiyah_arti: "Aku penuhi panggilan-Mu, ya Allah. Tiada sekutu bagi-Mu...",
     },
     en: {
         menu_dashboard: "Dashboard", menu_modul: "Umrah Modules", menu_doa: "Prayers", menu_kuis: "Quiz",
@@ -164,6 +188,7 @@ window.changeLanguage = function(lang) {
     localStorage.setItem('userLang', lang);
     renderMiniQuiz();
 renderMiniQuiz2();
+renderMiniQuiz3();
 }
 
 window.showPage = function(pageId) {
@@ -501,4 +526,145 @@ window.answerMiniQuiz2 = function(ans) {
 }
 window.nextMiniQuiz2 = function() { mqIdx2++; renderMiniQuiz2(); }
 
-// JANGAN LUPA: Tambahkan renderMiniQuiz2(); di dalam fungsi window.changeLanguage Anda agar kuis 2 ter-load di awal.
+// ============================================
+// MODUL 3: SIMULASI PESAWAT, AUDIO & KUIS 3
+// ============================================
+
+// 1. AUDIO ELEMENT
+const planeAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'); 
+planeAudio.loop = true;
+planeAudio.volume = 0.3;
+
+const audioNiat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'); 
+const audioSyarat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'); 
+const audioTalbiyah = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'); 
+
+window.playDoaAudio = function(type) {
+    [audioNiat, audioSyarat, audioTalbiyah].forEach(a => a.pause());
+    if(type === 'niat') { audioNiat.currentTime = 0; audioNiat.play(); }
+    if(type === 'syarat') { audioSyarat.currentTime = 0; audioSyarat.play(); }
+    if(type === 'talbiyah') { audioTalbiyah.currentTime = 0; audioTalbiyah.play(); }
+}
+
+// 2. LOGIKA GAME PESAWAT
+let planeInterval;
+let planePosition = 0;
+let isGameRunning = false;
+
+window.startPlaneGame = function() {
+    if (isGameRunning) return;
+    
+    document.getElementById('plane-result').classList.add('hidden');
+    document.getElementById('plane-icon').style.left = '0%';
+    planePosition = 0;
+    isGameRunning = true;
+    
+    planeAudio.play().catch(e => console.log("Audio autoplay diblokir browser"));
+
+    planeInterval = setInterval(() => {
+        planePosition += 0.5; 
+        document.getElementById('plane-icon').style.left = planePosition + '%';
+        
+        if (planePosition >= 100) {
+            clearInterval(planeInterval);
+            planeAudio.pause();
+            isGameRunning = false;
+            showPlaneResult("terlewat");
+        }
+    }, 50);
+}
+
+window.niatSekarang = function() {
+    if (!isGameRunning) {
+        alert("Mulai simulasi pesawat terlebih dahulu!");
+        return;
+    }
+    
+    clearInterval(planeInterval);
+    planeAudio.pause();
+    isGameRunning = false;
+    
+    if (planePosition < 60) {
+        showPlaneResult("makruh");
+    } else if (planePosition >= 60 && planePosition <= 80) {
+        showPlaneResult("sah");
+    } else {
+        showPlaneResult("terlewat");
+    }
+}
+
+function showPlaneResult(status) {
+    const resBox = document.getElementById('plane-result');
+    resBox.classList.remove('hidden', 'bg-amber-100', 'bg-emerald-100', 'bg-rose-100');
+    
+    if (status === "makruh") {
+        resBox.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300');
+        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat. <br> <a href="https://islamqa.info/ar/answers/507420" target="_blank" class="text-amber-700 underline text-xs">🔗 Referensi IslamQA</a>`;
+    } else if (status === "sah") {
+        resBox.classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
+        resBox.innerHTML = `<b>✅ Sempurna:</b> Anda berniat tepat di atas Miqat (Yalamlam / Qarnul Manazil). Umrah Anda sah.`;
+    } else {
+        resBox.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300');
+        resBox.innerHTML = `<b>🚨 Terlewat Miqat:</b> Anda melewati batas miqat tanpa berniat. Wajib kembali ke miqat atau membayar DAM (menyembelih seekor kambing di Makkah).`;
+    }
+}
+
+// 3. KUIS MINI 3 (MIQAT)
+const masterQuizBank3 = [
+    { term: "Berniat ihram sejurus selepas pesawat berlepas dari Indonesia adalah yang paling utama.", ans: "false", expl: "Berniat sebelum miqat hukumnya sah namun makruh. Yang paling utama adalah tepat di miqat." },
+    { term: "Jika pesawat mendarat di Jeddah dan jemaah baru berniat ihram di bandara, maka ia wajib membayar dam.", ans: "true", expl: "Benar. Bandara Jeddah berada di dalam batas miqat, sehingga ia telah melewati miqat tanpa ihram." },
+    { term: "Niat bersyarat (Allahumma mahilli...) dianjurkan bagi semua jemaah tanpa terkecuali.", ans: "false", expl: "Lebih dianjurkan bagi yang khawatir terhalang (sakit, lansia, dll)." },
+    { term: "Bacaan Talbiyah untuk umrah dihentikan ketika jemaah mulai melaksanakan Thawaf.", ans: "true", expl: "Tepat. Talbiyah dibaca sepanjang jalan dan dihentikan saat akan thawaf." }
+];
+let activeQuiz3 = [];
+let mqIdx3 = 0;
+
+window.ulangiKuisMini3 = function() {
+    activeQuiz3 = shuffle([...masterQuizBank3]);
+    mqIdx3 = 0;
+    renderMiniQuiz3();
+}
+
+window.renderMiniQuiz3 = function() {
+    if(activeQuiz3.length === 0) activeQuiz3 = shuffle([...masterQuizBank3]);
+    if(mqIdx3 >= activeQuiz3.length) {
+        document.getElementById('qz3-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900">Kuis Miqat Selesai! 🎉</h4>`;
+        document.getElementById('qz3-feedback-container').classList.add('hidden');
+        document.getElementById('qz3-btn-container').classList.add('hidden');
+        document.getElementById('qz3-next-container').classList.add('hidden');
+        return;
+    }
+    const q = activeQuiz3[mqIdx3];
+    document.getElementById('qz3-curr').innerText = mqIdx3 + 1;
+    document.getElementById('qz3-term').innerText = q.term;
+    document.getElementById('qz3-feedback-container').classList.add('hidden');
+    document.getElementById('qz3-card').className = "bg-white rounded-2xl p-10 text-center shadow-lg border-4 border-transparent flex flex-col items-center justify-center min-h-[150px] transition-all";
+    
+    document.getElementById('qz3-btn-container').innerHTML = `
+        <button onclick="answerMiniQuiz3('true')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Benar</button>
+        <button onclick="answerMiniQuiz3('false')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Salah</button>
+    `;
+    document.getElementById('qz3-btn-container').classList.remove('hidden');
+    document.getElementById('qz3-next-container').classList.add('hidden');
+}
+
+window.answerMiniQuiz3 = function(ans) {
+    const q = activeQuiz3[mqIdx3];
+    const isCorrect = (ans === q.ans);
+    const fbContainer = document.getElementById('qz3-feedback-container');
+    const fbText = document.getElementById('qz3-feedback-text');
+    const card = document.getElementById('qz3-card');
+
+    fbContainer.classList.remove('hidden');
+    document.getElementById('qz3-btn-container').classList.add('hidden');
+    document.getElementById('qz3-next-container').classList.remove('hidden');
+
+    if(isCorrect) {
+        card.classList.replace('border-transparent', 'border-emerald-500');
+        fbText.innerHTML = `<b>Tepat.</b> ${q.expl}`;
+    } else {
+        card.classList.replace('border-transparent', 'border-rose-500');
+        fbText.innerHTML = `<b>Belum Tepat.</b> ${q.expl}`;
+    }
+}
+window.nextMiniQuiz3 = function() { mqIdx3++; renderMiniQuiz3(); }
