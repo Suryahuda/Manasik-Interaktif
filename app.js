@@ -525,19 +525,18 @@ window.answerMiniQuiz2 = function(ans) {
     }
 }
 window.nextMiniQuiz2 = function() { mqIdx2++; renderMiniQuiz2(); }
-
 // ============================================
 // MODUL 3: SIMULASI PESAWAT, AUDIO & KUIS 3
 // ============================================
 
 // 1. AUDIO ELEMENT
-const planeAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'); 
+const planeAudio = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound1.mp3'); // Ganti dengan URL suara pesawat Anda
 planeAudio.loop = true;
 planeAudio.volume = 0.3;
 
-const audioNiat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'); 
-const audioSyarat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'); 
-const audioTalbiyah = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'); 
+const audioNiat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound2.mp3'); // Ganti URL audio Niat
+const audioSyarat = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound3.mp3'); // Ganti URL audio Syarat
+const audioTalbiyah = new Audio('https://s3.amazonaws.com/freecodecamp/simonSound4.mp3'); // Ganti URL audio Talbiyah
 
 window.playDoaAudio = function(type) {
     [audioNiat, audioSyarat, audioTalbiyah].forEach(a => a.pause());
@@ -559,12 +558,14 @@ window.startPlaneGame = function() {
     planePosition = 0;
     isGameRunning = true;
     
+    // Mainkan suara pesawat
     planeAudio.play().catch(e => console.log("Audio autoplay diblokir browser"));
 
     planeInterval = setInterval(() => {
-        planePosition += 0.5; 
+        planePosition += 0.5; // Kecepatan pesawat
         document.getElementById('plane-icon').style.left = planePosition + '%';
         
+        // Jika pesawat lewat ujung
         if (planePosition >= 100) {
             clearInterval(planeInterval);
             planeAudio.pause();
@@ -584,6 +585,7 @@ window.niatSekarang = function() {
     planeAudio.pause();
     isGameRunning = false;
     
+    // Cek posisi
     if (planePosition < 60) {
         showPlaneResult("makruh");
     } else if (planePosition >= 60 && planePosition <= 80) {
@@ -668,3 +670,8 @@ window.answerMiniQuiz3 = function(ans) {
     }
 }
 window.nextMiniQuiz3 = function() { mqIdx3++; renderMiniQuiz3(); }
+
+// Jangan lupa untuk merender kuis 3 saat pertama dimuat.
+// Tambahkan renderMiniQuiz3(); di dalam function changeLanguage(lang) Anda.}
+
+// JANGAN LUPA: Tambahkan renderMiniQuiz2(); di dalam fungsi window.changeLanguage Anda agar kuis 2 ter-load di awal.
