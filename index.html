@@ -631,17 +631,17 @@
                         <div class="w-full md:w-1/2 space-y-4">
                             <p class="text-sm font-bold text-[#d4af37] uppercase tracking-widest border-b border-white/10 pb-2">Atribut Boleh/Wajib</p>
                             <div class="grid grid-cols-2 gap-3">
-                                <button id="btn-izar" onclick="toggleIhramItem('izar')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
-                                    <span>Kain Bawah (Izar)</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                <button id="btn-izar" onclick="toggleIhramItem('izar')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-slate-300 font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Kain Bawah (Izar)</span>
                                 </button>
-                                <button id="btn-rida" onclick="toggleIhramItem('rida')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
-                                    <span>Kain Atas (Rida')</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                <button id="btn-rida" onclick="toggleIhramItem('rida')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-slate-300 font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Kain Atas (Rida')</span>
                                 </button>
-                                <button id="btn-sandal" onclick="toggleIhramItem('sandal')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
-                                    <span>Sandal (Tak tutup mata kaki)</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                <button id="btn-sandal" onclick="toggleIhramItem('sandal')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-slate-300 font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Sandal (Tak tutup mata kaki)</span>
                                 </button>
-                                <button id="btn-sabuk" onclick="toggleIhramItem('sabuk')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
-                                    <span>Sabuk (Untuk Simpan Uang)</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                <button id="btn-sabuk" onclick="toggleIhramItem('sabuk')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-slate-300 font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Sabuk (Untuk Simpan Uang)</span>
                                 </button>
                             </div>
 
@@ -663,12 +663,10 @@
                                     <span class="text-2xl">✅</span>
                                     <h4 class="font-bold text-lg">Alhamdulillah, Siap Berihram!</h4>
                                 </div>
-                                <p class="text-sm font-light">Atribut wajib pria (Izar, Rida', dan Sandal terbuka) sudah lengkap dipakai.</p>
+                                <p class="text-sm font-light">Atribut wajib pria (Izar & Rida') sudah lengkap dipakai. Memakai sandal hukumnya Sunnah/Boleh.</p>
                                 <button onclick="resetIhramGame()" class="mt-3 text-emerald-300 text-xs font-bold uppercase tracking-widest hover:text-white transition">↺ Reset Penampilan</button>
                             </div>
                         </div>
-                    </div>
-                </div>
 
                 <!-- EVALUASI MINI: PERSIAPAN IHRAM (Desain Kaca Eksklusif) -->
                 <div class="bg-black/60 backdrop-blur-2xl border border-[#d4af37]/40 rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
@@ -687,11 +685,12 @@
                     </div>
 
                     <!-- Area Kartu Kuis -->
-                    <div id="qz2-card" class="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 text-center transition-all duration-300 flex flex-col items-center justify-center min-h-[200px] shadow-lg relative z-10">
-                        <h4 id="qz2-term" class="text-2xl md:text-3xl font-serif font-bold text-white mb-2 leading-relaxed">
+                    <div id="qz2-card" class="bg-slate-100 border border-white/10 rounded-3xl p-8 md:p-12 text-center transition-all duration-300 flex flex-col items-center justify-center min-h-[200px] shadow-lg relative z-10">
+                        <!-- Perhatikan class text-slate-900 di bawah ini -->
+                        <h4 id="qz2-term" class="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-2 leading-relaxed">
                             (Pertanyaan akan muncul di sini)
                         </h4>
-                        <p class="text-slate-400 text-sm font-light tracking-wide mt-2">Pernyataan ini Benar atau Salah?</p>
+                        <p class="text-slate-500 text-sm font-light tracking-wide mt-2">Pernyataan ini Benar atau Salah?</p>
                     </div>
 
                     <!-- Area Tombol Kuis -->

@@ -249,28 +249,45 @@ window.toggleIhramItem = function(item) {
     const svg = document.getElementById(`svg-${item}`);
     const err = document.getElementById('game-error');
     
-    err.classList.add('hidden'); // Sembunyikan error jika klik item yang benar
+    err.classList.add('hidden'); 
 
     if (ihramItems[item]) {
-        btn.classList.replace('border-slate-200', 'border-emerald-500');
-        btn.classList.add('bg-emerald-50');
-        svg.classList.remove('opacity-0', 'scale-95', 'translate-y-4', 'translate-y-[-10px]', 'translate-y-2');
-        svg.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+        // Ganti warna saat diklik jadi emas transparan (teks tetap terbaca)
+        btn.classList.replace('bg-black/50', 'bg-[#d4af37]/20');
+        btn.classList.replace('border-white/10', 'border-[#d4af37]');
+        btn.classList.replace('text-slate-300', 'text-[#d4af37]');
+        
+        if (svg) {
+            svg.classList.remove('opacity-0', 'scale-95', 'translate-y-4', 'translate-y-[-10px]', 'translate-y-2');
+            svg.classList.add('opacity-100', 'scale-100', 'translate-y-0');
+        }
+        
         if (item === 'sandal') {
             const sandal2 = document.getElementById('svg-sandal2');
-            sandal2.classList.remove('opacity-0', 'translate-y-2');
-            sandal2.classList.add('opacity-100', 'translate-y-0');
+            if(sandal2) {
+                sandal2.classList.remove('opacity-0', 'translate-y-2');
+                sandal2.classList.add('opacity-100', 'translate-y-0');
+            }
         }
     } else {
-        btn.classList.replace('border-emerald-500', 'border-slate-200');
-        btn.classList.remove('bg-emerald-50');
-        svg.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
-        svg.classList.add('opacity-0');
-        if (item === 'sandal') document.getElementById('svg-sandal2').classList.add('opacity-0');
+        // Kembalikan ke warna awal saat dimatikan
+        btn.classList.replace('bg-[#d4af37]/20', 'bg-black/50');
+        btn.classList.replace('border-[#d4af37]', 'border-white/10');
+        btn.classList.replace('text-[#d4af37]', 'text-slate-300');
+        
+        if (svg) {
+            svg.classList.remove('opacity-100', 'scale-100', 'translate-y-0');
+            svg.classList.add('opacity-0');
+        }
+        
+        if (item === 'sandal') {
+            const sandal2 = document.getElementById('svg-sandal2');
+            if(sandal2) sandal2.classList.add('opacity-0');
+        }
     }
 
-    // Cek apakah item wajib sudah lengkap
-    if (ihramItems.izar && ihramItems.rida && ihramItems.sandal) {
+    // Cek kelengkapan wajib: HANYA IZAR & RIDA' (Sandal sunnah, tidak wajib untuk menang)
+    if (ihramItems.izar && ihramItems.rida) {
         document.getElementById('game-success').classList.remove('hidden');
     } else {
         document.getElementById('game-success').classList.add('hidden');
@@ -284,17 +301,16 @@ window.checkWrongIhram = function(item, msg) {
     err.innerHTML = `<span class="text-xl">⚠️</span> <span>${msg}</span>`;
     err.classList.remove('hidden');
 
-    // Efek merah sekejap pada tombol
-    btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900');
+    btn.classList.add('bg-rose-900/50', 'border-rose-500', 'text-rose-200');
     setTimeout(() => {
-        btn.classList.remove('bg-rose-100', 'border-rose-500', 'text-rose-900');
+        btn.classList.remove('bg-rose-900/50', 'border-rose-500', 'text-rose-200');
     }, 1500);
 }
 
 window.resetIhramGame = function() {
     ['izar', 'rida', 'sandal', 'sabuk'].forEach(i => {
-        ihramItems[i] = true; // Paksa jadi true dulu
-        toggleIhramItem(i);   // Lalu toggle agar jadi false dan animasi berjalan mundur
+        ihramItems[i] = true; 
+        toggleIhramItem(i);   
     });
     document.getElementById('game-error').classList.add('hidden');
 }
