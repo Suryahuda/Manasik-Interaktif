@@ -906,7 +906,7 @@
         if (currentProgress < miqatZoneStart) {
             resultTitle.innerText = "Niat SEBELUM Miqat";
             resultTitle.className = "text-2xl font-bold mb-3 text-blue-400";
-            resultDesc.innerHTML = "<strong>Hukum: SAH.</strong><br><br>Mayoritas ulama membolehkannya. Dalam standar penerbangan modern dari Indonesia, berniat 1-2 jam sebelum miqat (saat pesawat di atas laut) sangat dianjurkan untuk prinsip kehati-hatian.<br><br><span class='text-yellow-500'><strong>Konsekuensi:</strong> Seluruh larangan ihram (memakai pewangi, memotong kuku, rambut, dll) otomatis <strong>LANGSUNG BERLAKU</strong> sejak niat diucapkan.</span>";
+            resultDesc.innerHTML = "<strong>Hukum: SAH.</strong><br><br>Makruh tapi jika diperlukan untuk kehati hatian maka boleh karna kecepatan laju pesawat terbang yang tinggi.<br><br><span class='text-yellow-500'><strong>Konsekuensi:</strong> Seluruh larangan ihram (memakai pewangi, memotong kuku, rambut, dll) otomatis <strong>LANGSUNG BERLAKU</strong> sejak niat diucapkan.</span>";
         } 
         else if (currentProgress >= miqatZoneStart && currentProgress <= miqatZoneEnd) {
             resultTitle.innerText = "Niat TEPAT DI Miqat";
@@ -916,7 +916,7 @@
         else {
             resultTitle.innerText = "Niat SETELAH Miqat";
             resultTitle.className = "text-2xl font-bold mb-3 text-red-500";
-            resultDesc.innerHTML = "<strong>Hukum: SAH namun BERDOSA.</strong><br><br>Anda telah melewati batas Miqat Makani menuju Makkah dalam kondisi belum berihram.<br><br><span class='text-red-400'><strong>Konsekuensi:</strong> Anda WAJIB membayar <strong>DAM</strong> (menyembelih 1 ekor kambing di Makkah & dagingnya dibagikan ke fakir miskin Tanah Haram) sebagai penebus pelanggaran Wajib Umrah/Haji.</span>";
+            resultDesc.innerHTML = "<strong>Hukum: SAH namun WAJIB DAM.</strong><br><br>Anda telah melewati batas Miqat Makani menuju Makkah dalam kondisi belum berihram.<br><br><span class='text-red-400'><strong>Konsekuensi:</strong> Anda WAJIB membayar <strong>DAM</strong> (menyembelih 1 ekor kambing di Makkah & dagingnya dibagikan ke fakir miskin Tanah Haram) sebagai penebus pelanggaran Wajib Umrah/Haji.</span>";
         }
     }
 
