@@ -1328,14 +1328,23 @@
 
     <script type="module" src="./app.js"></script>
 <script>
-    // FUNGSI AUDIO LAFAZ SINTETIS (AI Bawaan Browser)
+    // Variabel penampung audio
+    let currentAudio = null;
+
     function playDoaAudio(jenisDoa) {
-        // Hentikan suara yang sedang berjalan jika tombol diklik berulang kali
-        window.speechSynthesis.cancel();
+        // 1. Matikan audio yang sedang menyala sebelumnya agar tidak bertabrakan
+        if (currentAudio) {
+            currentAudio.pause();
+            currentAudio.currentTime = 0;
+        }
+        // Matikan juga sistem robot bawaan browser jika masih nyangkut
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
 
         let teksArab = "";
 
-        // Cek doa apa yang diklik
+        // 2. Tentukan teks Arabnya berdasarkan tombol
         if (jenisDoa === 'masuk_masjid') {
             teksArab = "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ";
         } else if (jenisDoa === 'melihat_kabah') {
@@ -1348,14 +1357,16 @@
             teksArab = "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ";
         }
 
-        // Jika teks ada, perintahkan browser membacanya
+        // 3. Putar suara menggunakan server Google (pastikan terkoneksi internet)
         if (teksArab !== "") {
-            let suara = new SpeechSynthesisUtterance(teksArab);
-            suara.lang = 'ar-SA'; // Atur bahasa ke Arab Saudi
-            suara.rate = 0.85;    // Kecepatan membaca (0.85 = agak pelan dan jelas)
-            suara.pitch = 1;      // Nada suara normal
+            // Memanggil API suara rahasia milik Google Translate
+            let urlAudio = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=" + encodeURIComponent(teksArab);
             
-            window.speechSynthesis.speak(suara);
+            currentAudio = new Audio(urlAudio);
+            currentAudio.play().catch(function(error) {
+                console.log("Audio gagal diputar: ", error);
+                alert("Gagal memutar audio. Pastikan perangkat Anda terhubung ke internet.");
+            });
         }
     }
 </script>
