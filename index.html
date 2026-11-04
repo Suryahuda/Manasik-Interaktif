@@ -78,8 +78,7 @@
 
         <!-- RUANG SCROLL HALAMAN (Tanpa Background) -->
         <main id="main-content" class="flex-1 overflow-y-auto p-6 lg:p-10 relative z-0 hide-scrollbar">
-        <!-- RUANG SCROLL HALAMAN -->
-        <main id="main-content" class="flex-1 overflow-y-auto p-6 lg:p-8 bg-slate-50/80 dark:bg-luxury-900/80 relative z-0">
+        
             
             <!-- HALAMAN LOGIN (Mewah, Glassmorphism, & Nuansa Emas) -->
             <section id="page-login" class="h-full flex items-center justify-center fade-in relative z-10">
@@ -1332,19 +1331,17 @@
     let currentAudio = null;
 
     function playDoaAudio(jenisDoa) {
-        // 1. Matikan audio yang sedang menyala sebelumnya agar tidak bertabrakan
+        // Matikan audio yang sedang menyala sebelumnya
         if (currentAudio) {
             currentAudio.pause();
             currentAudio.currentTime = 0;
         }
-        // Matikan juga sistem robot bawaan browser jika masih nyangkut
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
         }
 
         let teksArab = "";
 
-        // 2. Tentukan teks Arabnya berdasarkan tombol
         if (jenisDoa === 'masuk_masjid') {
             teksArab = "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ";
         } else if (jenisDoa === 'melihat_kabah') {
@@ -1357,15 +1354,18 @@
             teksArab = "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ";
         }
 
-        // 3. Putar suara menggunakan server Google (pastikan terkoneksi internet)
         if (teksArab !== "") {
-            // Memanggil API suara rahasia milik Google Translate
-            let urlAudio = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q=" + encodeURIComponent(teksArab);
+            // MENGGUNAKAN SERVER GOOGLE APIS (Anti-Blokir / Bebas CORS)
+            let urlAudio = "https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=ar&q=" + encodeURIComponent(teksArab);
             
             currentAudio = new Audio(urlAudio);
+            
+            // Putar audio, jika gagal (misal karena jaringan), gunakan suara robot lokal
             currentAudio.play().catch(function(error) {
-                console.log("Audio gagal diputar: ", error);
-                alert("Gagal memutar audio. Pastikan perangkat Anda terhubung ke internet.");
+                console.log("Beralih ke suara cadangan lokal...", error);
+                let suara = new SpeechSynthesisUtterance(teksArab);
+                suara.lang = 'ar-SA';
+                window.speechSynthesis.speak(suara);
             });
         }
     }
