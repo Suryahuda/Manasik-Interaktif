@@ -320,6 +320,14 @@ window.resetIhramGame = function() {
 // ============================================
 // KUIS MINI 2 (PERSIAPAN IHRAM)
 // ============================================
+const masterQuizBank2 = [
+    { term: "Wewangian boleh disemprotkan pada kain ihram laki-laki.", ans: "false", expl: "Wewangian hanya disunnahkan di kulit badan sebelum niat, BUKAN di pakaian." },
+    { term: "Kain ihram atas untuk laki-laki disebut Rida'.", ans: "true", expl: "Tepat. Rida' menutupi bagian atas tubuh, dan Izar untuk bagian bawah." },
+    { term: "Jemaah boleh memakai sabuk atau tas pinggang untuk menyimpan uang.", ans: "true", expl: "Sabuk/tas pinggang diperbolehkan selama bukan pakaian yang dijahit membentuk tubuh secara keseluruhan." },
+    { term: "Jemaah pesawat langsung Makkah boleh niat setelah mendarat di bandara Jeddah.", ans: "false", expl: "Pesawat akan melewati miqat di udara, sehingga jemaah harus niat saat di pesawat." }
+];
+let activeQuiz2 = [];
+let mqIdx2 = 0;
 
 window.mulaiKuisMini2 = function() {
     document.getElementById('qz2-start-screen').classList.add('hidden');
@@ -330,9 +338,69 @@ window.mulaiKuisMini2 = function() {
 window.ulangiKuisMini2 = function() {
     activeQuiz2 = shuffle([...masterQuizBank2]);
     mqIdx2 = 0;
+    
+    // Pastikan layar kuis terbuka
     document.getElementById('qz2-start-screen').classList.add('hidden');
     document.getElementById('qz2-content').classList.remove('hidden');
+    
     renderMiniQuiz2();
+}
+
+window.renderMiniQuiz2 = function() {
+    if(activeQuiz2.length === 0) activeQuiz2 = shuffle([...masterQuizBank2]);
+    
+    const card = document.getElementById('qz2-card');
+    const btnContainer = document.getElementById('qz2-btn-container');
+    const termEl = document.getElementById('qz2-term');
+
+    // Jika kuis sudah habis
+    if(mqIdx2 >= activeQuiz2.length) {
+        termEl.innerHTML = `Kuis Selesai! 🎉`;
+        document.getElementById('qz2-feedback-container').classList.add('hidden');
+        btnContainer.classList.add('hidden');
+        document.getElementById('qz2-next-container').classList.add('hidden');
+        return;
+    }
+    
+    const q = activeQuiz2[mqIdx2];
+    document.getElementById('qz2-curr').innerText = mqIdx2 + 1;
+    termEl.innerText = q.term; // Memasukkan pertanyaan ke layar
+    
+    // Kembalikan warna border kartu ke netral
+    card.classList.remove('border-emerald-500', 'border-rose-500', 'border-4');
+    card.classList.add('border-white/10', 'border');
+
+    document.getElementById('qz2-feedback-container').classList.add('hidden');
+    btnContainer.classList.remove('hidden');
+    document.getElementById('qz2-next-container').classList.add('hidden');
+}
+
+window.answerMiniQuiz2 = function(ans) {
+    const q = activeQuiz2[mqIdx2];
+    const isCorrect = (ans === q.ans);
+    const fbContainer = document.getElementById('qz2-feedback-container');
+    const fbText = document.getElementById('qz2-feedback-text');
+    const card = document.getElementById('qz2-card');
+
+    fbContainer.classList.remove('hidden');
+    document.getElementById('qz2-btn-container').classList.add('hidden');
+    document.getElementById('qz2-next-container').classList.remove('hidden');
+
+    // Efek ketika menjawab benar atau salah
+    if(isCorrect) {
+        card.classList.replace('border-white/10', 'border-emerald-500');
+        card.classList.replace('border', 'border-4');
+        fbText.innerHTML = `<b class="text-emerald-400">Tepat.</b> ${q.expl}`;
+    } else {
+        card.classList.replace('border-white/10', 'border-rose-500');
+        card.classList.replace('border', 'border-4');
+        fbText.innerHTML = `<b class="text-rose-400">Belum Tepat.</b> ${q.expl}`;
+    }
+}
+
+window.nextMiniQuiz2 = function() {
+    mqIdx2++; 
+    renderMiniQuiz2(); 
 }
 // ============================================
 // MODUL 3: SIMULASI PESAWAT, AUDIO & KUIS 3
