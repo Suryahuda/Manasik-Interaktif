@@ -252,7 +252,6 @@ window.toggleIhramItem = function(item) {
     err.classList.add('hidden'); 
 
     if (ihramItems[item]) {
-        // Ganti warna saat diklik jadi emas transparan (teks tetap terbaca)
         btn.classList.replace('bg-black/50', 'bg-[#d4af37]/20');
         btn.classList.replace('border-white/10', 'border-[#d4af37]');
         btn.classList.replace('text-slate-300', 'text-[#d4af37]');
@@ -270,7 +269,6 @@ window.toggleIhramItem = function(item) {
             }
         }
     } else {
-        // Kembalikan ke warna awal saat dimatikan
         btn.classList.replace('bg-[#d4af37]/20', 'bg-black/50');
         btn.classList.replace('border-[#d4af37]', 'border-white/10');
         btn.classList.replace('text-[#d4af37]', 'text-slate-300');
@@ -280,13 +278,16 @@ window.toggleIhramItem = function(item) {
             svg.classList.add('opacity-0');
         }
         
+        // PERBAIKAN BUG SANDAL: Menyembunyikan sandal yang kedua
         if (item === 'sandal') {
             const sandal2 = document.getElementById('svg-sandal2');
-            if(sandal2) sandal2.classList.add('opacity-0');
+            if(sandal2) {
+                sandal2.classList.remove('opacity-100', 'translate-y-0');
+                sandal2.classList.add('opacity-0', 'translate-y-2');
+            }
         }
     }
 
-    // Cek kelengkapan wajib: HANYA IZAR & RIDA' (Sandal sunnah, tidak wajib untuk menang)
     if (ihramItems.izar && ihramItems.rida) {
         document.getElementById('game-success').classList.remove('hidden');
     } else {
@@ -319,64 +320,20 @@ window.resetIhramGame = function() {
 // ============================================
 // KUIS MINI 2 (PERSIAPAN IHRAM)
 // ============================================
-const masterQuizBank2 = [
-    { term: "Wewangian boleh disemprotkan pada kain ihram laki-laki.", ans: "false", expl: "Wewangian hanya disunnahkan di kulit badan sebelum niat, BUKAN di pakaian." },
-    { term: "Kain ihram atas untuk laki-laki disebut Rida'.", ans: "true", expl: "Tepat. Rida' menutupi bagian atas tubuh, dan Izar untuk bagian bawah." },
-    { term: "Jemaah boleh memakai sabuk atau tas pinggang untuk menyimpan uang.", ans: "true", expl: "Sabuk/tas pinggang diperbolehkan selama bukan pakaian yang dijahit membentuk tubuh secara keseluruhan." },
-    { term: "Jemaah pesawat langsung Makkah boleh niat setelah mendarat di bandara Jeddah.", ans: "false", expl: "Pesawat akan melewati miqat di udara, sehingga jemaah harus niat saat di pesawat." }
-];
-let activeQuiz2 = [];
-let mqIdx2 = 0;
+
+window.mulaiKuisMini2 = function() {
+    document.getElementById('qz2-start-screen').classList.add('hidden');
+    document.getElementById('qz2-content').classList.remove('hidden');
+    ulangiKuisMini2();
+}
 
 window.ulangiKuisMini2 = function() {
     activeQuiz2 = shuffle([...masterQuizBank2]);
     mqIdx2 = 0;
+    document.getElementById('qz2-start-screen').classList.add('hidden');
+    document.getElementById('qz2-content').classList.remove('hidden');
     renderMiniQuiz2();
 }
-
-window.renderMiniQuiz2 = function() {
-    if(activeQuiz2.length === 0) activeQuiz2 = shuffle([...masterQuizBank2]);
-    if(mqIdx2 >= activeQuiz2.length) {
-        document.getElementById('qz2-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900">Kuis Selesai! 🎉</h4>`;
-        document.getElementById('qz2-feedback-container').classList.add('hidden');
-        document.getElementById('qz2-btn-container').classList.add('hidden');
-        document.getElementById('qz2-next-container').classList.add('hidden');
-        return;
-    }
-    const q = activeQuiz2[mqIdx2];
-    document.getElementById('qz2-curr').innerText = mqIdx2 + 1;
-    document.getElementById('qz2-term').innerText = q.term;
-    document.getElementById('qz2-feedback-container').classList.add('hidden');
-    document.getElementById('qz2-card').className = "bg-white rounded-2xl p-10 text-center shadow-lg border-4 border-transparent flex flex-col items-center justify-center min-h-[150px] transition-all";
-    
-    document.getElementById('qz2-btn-container').innerHTML = `
-        <button onclick="answerMiniQuiz2('true')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Benar</button>
-        <button onclick="answerMiniQuiz2('false')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Salah</button>
-    `;
-    document.getElementById('qz2-btn-container').classList.remove('hidden');
-    document.getElementById('qz2-next-container').classList.add('hidden');
-}
-
-window.answerMiniQuiz2 = function(ans) {
-    const q = activeQuiz2[mqIdx2];
-    const isCorrect = (ans === q.ans);
-    const fbContainer = document.getElementById('qz2-feedback-container');
-    const fbText = document.getElementById('qz2-feedback-text');
-    const card = document.getElementById('qz2-card');
-
-    fbContainer.classList.remove('hidden');
-    document.getElementById('qz2-btn-container').classList.add('hidden');
-    document.getElementById('qz2-next-container').classList.remove('hidden');
-
-    if(isCorrect) {
-        card.classList.replace('border-transparent', 'border-emerald-500');
-        fbText.innerHTML = `<b>Tepat.</b> ${q.expl}`;
-    } else {
-        card.classList.replace('border-transparent', 'border-rose-500');
-        fbText.innerHTML = `<b>Belum Tepat.</b> ${q.expl}`;
-    }
-}
-window.nextMiniQuiz2 = function() { mqIdx2++; renderMiniQuiz2(); }
 // ============================================
 // MODUL 3: SIMULASI PESAWAT, AUDIO & KUIS 3
 // ============================================

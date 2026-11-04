@@ -548,7 +548,7 @@
                 </div>
 
                 <!-- Sunnah Sebelum Ihram -->
-                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-[2rem] shadow-xl mb-8 relative overflow-hidden group">
+                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-[2rem] shadow-xl mb-12 relative overflow-hidden group">
                     <div class="absolute -right-20 -top-20 w-48 h-48 bg-[#d4af37]/10 rounded-full blur-3xl group-hover:bg-[#d4af37]/20 transition-all"></div>
                     
                     <h3 class="font-serif text-2xl text-[#d4af37] mb-6 flex items-center gap-3 relative z-10">
@@ -569,20 +569,20 @@
                         </div>
                         <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all">
                             <span class="block text-3xl mb-2">✨</span>
-                            <span class="text-slate-300 text-sm">Memakai Wewangian (di Badan)</span>
+                            <span class="text-slate-300 text-sm">Memakai Wewangian</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- GAME INTERAKTIF: Memakai Pakaian Ihram Laki-laki -->
-                <div class="bg-gradient-to-br from-[#0f1115]/80 to-black/90 backdrop-blur-xl border border-[#d4af37]/30 p-6 md:p-10 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-12">
+                <div class="bg-gradient-to-br from-[#0f1115]/80 to-black/90 backdrop-blur-xl border border-[#d4af37]/30 p-6 md:p-10 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-16">
                     
                     <div class="text-center mb-8">
                         <h3 class="font-serif text-3xl text-white font-bold mb-2 tracking-wide">Pakaian Ihram Laki-laki</h3>
                         <p class="text-slate-400 font-light">Pilih dan pasangkan atribut yang wajib/boleh dipakai untuk laki-laki.</p>
                     </div>
 
-                    <div class="flex flex-col md:flex-row items-center gap-10">
+                    <div class="flex flex-col md:flex-row items-start gap-10">
                         <!-- Panel Manekin (Kiri) -->
                         <div class="w-full md:w-1/2 flex justify-center">
                             <div class="relative w-48 h-[420px] bg-white/5 border border-white/10 rounded-3xl p-4 shadow-inner flex flex-col items-center">
@@ -590,19 +590,19 @@
                                 <div class="w-16 h-20 bg-slate-700/50 rounded-[40%] mt-2 relative"></div>
                                 <!-- Siluet Badan -->
                                 <div class="w-32 h-36 bg-slate-700/50 rounded-t-3xl mt-2 relative">
-                                    <!-- Kain Atas (Rida') - Tersembunyi Awalnya -->
+                                    <!-- Kain Atas (Rida') -->
                                     <div id="svg-rida" class="absolute inset-0 bg-white/90 rounded-t-3xl shadow-md border-b-2 border-slate-300 opacity-0 scale-95 translate-y-4 transition-all duration-700 flex items-center justify-center overflow-hidden z-10">
                                         <div class="w-[120%] h-[120%] bg-gradient-to-br from-white via-slate-100 to-slate-200 border border-slate-300 transform -rotate-12 translate-x-2"></div>
                                         <span class="absolute text-slate-800 font-bold text-xs uppercase tracking-widest bg-white/80 px-2 py-1 rounded">Rida'</span>
                                     </div>
                                 </div>
-                                <!-- Sabuk - Tampil di antara badan & kaki -->
+                                <!-- Sabuk -->
                                 <div id="svg-sabuk" class="w-32 h-4 bg-[#b38b22] border-y border-[#d4af37] shadow-[0_2px_5px_rgba(0,0,0,0.3)] z-20 opacity-0 transition-opacity duration-500 relative">
                                     <div class="absolute left-1/2 -translate-x-1/2 w-6 h-5 bg-white/20 border-2 border-[#d4af37] rounded-sm -top-0.5"></div>
                                 </div>
                                 <!-- Siluet Kaki -->
                                 <div class="w-32 h-40 bg-slate-700/50 rounded-b-md relative">
-                                    <!-- Kain Bawah (Izar) - Tersembunyi Awalnya -->
+                                    <!-- Kain Bawah (Izar) -->
                                     <div id="svg-izar" class="absolute inset-0 bg-white/90 rounded-b-md shadow-md border-t-2 border-slate-300 opacity-0 scale-95 translate-y-[-10px] transition-all duration-700 flex items-center justify-center overflow-hidden z-10">
                                         <div class="w-full h-full bg-gradient-to-b from-slate-100 to-white"></div>
                                         <div class="absolute left-1/2 -translate-x-1/2 w-4 h-full bg-slate-200/50 shadow-inner"></div>
@@ -667,13 +667,16 @@
                                 <button onclick="resetIhramGame()" class="mt-3 text-emerald-300 text-xs font-bold uppercase tracking-widest hover:text-white transition">↺ Reset Penampilan</button>
                             </div>
                         </div>
+                    </div>
+                </div> <!-- END DARI KOTAK GAME -->
 
-                <!-- EVALUASI MINI: PERSIAPAN IHRAM (Desain Kaca Eksklusif) -->
-                <div class="bg-black/60 backdrop-blur-2xl border border-[#d4af37]/40 rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
+                <!-- EVALUASI MINI: PERSIAPAN IHRAM (Desain Kaca Eksklusif - Bawah Penuh) -->
+                <div class="w-full bg-black/60 backdrop-blur-2xl border border-[#d4af37]/40 rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden clear-both block">
                     
                     <!-- Latar Ornamen -->
                     <div class="absolute -right-20 -top-20 w-64 h-64 bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none"></div>
 
+                    <!-- Header Evaluasi -->
                     <div class="flex flex-col md:flex-row justify-between items-center mb-8 border-b border-white/10 pb-6 relative z-10">
                         <div>
                             <h3 class="font-serif text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f3e5ab] to-[#d4af37] mb-2">Evaluasi Persiapan</h3>
@@ -684,32 +687,42 @@
                         </div>
                     </div>
 
-                    <!-- Area Kartu Kuis -->
-                    <div id="qz2-card" class="bg-slate-100 border border-white/10 rounded-3xl p-8 md:p-12 text-center transition-all duration-300 flex flex-col items-center justify-center min-h-[200px] shadow-lg relative z-10">
-                        <!-- Perhatikan class text-slate-900 di bawah ini -->
-                        <h4 id="qz2-term" class="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-2 leading-relaxed">
-                            (Pertanyaan akan muncul di sini)
-                        </h4>
-                        <p class="text-slate-500 text-sm font-light tracking-wide mt-2">Pernyataan ini Benar atau Salah?</p>
+                    <!-- Layar Mulai Kuis -->
+                    <div id="qz2-start-screen" class="text-center py-12 relative z-10">
+                        <h4 class="text-3xl font-serif font-bold text-white mb-6">Siap Menguji Pemahaman Anda?</h4>
+                        <button onclick="mulaiKuisMini2()" class="bg-gradient-to-r from-[#d4af37] to-[#b38b22] text-[#0f1115] font-bold py-4 px-12 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 transition-all uppercase tracking-widest text-lg">
+                            ▶ Mulai Kuis
+                        </button>
                     </div>
 
-                    <!-- Area Tombol Kuis -->
-                    <div id="qz2-btn-container" class="mt-8 flex justify-center gap-4 relative z-10">
-                        <button onclick="answerMiniQuiz2('true')" class="bg-white/10 hover:bg-[#d4af37] text-white hover:text-black border border-white/20 hover:border-[#d4af37] font-bold py-4 px-12 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] tracking-widest uppercase">Benar</button>
-                        <button onclick="answerMiniQuiz2('false')" class="bg-white/10 hover:bg-[#d4af37] text-white hover:text-black border border-white/20 hover:border-[#d4af37] font-bold py-4 px-12 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] tracking-widest uppercase">Salah</button>
-                    </div>
+                    <!-- Konten Kuis (Awalnya Disembunyikan) -->
+                    <div id="qz2-content" class="hidden">
+                        <!-- Area Kartu Kuis -->
+                        <div id="qz2-card" class="bg-slate-100 border border-white/10 rounded-3xl p-8 md:p-12 text-center transition-all duration-300 flex flex-col items-center justify-center min-h-[200px] shadow-lg relative z-10">
+                            <h4 id="qz2-term" class="text-2xl md:text-3xl font-serif font-bold text-slate-900 mb-2 leading-relaxed">
+                                (Pertanyaan akan muncul di sini)
+                            </h4>
+                            <p class="text-slate-500 text-sm font-light tracking-wide mt-2">Pernyataan ini Benar atau Salah?</p>
+                        </div>
 
-                    <!-- Area Feedback & Next -->
-                    <div id="qz2-feedback-container" class="hidden mt-8 text-center relative z-10">
-                        <p id="qz2-feedback-text" class="text-lg font-medium text-white mb-6 p-4 rounded-xl bg-black/40 border border-white/10 shadow-inner"></p>
-                    </div>
-                    <div id="qz2-next-container" class="hidden mt-4 flex justify-center relative z-10">
-                        <button onclick="nextMiniQuiz2()" class="bg-gradient-to-r from-[#d4af37] to-[#b38b22] text-[#0f1115] font-bold py-3 px-10 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 transition flex items-center gap-2">Lanjut <span class="text-xl">→</span></button>
-                    </div>
+                        <!-- Area Tombol Kuis -->
+                        <div id="qz2-btn-container" class="mt-8 flex justify-center gap-4 relative z-10">
+                            <button onclick="answerMiniQuiz2('true')" class="bg-white/10 hover:bg-[#d4af37] text-white hover:text-black border border-white/20 hover:border-[#d4af37] font-bold py-4 px-12 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] tracking-widest uppercase">Benar</button>
+                            <button onclick="answerMiniQuiz2('false')" class="bg-white/10 hover:bg-[#d4af37] text-white hover:text-black border border-white/20 hover:border-[#d4af37] font-bold py-4 px-12 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] tracking-widest uppercase">Salah</button>
+                        </div>
 
-                    <!-- Tombol Ulangi -->
-                    <div class="mt-8 text-center relative z-10">
-                        <button onclick="ulangiKuisMini2()" class="text-slate-500 hover:text-[#d4af37] text-xs font-bold tracking-widest uppercase transition-colors">↺ Ulangi Kuis</button>
+                        <!-- Area Feedback & Next -->
+                        <div id="qz2-feedback-container" class="hidden mt-8 text-center relative z-10">
+                            <p id="qz2-feedback-text" class="text-lg font-medium text-white mb-6 p-4 rounded-xl bg-black/40 border border-white/10 shadow-inner"></p>
+                        </div>
+                        <div id="qz2-next-container" class="hidden mt-4 flex justify-center relative z-10">
+                            <button onclick="nextMiniQuiz2()" class="bg-gradient-to-r from-[#d4af37] to-[#b38b22] text-[#0f1115] font-bold py-3 px-10 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 transition flex items-center gap-2">Lanjut <span class="text-xl">→</span></button>
+                        </div>
+
+                        <!-- Tombol Ulangi -->
+                        <div class="mt-8 text-center relative z-10">
+                            <button onclick="ulangiKuisMini2()" class="text-slate-500 hover:text-[#d4af37] text-xs font-bold tracking-widest uppercase transition-colors">↺ Ulangi Kuis</button>
+                        </div>
                     </div>
                 </div>
 
