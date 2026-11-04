@@ -24,34 +24,43 @@
         .fade-in { animation: fadeIn 0.4s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         
-        .bg-kabah-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        .bg-dynamic {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2;
             background-image: url('https://images.unsplash.com/photo-1565552643954-14eb015975bb?q=80&w=1920&auto=format&fit=crop');
-            background-size: cover; background-position: center; z-index: -1; opacity: 0.05;
+            background-size: cover; background-position: center;
+            transition: background-image 0.5s ease-in-out;
         }
+        .bg-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: linear-gradient(to right, rgba(15,17,21,0.95) 0%, rgba(15,17,21,0.4) 50%, rgba(15,17,21,0.85) 100%);
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body class="bg-luxury-100 dark:bg-luxury-900 text-slate-800 dark:text-slate-200 font-sans h-screen flex overflow-hidden transition-colors duration-300">
-    <div class="bg-kabah-overlay"></div>
+<body class="bg-[#0f1115] text-slate-200 font-sans h-screen flex overflow-hidden">
+    <!-- Background Layar Penuh -->
+    <div class="bg-dynamic" id="global-bg"></div>
+    <div class="bg-overlay"></div>
 
-    <!-- SIDEBAR KIRI -->
-    <aside class="w-64 bg-white/90 dark:bg-luxury-800/90 backdrop-blur-md border-r border-slate-200 dark:border-luxury-900 hidden md:flex flex-col z-20">
-        <div class="p-6 flex items-center gap-3">
-            <div class="text-3xl">🕋</div>
-            <h1 class="text-xl font-extrabold tracking-widest text-slate-900 dark:text-white">MUYASSAR</h1>
+    <!-- SIDEBAR KIRI (Glassmorphism Mewah) -->
+    <aside class="w-64 bg-black/20 backdrop-blur-xl border-r border-[#d4af37]/20 hidden md:flex flex-col z-20">
+        <div class="p-6 flex items-center gap-3 border-b border-[#d4af37]/10 mb-4">
+            <div class="text-3xl drop-shadow-[0_0_10px_rgba(212,175,55,0.8)]">🕋</div>
+            <h1 class="text-xl font-extrabold tracking-widest text-[#d4af37]">MUYASSAR</h1>
         </div>
-        <nav class="flex-1 px-4 space-y-2">
-            <button onclick="showPage('page-dashboard')" class="w-full flex items-center gap-3 px-4 py-3 bg-slate-100 dark:bg-luxury-900 text-slate-900 dark:text-white rounded-xl font-bold transition">
-                <span>🏠</span> <span data-i18n="menu_dashboard">Dashboard</span>
+        <nav class="flex-1 px-4 space-y-3">
+            <button onclick="showPage('page-dashboard')" class="w-full flex items-center gap-4 px-4 py-3 bg-white/10 text-white border border-[#d4af37]/30 rounded-xl font-bold transition shadow-[0_0_15px_rgba(212,175,55,0.1)]">
+                <span class="text-[#d4af37]">🏠</span> <span>Dashboard</span>
             </button>
-            <button onclick="showPage('page-modul-umrah')" class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-luxury-900 rounded-xl font-medium transition">
-                <span>📖</span> <span data-i18n="menu_modul">Modul Umrah</span>
+            <button onclick="showPage('page-modul-umrah')" class="w-full flex items-center gap-4 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl font-medium transition group">
+                <span class="group-hover:text-[#d4af37] transition">📖</span> <span>Modul Umrah</span>
             </button>
-            <button onclick="showPage('page-doa')" class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-luxury-900 rounded-xl font-medium transition">
-                <span>🤲</span> <span data-i18n="menu_doa">Kumpulan Doa</span>
+            <button onclick="showPage('page-doa')" class="w-full flex items-center gap-4 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl font-medium transition group">
+                <span class="group-hover:text-[#d4af37] transition">🤲</span> <span>Kumpulan Doa</span>
             </button>
-            <button onclick="showPage('page-kuis')" class="w-full flex items-center gap-3 px-4 py-3 text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-luxury-900 rounded-xl font-medium transition">
-                <span>📝</span> <span data-i18n="menu_kuis">Kuis Pemahaman</span>
+            <button onclick="showPage('page-kuis')" class="w-full flex items-center gap-4 px-4 py-3 text-slate-400 hover:text-white hover:bg-white/5 rounded-xl font-medium transition group">
+                <span class="group-hover:text-[#d4af37] transition">📝</span> <span>Kuis Evaluasi</span>
             </button>
         </nav>
     </aside>
@@ -59,17 +68,16 @@
     <!-- KONTEN UTAMA KANAN -->
     <div class="flex-1 flex flex-col h-screen overflow-hidden relative">
         
-        <!-- HEADER ATAS -->
-        <header class="bg-white/90 dark:bg-luxury-800/90 backdrop-blur-md border-b border-slate-200 dark:border-luxury-900 px-6 py-4 flex justify-between items-center z-10">
-            <div class="flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400">
-                <span data-i18n="portal_title">Portal Manasik</span> <span class="mx-2">/</span> <span class="text-slate-900 dark:text-white">MUYASSAR Pro</span>
+        <!-- HEADER ATAS (Glassmorphism Minimalis) -->
+        <header class="bg-black/10 backdrop-blur-md border-b border-white/10 px-6 py-4 flex justify-between items-center z-10">
+            <div class="flex items-center gap-2 text-sm font-medium text-slate-400 tracking-wider">
+                PORTAL MANASIK <span class="mx-2 text-[#d4af37]">/</span> <span class="text-white font-bold">MUYASSAR PRO</span>
             </div>
-            
-            <div class="flex items-center gap-3">
-                <button id="btnDarkMode" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-luxury-900 transition text-lg">☀️</button>
-            </div>
+            <!-- Tombol Dark Mode Dihapus karena tema ini fix gelap mewah -->
         </header>
 
+        <!-- RUANG SCROLL HALAMAN (Tanpa Background) -->
+        <main id="main-content" class="flex-1 overflow-y-auto p-6 lg:p-10 relative z-0 hide-scrollbar">
         <!-- RUANG SCROLL HALAMAN -->
         <main id="main-content" class="flex-1 overflow-y-auto p-6 lg:p-8 bg-slate-50/80 dark:bg-luxury-900/80 relative z-0">
             
@@ -92,35 +100,74 @@
                 </div>
             </section>
 
-            <!-- DASBOR UTAMA -->
-            <section id="page-dashboard" class="hidden max-w-5xl mx-auto space-y-8 fade-in">
-                <div class="bg-slate-900 dark:bg-black rounded-3xl p-8 lg:p-10 flex flex-col md:flex-row items-center gap-8 shadow-2xl relative overflow-hidden">
-                    <div class="w-full md:w-1/3 flex justify-center z-10"><div class="text-9xl drop-shadow-2xl">🕋</div></div>
-                    <div class="w-full md:w-2/3 z-10 text-white">
-                        <h2 class="text-3xl font-serif mb-4" data-i18n="dash_hero_title">Manasik Virtual</h2>
-                        <p class="text-slate-300 text-sm mb-6" data-i18n="dash_hero_desc">Berlatih umrah langkah demi langkah: berihram di miqat, thawaf, sa'i, sampai tahalul.</p>
+           <!-- DASBOR UTAMA (Immersive Layout ala Referensi) -->
+            <section id="page-dashboard" class="hidden h-full flex flex-col justify-center fade-in text-white relative mt-10 md:mt-0">
+                <div class="flex flex-col lg:flex-row items-center justify-between gap-12 h-full">
+                    
+                    <!-- Kiri: Judul Raksasa & Aksen Emas -->
+                    <div class="w-full lg:w-1/2 space-y-6 relative z-10">
+                        <div class="flex items-center gap-4 mb-2">
+                            <div class="w-12 h-0.5 bg-[#d4af37]"></div>
+                            <span class="text-[#d4af37] font-bold tracking-[0.3em] uppercase text-sm">Aplikasi Simulasi</span>
+                        </div>
+                        <h2 class="text-6xl lg:text-8xl font-serif font-bold leading-[1.1] drop-shadow-2xl">
+                            MANASIK<br>
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#b38b22]">VIRTUAL</span>
+                        </h2>
+                        <p class="text-slate-300 text-lg max-w-lg leading-relaxed font-light border-l border-white/20 pl-4">
+                            Langkah demi langkah menuju Baitullah. Pelajari tata cara umrah dengan panduan interaktif yang presisi, visual, dan sesuai sunnah.
+                        </p>
                         
-                        <!-- Box Ayat Al-Quran (Klik untuk audio Syaikh) -->
-                        <div onclick="playQuranAudio()" class="bg-white/10 p-5 rounded-2xl mb-6 backdrop-blur-md cursor-pointer hover:bg-white/20 transition group border border-white/10">
-                            <div class="flex justify-between items-center mb-4">
-                                <p class="text-xs text-slate-300 font-bold">QS al-Hajj [22]: 27</p>
-                                <span class="text-xs font-bold bg-white/20 px-3 py-1.5 rounded-full group-hover:bg-white/30 flex items-center gap-2">🔊 <span data-i18n="btn_play_quran">Dengarkan Syaikh</span></span>
+                        <div class="pt-4 flex items-center gap-6">
+                            <button onclick="showPage('page-modul-umrah')" class="bg-gradient-to-r from-[#d4af37] to-[#b38b22] text-[#0f1115] font-bold text-lg px-8 py-4 rounded-full shadow-[0_0_30px_rgba(212,175,55,0.4)] hover:scale-105 transition-all flex items-center gap-3 group">
+                                Mulai Perjalanan <span class="group-hover:translate-x-1 transition-transform">→</span>
+                            </button>
+                            
+                            <!-- Box Audio Syaikh Kecil -->
+                            <div onclick="playQuranAudio()" class="flex items-center gap-3 cursor-pointer hover:opacity-80 transition group">
+                                <div class="w-12 h-12 rounded-full border-2 border-[#d4af37] flex items-center justify-center bg-black/30 backdrop-blur-sm text-[#d4af37] group-hover:bg-[#d4af37] group-hover:text-black transition-colors">
+                                    ▶
+                                </div>
+                                <div class="text-sm">
+                                    <p class="font-bold text-[#d4af37]">QS Al-Hajj: 27</p>
+                                    <p class="text-slate-400 text-xs">Audio Syaikh</p>
+                                </div>
                             </div>
-                            <p class="text-2xl md:text-3xl font-arabic text-right mb-4 leading-relaxed">وَأَذِّن فِى ٱلنَّاسِ بِٱلْحَجِّ يَأْتُوكَ رِجَالًا وَعَلَىٰ كُلِّ ضَامِرٍ يَأْتِينَ مِن كُلِّ فَجٍّ عَمِيقٍ</p>
-                            <p class="text-sm text-slate-300 italic" data-i18n="quran_trans_22_27">"Dan berserulah kepada manusia untuk mengerjakan haji, niscaya mereka akan datang kepadamu dengan berjalan kaki, dan mengendarai unta yang kurus yang datang dari segenap penjuru yang jauh."</p>
                         </div>
                     </div>
-                </div>
 
-                <div>
-                    <h3 class="font-serif text-xl font-bold mb-4 text-slate-900 dark:text-white" data-i18n="dash_choose_title">Pilih ibadah yang ingin dipelajari</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="bg-white dark:bg-luxury-800 rounded-3xl p-8 shadow-sm">
-                            <div class="text-5xl mb-6">🕋</div>
-                            <h4 class="text-2xl font-bold text-slate-900 dark:text-white mb-2" data-i18n="umrah_title">Umrah</h4>
-                            <p class="text-sm text-slate-500 mb-8" data-i18n="umrah_card_desc">Panduan interaktif lengkap.</p>
-                            <button onclick="showPage('page-modul-umrah')" class="bg-slate-800 dark:bg-white dark:text-slate-900 text-white px-6 py-2.5 rounded-lg font-bold text-sm" data-i18n="btn_start_umrah">Mulai umrah</button>
+                    <!-- Kanan: Kartu Eksplorasi (Glassmorphism Card) -->
+                    <div class="w-full lg:w-1/2 flex gap-6 overflow-x-auto pb-8 snap-x snap-mandatory hide-scrollbar relative z-10 pr-10">
+                        
+                        <!-- Kartu 1: Modul Umrah -->
+                        <div onclick="showPage('page-modul-umrah')" class="min-w-[260px] md:min-w-[300px] h-[380px] bg-white/5 backdrop-blur-lg border border-white/20 rounded-[2rem] p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37] transition-all snap-center group relative overflow-hidden shadow-2xl">
+                            <!-- Placeholder Foto HD dari Anda nantinya -->
+                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1591814243640-5b3236e7885b?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/50 to-transparent"></div>
+                            
+                            <div class="absolute top-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 text-white z-10">🔖</div>
+                            
+                            <div class="relative z-10">
+                                <div class="text-[#d4af37] text-sm font-bold tracking-widest mb-1">01 / UTAMA</div>
+                                <h3 class="text-3xl font-serif font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">Modul Umrah</h3>
+                                <p class="text-sm text-slate-300 font-light">Peta perjalanan komprehensif dari Miqat hingga Tahallul.</p>
+                            </div>
                         </div>
+
+                        <!-- Kartu 2: Kumpulan Doa -->
+                        <div onclick="showPage('page-doa')" class="min-w-[260px] md:min-w-[300px] h-[380px] bg-white/5 backdrop-blur-lg border border-white/20 rounded-[2rem] p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37] transition-all snap-center group relative overflow-hidden shadow-2xl">
+                            <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-40 group-hover:scale-110 group-hover:opacity-60 transition-all duration-700"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/50 to-transparent"></div>
+                            
+                            <div class="absolute top-6 right-6 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/30 text-white z-10">🔖</div>
+                            
+                            <div class="relative z-10">
+                                <div class="text-[#d4af37] text-sm font-bold tracking-widest mb-1">02 / HAFALAN</div>
+                                <h3 class="text-3xl font-serif font-bold text-white mb-2 group-hover:text-[#d4af37] transition-colors">Lafadz & Doa</h3>
+                                <p class="text-sm text-slate-300 font-light">Kumpulan doa-doa utama yang dilengkapi audio pemandu.</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </section>
