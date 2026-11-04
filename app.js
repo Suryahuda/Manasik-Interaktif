@@ -438,17 +438,17 @@ window.startPlaneGame = function() {
     planeProgress = 0;
     isGameRunning = true;
     
-    // Reset posisi awal pesawat (di luar peta sebelah tenggara)
     const planeIcon = document.getElementById('plane-icon');
-    planeIcon.style.left = '80%';
-    planeIcon.style.top = '110%';
+    // Mulai dari sudut tenggara (Indonesia/Samudra Hindia)
+    planeIcon.style.left = '95%';
+    planeIcon.style.top = '95%';
 
     planeInterval = setInterval(() => {
-        planeProgress += 0.5; // Kecepatan pergerakan
+        planeProgress += 0.5; 
         
-        // Pergerakan dari Tenggara (x:80%, y:110%) menuju Jeddah (x:30%, y:75%)
-        let currentLeft = 80 - (planeProgress * (80 - 30) / 100); 
-        let currentTop = 110 - (planeProgress * (110 - 75) / 100);
+        // Terbang menuju titik koordinat Jeddah (berdasarkan gambar baru: X 31%, Y 58%)
+        let currentLeft = 95 - (planeProgress * (95 - 31) / 100); 
+        let currentTop = 95 - (planeProgress * (95 - 58) / 100);
         
         planeIcon.style.left = currentLeft + '%';
         planeIcon.style.top = currentTop + '%';
@@ -457,7 +457,7 @@ window.startPlaneGame = function() {
             clearInterval(planeInterval);
             isGameRunning = false;
             document.getElementById('btn-niat').innerHTML = '🤲 Niat Ihrom';
-            showPlaneResult("terlewat");
+            showPlaneResult("terlewat_bandara");
         }
     }, 50);
 }
@@ -476,40 +476,16 @@ window.niatSekarang = function() {
     isGameRunning = false;
     document.getElementById('btn-niat').innerHTML = '🤲 Niat Ihrom';
     
-    // KALIBRASI PRESISI SESUAI VISUAL PETA:
-    // - Sebelum 58%: Belum sampai Yalamlam (Terlalu Cepat)
-    // - 58% sampai 78%: Berada pas di atas garis/titik Yalamlam (Sempurna)
-    // - Di atas 78%: Melewati Yalamlam menuju Jeddah (Terlewat)
-    if (planeProgress < 58) {
+    // KALIBRASI VISUAL:
+    // Garis putus-putus antara Yalamlam & Qarnul Manazil dilewati pesawat pada progres 40% - 58%
+    if (planeProgress < 40) {
         showPlaneResult("makruh");
-    } else if (planeProgress >= 58 && planeProgress <= 78) {
+    } else if (planeProgress >= 40 && planeProgress <= 58) {
         showPlaneResult("sah");
     } else {
         showPlaneResult("terlewat");
     }
-}
-
-function showPlaneResult(status) {
-    const resBox = document.getElementById('plane-result');
-    
-    // Reset desain kotak hasil
-    resBox.className = 'mt-8 p-5 rounded-xl border font-medium text-center shadow-lg relative z-20 transition-all block';
-    
-    if (status === "makruh") {
-        resBox.classList.add('bg-amber-900/80', 'text-amber-200', 'border-amber-500');
-        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat (pesawat belum menyentuh garis Yalamlam).`;
-    } else if (status === "sah") {
-        resBox.classList.add('bg-emerald-900/80', 'text-emerald-200', 'border-emerald-500');
-        resBox.innerHTML = `<b>✅ Sempurna:</b> Anda berniat tepat saat pesawat melintasi garis Miqat Yalamlam. Umrah Anda sah.`;
-    } else if (status === "terlewat_bandara") {
-        resBox.classList.add('bg-rose-900/80', 'text-rose-200', 'border-rose-500');
-        resBox.innerHTML = `<b>🚨 Terlewat Miqat:</b> Anda berniat saat sudah tiba di Bandara Jeddah (melewati miqat). Wajib kembali ke miqat atau membayar Dam.`;
-    } else {
-        resBox.classList.add('bg-rose-900/80', 'text-rose-200', 'border-rose-500');
-        resBox.innerHTML = `<b>🚨 Terlewat Garis Miqat:</b> Anda melewati batas miqat tanpa berniat. Pesawat sudah melewati Yalamlam menuju Jeddah. Wajib membayar Dam (seekor kambing).`;
-    }
-}
-// 3. KUIS MINI 3 (MIQAT)
+}// 3. KUIS MINI 3 (MIQAT)
 const masterQuizBank3 = [
     { term: "Berniat ihram sejurus selepas pesawat berlepas dari Indonesia adalah yang paling utama.", ans: "false", expl: "Berniat sebelum miqat hukumnya sah namun makruh. Yang paling utama adalah tepat di miqat." },
     { term: "Jika pesawat mendarat di Jeddah dan jemaah baru berniat ihram di bandara, maka ia wajib membayar dam.", ans: "true", expl: "Benar. Bandara Jeddah berada di dalam batas miqat, sehingga ia telah melewati miqat tanpa ihram." },
