@@ -81,22 +81,53 @@
         <!-- RUANG SCROLL HALAMAN -->
         <main id="main-content" class="flex-1 overflow-y-auto p-6 lg:p-8 bg-slate-50/80 dark:bg-luxury-900/80 relative z-0">
             
-            <!-- HALAMAN LOGIN -->
-            <section id="page-login" class="text-center bg-white dark:bg-luxury-800 p-8 md:p-12 rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-slate-100 dark:border-luxury-900 max-w-md mx-auto mt-10 transition-colors duration-300">
-                <div class="inline-flex justify-center items-center w-20 h-20 rounded-full bg-slate-50 dark:bg-luxury-900 border border-slate-100 mb-6">
-                    <div class="text-4xl">🕋</div>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-extrabold text-slate-900 dark:text-white mb-1">MUYASSAR</h2>
-                <p class="text-sm font-semibold text-slate-500 mb-8" data-i18n="login_subtitle">Platform Manasik Interaktif</p>
-                <div class="mb-8">
-                    <p class="text-slate-800 dark:text-slate-200 font-bold text-lg mb-2" data-i18n="login_quote">"Berilmu sebelum berucap dan beramal."</p>
-                    <p class="text-slate-500 text-sm px-4" data-i18n="login_desc">Silakan masukkan Kode Akses dari agen travel Anda.</p>
-                </div>
-                <div class="w-full">
-                    <input type="text" id="kodeAkses" placeholder="Kode Akses" class="w-full px-5 py-4 rounded-xl text-center text-slate-900 dark:text-white font-bold text-lg border border-slate-200 dark:border-luxury-700 bg-slate-50 dark:bg-luxury-900 focus:outline-none mb-4" autocomplete="off">
-                    <button id="btnMulaiSimulasi" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl shadow-md transition-all" data-i18n="btn_start">
-                        Mulai Simulasi
-                    </button>
+            <!-- HALAMAN LOGIN (Mewah, Glassmorphism, & Nuansa Emas) -->
+            <section id="page-login" class="h-full flex items-center justify-center fade-in relative z-10">
+                <div class="bg-black/40 backdrop-blur-2xl p-8 md:p-12 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.6)] border border-[#d4af37]/30 max-w-md w-full mx-4 text-center relative overflow-hidden group">
+                    
+                    <!-- Efek Cahaya Emas di Sudut Kotak -->
+                    <div class="absolute -top-24 -right-24 w-48 h-48 bg-[#d4af37]/20 rounded-full blur-3xl pointer-events-none"></div>
+                    <div class="absolute -bottom-24 -left-24 w-48 h-48 bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <!-- Ikon Ka'bah dengan Lingkaran Emas -->
+                    <div class="inline-flex justify-center items-center w-24 h-24 rounded-full bg-black/50 border-2 border-[#d4af37]/60 shadow-[0_0_20px_rgba(212,175,55,0.3)] mb-6 relative">
+                        <div class="absolute inset-0 rounded-full animate-pulse border border-[#d4af37]/40"></div>
+                        <span class="text-4xl drop-shadow-md">🕋</span>
+                    </div>
+
+                    <!-- Brand & Tagline -->
+                    <h2 class="text-4xl font-serif font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f3e5ab] to-[#d4af37] mb-2 tracking-wider">
+                        MUYASSAR
+                    </h2>
+                    <p class="text-xs font-semibold text-[#d4af37] tracking-[0.25em] uppercase mb-8">
+                        Platform Manasik Interaktif
+                    </p>
+
+                    <!-- Quote Agamis -->
+                    <div class="mb-8 p-4 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                        <p class="text-slate-200 font-serif italic text-base mb-2 text-[#f3e5ab]">
+                            "Berilmu sebelum berucap dan beramal."
+                        </p>
+                        <p class="text-slate-400 text-xs tracking-wide">
+                            Silakan masukkan Kode Akses resmi dari agen travel Anda.
+                        </p>
+                    </div>
+
+                    <!-- Input & Tombol Eksklusif -->
+                    <div class="space-y-4 w-full">
+                        <div class="relative">
+                            <input type="text" id="kodeAkses" placeholder="Masukkan Kode Akses" class="w-full px-5 py-4 rounded-xl text-center text-white font-bold tracking-widest text-lg border border-[#d4af37]/40 bg-black/40 focus:outline-none focus:border-[#d4af37] focus:ring-2 focus:ring-[#d4af37]/20 transition placeholder:text-slate-500 placeholder:font-normal placeholder:tracking-normal" autocomplete="off">
+                        </div>
+                        
+                        <button id="btnMulaiSimulasi" class="w-full bg-gradient-to-r from-[#d4af37] via-[#f3e5ab] to-[#b38b22] text-[#0f1115] font-bold py-4 rounded-xl shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all text-base tracking-wide">
+                            Mulai Simulasi
+                        </button>
+                    </div>
+
+                    <!-- Footer Kecil dalam Kotak -->
+                    <div class="mt-8 text-[11px] text-slate-500 tracking-wider uppercase font-medium">
+                        Eksklusif Jamaah Umrah • Muyassar Pro
+                    </div>
                 </div>
             </section>
 
