@@ -491,23 +491,24 @@ window.niatSekarang = function() {
 
 function showPlaneResult(status) {
     const resBox = document.getElementById('plane-result');
-    resBox.classList.remove('hidden', 'bg-amber-100', 'bg-emerald-100', 'bg-rose-100');
+    
+    // Reset desain kotak hasil
+    resBox.className = 'mt-8 p-5 rounded-xl border font-medium text-center shadow-lg relative z-20 transition-all block';
     
     if (status === "makruh") {
-        resBox.classList.add('bg-amber-100', 'text-amber-900', 'border-amber-300');
-        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat (pesawat belum menyentuh garis/titik Yalamlam).`;
+        resBox.classList.add('bg-amber-900/80', 'text-amber-200', 'border-amber-500');
+        resBox.innerHTML = `<b>⚠️ Terlalu Cepat (Sah, tetapi Makruh):</b> Anda berniat ihram sebelum miqat (pesawat belum menyentuh garis Yalamlam).`;
     } else if (status === "sah") {
-        resBox.classList.add('bg-emerald-100', 'text-emerald-900', 'border-emerald-300');
+        resBox.classList.add('bg-emerald-900/80', 'text-emerald-200', 'border-emerald-500');
         resBox.innerHTML = `<b>✅ Sempurna:</b> Anda berniat tepat saat pesawat melintasi garis Miqat Yalamlam. Umrah Anda sah.`;
     } else if (status === "terlewat_bandara") {
-        resBox.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300');
+        resBox.classList.add('bg-rose-900/80', 'text-rose-200', 'border-rose-500');
         resBox.innerHTML = `<b>🚨 Terlewat Miqat:</b> Anda berniat saat sudah tiba di Bandara Jeddah (melewati miqat). Wajib kembali ke miqat atau membayar Dam.`;
     } else {
-        resBox.classList.add('bg-rose-100', 'text-rose-900', 'border-rose-300');
+        resBox.classList.add('bg-rose-900/80', 'text-rose-200', 'border-rose-500');
         resBox.innerHTML = `<b>🚨 Terlewat Garis Miqat:</b> Anda melewati batas miqat tanpa berniat. Pesawat sudah melewati Yalamlam menuju Jeddah. Wajib membayar Dam (seekor kambing).`;
     }
 }
-
 // 3. KUIS MINI 3 (MIQAT)
 const masterQuizBank3 = [
     { term: "Berniat ihram sejurus selepas pesawat berlepas dari Indonesia adalah yang paling utama.", ans: "false", expl: "Berniat sebelum miqat hukumnya sah namun makruh. Yang paling utama adalah tepat di miqat." },
@@ -518,32 +519,46 @@ const masterQuizBank3 = [
 let activeQuiz3 = [];
 let mqIdx3 = 0;
 
+window.mulaiKuisMini3 = function() {
+    document.getElementById('qz3-start-screen').classList.add('hidden');
+    document.getElementById('qz3-content').classList.remove('hidden');
+    ulangiKuisMini3();
+}
+
 window.ulangiKuisMini3 = function() {
     activeQuiz3 = shuffle([...masterQuizBank3]);
     mqIdx3 = 0;
+    
+    document.getElementById('qz3-start-screen').classList.add('hidden');
+    document.getElementById('qz3-content').classList.remove('hidden');
+    
     renderMiniQuiz3();
 }
 
 window.renderMiniQuiz3 = function() {
     if(activeQuiz3.length === 0) activeQuiz3 = shuffle([...masterQuizBank3]);
+    
+    const card = document.getElementById('qz3-card');
+    const btnContainer = document.getElementById('qz3-btn-container');
+    const termEl = document.getElementById('qz3-term');
+
     if(mqIdx3 >= activeQuiz3.length) {
-        document.getElementById('qz3-card').innerHTML = `<h4 class="text-2xl font-bold text-slate-900">Kuis Miqat Selesai! 🎉</h4>`;
+        termEl.innerHTML = `Kuis Selesai! 🎉`;
         document.getElementById('qz3-feedback-container').classList.add('hidden');
-        document.getElementById('qz3-btn-container').classList.add('hidden');
+        btnContainer.classList.add('hidden');
         document.getElementById('qz3-next-container').classList.add('hidden');
         return;
     }
+    
     const q = activeQuiz3[mqIdx3];
     document.getElementById('qz3-curr').innerText = mqIdx3 + 1;
-    document.getElementById('qz3-term').innerText = q.term;
-    document.getElementById('qz3-feedback-container').classList.add('hidden');
-    document.getElementById('qz3-card').className = "bg-white rounded-2xl p-10 text-center shadow-lg border-4 border-transparent flex flex-col items-center justify-center min-h-[150px] transition-all";
+    termEl.innerText = q.term; 
     
-    document.getElementById('qz3-btn-container').innerHTML = `
-        <button onclick="answerMiniQuiz3('true')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Benar</button>
-        <button onclick="answerMiniQuiz3('false')" class="bg-slate-200 hover:bg-white text-slate-900 font-bold py-3 px-10 rounded-xl transition shadow-md">Salah</button>
-    `;
-    document.getElementById('qz3-btn-container').classList.remove('hidden');
+    card.classList.remove('border-emerald-500', 'border-rose-500', 'border-4');
+    card.classList.add('border-white/10', 'border');
+
+    document.getElementById('qz3-feedback-container').classList.add('hidden');
+    btnContainer.classList.remove('hidden');
     document.getElementById('qz3-next-container').classList.add('hidden');
 }
 
@@ -559,11 +574,17 @@ window.answerMiniQuiz3 = function(ans) {
     document.getElementById('qz3-next-container').classList.remove('hidden');
 
     if(isCorrect) {
-        card.classList.replace('border-transparent', 'border-emerald-500');
-        fbText.innerHTML = `<b>Tepat.</b> ${q.expl}`;
+        card.classList.replace('border-white/10', 'border-emerald-500');
+        card.classList.replace('border', 'border-4');
+        fbText.innerHTML = `<b class="text-emerald-400">Tepat.</b> ${q.expl}`;
     } else {
-        card.classList.replace('border-transparent', 'border-rose-500');
-        fbText.innerHTML = `<b>Belum Tepat.</b> ${q.expl}`;
+        card.classList.replace('border-white/10', 'border-rose-500');
+        card.classList.replace('border', 'border-4');
+        fbText.innerHTML = `<b class="text-rose-400">Belum Tepat.</b> ${q.expl}`;
     }
 }
-window.nextMiniQuiz3 = function() { mqIdx3++; renderMiniQuiz3(); }
+
+window.nextMiniQuiz3 = function() { 
+    mqIdx3++; 
+    renderMiniQuiz3(); 
+}
