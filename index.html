@@ -771,8 +771,58 @@
                    <!-- Kotak Peta (Desain Mewah Baru) -->
                     <div class="relative w-full max-w-lg mx-auto aspect-square rounded-2xl border-4 border-[#d4af37]/60 shadow-[0_0_40px_rgba(212,175,55,0.3)] mb-8 overflow-hidden bg-black">
                         
-                        <!-- Gambar dipanggil dengan tag img -->
-                        <img src="peta.jpeg" alt="Peta Miqat" class="absolute inset-0 w-full h-full object-cover z-0">
+                        <!-- Peta Miqat Berbasis Kode SVG -->
+<svg viewBox="0 0 500 500" class="absolute inset-0 w-full h-full z-0 bg-[#0f1115] font-sans">
+    <!-- Efek Grid Radar Mewah -->
+    <circle cx="250" cy="250" r="50" fill="none" stroke="#d4af37" stroke-opacity="0.15" stroke-width="1"/>
+    <circle cx="250" cy="250" r="100" fill="none" stroke="#d4af37" stroke-opacity="0.15" stroke-width="1"/>
+    <circle cx="250" cy="250" r="210" fill="none" stroke="#d4af37" stroke-opacity="0.15" stroke-width="1"/>
+    <line x1="250" y1="20" x2="250" y2="480" stroke="#d4af37" stroke-opacity="0.1" stroke-width="1"/>
+    <line x1="20" y1="250" x2="480" y2="250" stroke="#d4af37" stroke-opacity="0.1" stroke-width="1"/>
+
+    <!-- AREA HARAM (Dalam) -->
+    <circle cx="250" cy="250" r="35" fill="#d4af37" fill-opacity="0.05" stroke="#d4af37" stroke-opacity="0.4" stroke-width="1" stroke-dasharray="4 4"/>
+    <text x="250" y="215" fill="#d4af37" font-size="10" font-weight="bold" text-anchor="middle" opacity="0.6">TANAH HARAM</text>
+
+    <!-- Garis Batas Miqat (Lingkaran Utama) -->
+    <circle cx="250" cy="250" r="160" fill="none" stroke="#d4af37" stroke-width="2" stroke-dasharray="8 6"/>
+    <text x="250" y="80" fill="#d4af37" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="2" opacity="0.9">BATAS MIQAT MAKANI</text>
+
+    <!-- Jalur Pesawat (Garis Hijau Putus-putus) -->
+    <path d="M 480 480 L 363 363 L 160 260" fill="none" stroke="#10b981" stroke-width="3" stroke-dasharray="6 6"/>
+    <text x="410" y="440" fill="#10b981" font-size="12" font-weight="bold" transform="rotate(-45, 410, 440)">Arah Pesawat Indonesia</text>
+
+    <!-- Titik Pusat Makkah -->
+    <circle cx="250" cy="250" r="12" fill="#d4af37" opacity="0.3">
+        <animate attributeName="r" values="8;16;8" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <rect x="246" y="246" width="8" height="8" fill="#d4af37"/> <!-- Ikon Kotak Ka'bah -->
+    <text x="250" y="235" fill="white" font-size="14" font-weight="bold" text-anchor="middle">Makkah</text>
+
+    <!-- Kota Jeddah -->
+    <circle cx="160" cy="260" r="6" fill="#94a3b8"/>
+    <text x="160" y="280" fill="#cbd5e1" font-size="12" font-weight="bold" text-anchor="middle">Bandara Jeddah</text>
+
+    <!-- YALAMLAM (Fokus Utama Simulasi - Merah) -->
+    <circle cx="363" cy="363" r="20" fill="#ef4444" opacity="0.2">
+        <animate attributeName="r" values="15;25;15" dur="1.5s" repeatCount="indefinite" />
+    </circle>
+    <circle cx="363" cy="363" r="6" fill="#ef4444"/>
+    <text x="380" y="375" fill="#fca5a5" font-size="14" font-weight="bold">Miqat Yalamlam</text>
+
+    <!-- Titik Miqat Lainnya -->
+    <circle cx="410" cy="250" r="5" fill="#3b82f6"/>
+    <text x="420" y="254" fill="#93c5fd" font-size="11">Qarn al-Manazil</text>
+
+    <circle cx="363" cy="137" r="5" fill="#3b82f6"/>
+    <text x="373" y="141" fill="#93c5fd" font-size="11">Dhat Irq</text>
+
+    <circle cx="250" cy="90" r="5" fill="#3b82f6"/>
+    <text x="250" y="110" fill="#93c5fd" font-size="11" text-anchor="middle">Dhu al-Hulayfah</text>
+
+    <circle cx="137" cy="137" r="5" fill="#3b82f6"/>
+    <text x="127" y="141" fill="#93c5fd" font-size="11" text-anchor="end">Juhfah</text>
+</svg>
 
                         <!-- Shadow penegas kedalaman (inset) -->
                         <div class="absolute inset-0 shadow-[inset_0_0_30px_rgba(0,0,0,0.7)] pointer-events-none z-10"></div>
