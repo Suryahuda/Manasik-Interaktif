@@ -203,30 +203,147 @@
                 </div>
             </section>
 
-            <!-- PETA MODUL UMRAH -->
-            <section id="page-modul-umrah" class="hidden max-w-5xl mx-auto space-y-8 fade-in">
-                <div class="mb-6">
-                    <button onclick="showPage('page-dashboard')" class="text-slate-500 font-medium text-sm mb-3">← <span data-i18n="btn_back_dash">Kembali</span></button>
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white" data-i18n="umrah_map_title">Perjalanan Umrah</h2>
+            <!-- PETA MODUL UMRAH (Immersive Glassmorphism dengan Foto) -->
+            <section id="page-modul-umrah" class="hidden max-w-7xl mx-auto space-y-8 fade-in relative z-10">
+                <div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-6">
+                    <div>
+                        <button onclick="showPage('page-dashboard')" class="text-[#d4af37] hover:text-white font-medium text-sm mb-3 flex items-center gap-2 transition">← Kembali ke Dashboard</button>
+                        <h2 class="text-4xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f3e5ab] to-[#d4af37] tracking-wide">
+                            Peta Perjalanan Umrah
+                        </h2>
+                    </div>
+                    <p class="text-slate-400 text-sm max-w-xs font-light">
+                        Pilih tahapan manasik yang ingin Anda pelajari secara interaktif.
+                    </p>
                 </div>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Kartu-Kartu -->
-                    <div onclick="showPage('page-mengenal')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border shadow-sm cursor-pointer hover:-translate-y-1 transition-all">
-                        <div class="flex justify-between items-start mb-4"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold">1</div></div>
-                        <h3 class="font-serif font-bold text-lg mb-2 dark:text-white" data-i18n="card1_title">1. Mengenal Umrah</h3>
-                        <p class="text-sm text-slate-500 line-clamp-2" data-i18n="card1_desc">Pondasi, hukum, dan rukun.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 pb-12">
+                    
+                    <!-- Kartu 1 -->
+                    <div onclick="showPage('page-mengenal')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <!-- Ganti URL di bawah ini dengan foto Anda -->
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1591814243640-5b3236e7885b?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">1</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Mengenal Umrah</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Pondasi, hukum, dan rukun.</p>
+                        </div>
                     </div>
-                    <div onclick="showPage('page-persiapan-ihram')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">2</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">2. Persiapan Ihram</h3></div>
-                    <div onclick="showPage('page-miqat')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">3</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">3. Miqat dan Niat</h3></div>
-                    <div onclick="showPage('page-larangan-ihram')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">4</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">4. Larangan Ihram</h3></div>
-                    <div onclick="showPage('page-masjidilharam')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">5</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">5. Masuk Masjidil Haram</h3></div>
-                    <div onclick="showPage('page-tawaf')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">6</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">6. Thawaf Umrah</h3></div>
-                    <div onclick="showPage('page-maqam-zamzam')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">7</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">7. Maqam Ibrahim & Zamzam</h3></div>
-                    <div onclick="showPage('page-sai')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">8</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">8. Sa'i Umrah</h3></div>
-                    <div onclick="showPage('page-tahalul')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">9</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">9. Tahallul Umrah</h3></div>
-                    <div onclick="showPage('page-tawaf-wada')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">10</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">10. Thawaf Wada'</h3></div>
-                    <div onclick="showPage('page-selesai')" class="bg-white dark:bg-luxury-800 rounded-2xl p-6 border cursor-pointer hover:-translate-y-1 transition-all"><div class="w-8 h-8 rounded-full bg-slate-100 dark:bg-luxury-900 flex items-center justify-center font-bold mb-4">11</div><h3 class="font-serif font-bold text-lg mb-2 dark:text-white">11. Selesai & Sertifikat</h3></div>
+
+                    <!-- Kartu 2 -->
+                    <div onclick="showPage('page-persiapan-ihram')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <!-- Ganti URL di bawah ini dengan foto Anda -->
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1627913333333-3d0b0c619890?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">2</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Persiapan Ihram</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Tata cara mandi sunnah dan memakai pakaian ihram.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 3 -->
+                    <div onclick="showPage('page-miqat')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1582236166160-cd6833b3a7dc?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">3</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Miqat dan Niat</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Simulasi melintasi miqat udara dan melafazkan niat.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 4 -->
+                    <div onclick="showPage('page-larangan-ihram')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596766436663-108ecf6f9628?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">4</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Larangan Ihram</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Mahdzurat al-ihram dan konsekuensi Dam.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 5 -->
+                    <div onclick="showPage('page-masjidilharam')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1565120130276-dfbd9a7a3ad7?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">5</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Masuk Masjidil Haram</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Adab dan doa saat melihat Ka'bah pertama kali.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 6 -->
+                    <div onclick="showPage('page-tawaf')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1570377402685-6101ce8d0b5e?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">6</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Thawaf Umrah</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Mengelilingi Ka'bah 7 putaran dan sunnah-sunnahnya.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 7 -->
+                    <div onclick="showPage('page-maqam-zamzam')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1596766436663-108ecf6f9628?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">7</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Maqam Ibrahim & Zamzam</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Shalat sunnah thawaf dan meminum air zamzam.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 8 -->
+                    <div onclick="showPage('page-sai')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1628122394546-2713f021e067?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">8</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Sa'i Umrah</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Perjalanan antara bukit Shafa dan Marwah.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 9 -->
+                    <div onclick="showPage('page-tahalul')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1627258380481-8072ccaf4e40?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">9</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Tahallul Umrah</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Memotong rambut sebagai tanda berakhirnya ihram.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 10 -->
+                    <div onclick="showPage('page-tawaf-wada')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1594957545934-8c43ec4737d9?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">10</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Thawaf Wada'</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Perpisahan dengan Baitullah sebelum kembali pulang.</p>
+                        </div>
+                    </div>
+
+                    <!-- Kartu 11 -->
+                    <div onclick="showPage('page-selesai')" class="h-[280px] bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 flex flex-col justify-end cursor-pointer hover:border-[#d4af37]/60 hover:-translate-y-2 transition-all group relative overflow-hidden shadow-xl">
+                        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1620953683935-779836e2d194?q=80&w=600&auto=format&fit=crop')] bg-cover bg-center opacity-30 group-hover:scale-110 group-hover:opacity-50 transition-all duration-700"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-[#0f1115] via-[#0f1115]/80 to-transparent"></div>
+                        <div class="absolute top-5 right-5 w-10 h-10 bg-black/40 backdrop-blur-md rounded-full flex items-center justify-center border border-[#d4af37]/30 text-[#d4af37] font-bold z-10 font-serif">11</div>
+                        <div class="relative z-10">
+                            <h3 class="font-serif font-bold text-xl mb-1 text-white group-hover:text-[#d4af37] transition-colors drop-shadow-md">Selesai & Sertifikat</h3>
+                            <p class="text-xs text-slate-300 font-light line-clamp-2">Penutup simulasi manasik interaktif.</p>
+                        </div>
+                    </div>
+
                 </div>
             </section>
 
