@@ -400,12 +400,9 @@
                             <h3 class="font-serif text-2xl text-[#d4af37] mb-4 flex items-center gap-3">
                                 <span class="text-white/50 text-xl">📖</span> Pengertian
                             </h3>
-                            <p class="text-slate-300 font-light leading-relaxed mb-6">
+                            <p class="text-slate-300 font-light leading-relaxed">
                                 Secara bahasa berarti <strong class="text-white font-medium">Ziarah</strong>. Secara syar'i adalah berziarah ke Baitullah (Ka'bah) untuk melaksanakan Thawaf, Sa'i, dan diakhiri dengan Tahallul.
                             </p>
-                            <button onclick="openDalilModal('jibril')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-white/5 hover:bg-[#d4af37]/20 text-[#f3e5ab] border border-white/10 hover:border-[#d4af37]/50 px-4 py-2.5 rounded-xl transition-all shadow-md">
-                                <span>📜</span> Lihat Hadits Jibril
-                            </button>
                         </div>
                         
                         <!-- Hukum Umrah -->
@@ -427,6 +424,9 @@
                             </p>
                             
                             <div class="flex flex-wrap gap-3">
+                                <button onclick="openDalilModal('jibril')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-white/5 hover:bg-[#d4af37]/20 text-[#f3e5ab] border border-white/10 hover:border-[#d4af37]/50 px-4 py-2.5 rounded-xl transition-all shadow-md">
+                                    <span>📜</span> Lihat Hadits Jibril
+                                </button>
                                 <button onclick="openDalilModal('abbas')" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider bg-white/5 hover:bg-[#d4af37]/20 text-[#f3e5ab] border border-white/10 hover:border-[#d4af37]/50 px-4 py-2.5 rounded-xl transition-all shadow-md">
                                     Riwayat Ibnu Abbas
                                 </button>
@@ -531,144 +531,197 @@
 
             </section>
 
-                <!-- SECTION LAINNYA -->
-                <!-- 2. PERSIAPAN IHRAM (BARU) -->
-                <section id="page-persiapan-ihram" class="hidden bg-white dark:bg-luxury-800 p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
-                    <button onclick="showPage('page-modul-umrah')" class="text-slate-500 hover:text-slate-900 dark:hover:text-white font-bold mb-6 flex items-center gap-2 transition">← <span data-i18n="btn_back_map">Kembali ke Peta Modul</span></button>
+                <!-- ========================================== -->
+            <!-- MODUL 2: PERSIAPAN IHRAM & GAME (Glassmorphism Mewah) -->
+            <!-- ========================================== -->
+            <section id="page-persiapan-ihram" class="hidden max-w-5xl mx-auto pb-20 fade-in relative z-10 mt-6 md:mt-0">
+                
+                <!-- Header Section -->
+                <div class="mb-10 flex items-center justify-between border-b border-white/10 pb-6">
+                    <div>
+                        <button onclick="showPage('page-mengenal')" class="text-[#d4af37] hover:text-[#f3e5ab] font-medium text-sm mb-3 flex items-center gap-2 transition">← Sebelumnya: Mengenal Umrah</button>
+                        <h2 class="text-3xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f3e5ab] to-[#d4af37] drop-shadow-md">
+                            02. Persiapan Ihram
+                        </h2>
+                    </div>
+                    <div class="text-5xl md:text-6xl opacity-20 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]">🚿</div>
+                </div>
+
+                <!-- Sunnah Sebelum Ihram -->
+                <div class="bg-black/40 backdrop-blur-md border border-white/10 p-6 md:p-8 rounded-[2rem] shadow-xl mb-8 relative overflow-hidden group">
+                    <div class="absolute -right-20 -top-20 w-48 h-48 bg-[#d4af37]/10 rounded-full blur-3xl group-hover:bg-[#d4af37]/20 transition-all"></div>
                     
-                    <h2 class="text-3xl font-serif font-bold text-slate-900 dark:text-white mb-2" data-i18n="c2_title">2. Persiapan Ihram</h2>
-                    <p class="text-slate-600 dark:text-slate-400 mb-8" data-i18n="c2_subtitle">Mari bersiap memasuki ihram. Ihram adalah niat memulai ibadah, dan persiapannya dikerjakan sebelum tiba di miqat.</p>
+                    <h3 class="font-serif text-2xl text-[#d4af37] mb-6 flex items-center gap-3 relative z-10">
+                        <span class="text-white/50 text-xl">✂️</span> Sunnah Sebelum Memakai Pakaian Ihram
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all">
+                            <span class="block text-3xl mb-2">💅</span>
+                            <span class="text-slate-300 text-sm">Memotong Kuku</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all">
+                            <span class="block text-3xl mb-2">🧔</span>
+                            <span class="text-slate-300 text-sm">Merapikan Kumis</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all">
+                            <span class="block text-3xl mb-2">🚿</span>
+                            <span class="text-slate-300 text-sm">Mandi Janabah</span>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-4 text-center hover:border-[#d4af37]/50 hover:bg-[#d4af37]/10 transition-all">
+                            <span class="block text-3xl mb-2">✨</span>
+                            <span class="text-slate-300 text-sm">Memakai Wewangian (di Badan)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GAME INTERAKTIF: Memakai Pakaian Ihram Laki-laki -->
+                <div class="bg-gradient-to-br from-[#0f1115]/80 to-black/90 backdrop-blur-xl border border-[#d4af37]/30 p-6 md:p-10 rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] mb-12">
                     
-                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-                        <div class="lg:col-span-2 space-y-6">
+                    <div class="text-center mb-8">
+                        <h3 class="font-serif text-3xl text-white font-bold mb-2 tracking-wide">Pakaian Ihram Laki-laki</h3>
+                        <p class="text-slate-400 font-light">Pilih dan pasangkan atribut yang wajib/boleh dipakai untuk laki-laki.</p>
+                    </div>
+
+                    <div class="flex flex-col md:flex-row items-center gap-10">
+                        <!-- Panel Manekin (Kiri) -->
+                        <div class="w-full md:w-1/2 flex justify-center">
+                            <div class="relative w-48 h-[420px] bg-white/5 border border-white/10 rounded-3xl p-4 shadow-inner flex flex-col items-center">
+                                <!-- Siluet Kepala -->
+                                <div class="w-16 h-20 bg-slate-700/50 rounded-[40%] mt-2 relative"></div>
+                                <!-- Siluet Badan -->
+                                <div class="w-32 h-36 bg-slate-700/50 rounded-t-3xl mt-2 relative">
+                                    <!-- Kain Atas (Rida') - Tersembunyi Awalnya -->
+                                    <div id="svg-rida" class="absolute inset-0 bg-white/90 rounded-t-3xl shadow-md border-b-2 border-slate-300 opacity-0 scale-95 translate-y-4 transition-all duration-700 flex items-center justify-center overflow-hidden z-10">
+                                        <div class="w-[120%] h-[120%] bg-gradient-to-br from-white via-slate-100 to-slate-200 border border-slate-300 transform -rotate-12 translate-x-2"></div>
+                                        <span class="absolute text-slate-800 font-bold text-xs uppercase tracking-widest bg-white/80 px-2 py-1 rounded">Rida'</span>
+                                    </div>
+                                </div>
+                                <!-- Sabuk - Tampil di antara badan & kaki -->
+                                <div id="svg-sabuk" class="w-32 h-4 bg-[#b38b22] border-y border-[#d4af37] shadow-[0_2px_5px_rgba(0,0,0,0.3)] z-20 opacity-0 transition-opacity duration-500 relative">
+                                    <div class="absolute left-1/2 -translate-x-1/2 w-6 h-5 bg-white/20 border-2 border-[#d4af37] rounded-sm -top-0.5"></div>
+                                </div>
+                                <!-- Siluet Kaki -->
+                                <div class="w-32 h-40 bg-slate-700/50 rounded-b-md relative">
+                                    <!-- Kain Bawah (Izar) - Tersembunyi Awalnya -->
+                                    <div id="svg-izar" class="absolute inset-0 bg-white/90 rounded-b-md shadow-md border-t-2 border-slate-300 opacity-0 scale-95 translate-y-[-10px] transition-all duration-700 flex items-center justify-center overflow-hidden z-10">
+                                        <div class="w-full h-full bg-gradient-to-b from-slate-100 to-white"></div>
+                                        <div class="absolute left-1/2 -translate-x-1/2 w-4 h-full bg-slate-200/50 shadow-inner"></div>
+                                        <span class="absolute text-slate-800 font-bold text-xs uppercase tracking-widest bg-white/80 px-2 py-1 rounded">Izar</span>
+                                    </div>
+                                </div>
+                                <!-- Siluet Sepatu/Sandal -->
+                                <div class="flex gap-4 mt-2">
+                                    <div class="w-12 h-6 bg-slate-700/50 rounded-full relative">
+                                        <!-- Sandal Kiri -->
+                                        <div id="svg-sandal" class="absolute inset-0 bg-[#8b5a2b] rounded-full border-b-4 border-[#5c3a21] opacity-0 translate-y-2 transition-all duration-500 z-10">
+                                            <div class="absolute w-full h-1 bg-[#d4af37] top-2 transform rotate-45 rounded"></div>
+                                        </div>
+                                    </div>
+                                    <div class="w-12 h-6 bg-slate-700/50 rounded-full relative">
+                                        <!-- Sandal Kanan -->
+                                        <div id="svg-sandal2" class="absolute inset-0 bg-[#8b5a2b] rounded-full border-b-4 border-[#5c3a21] opacity-0 translate-y-2 transition-all duration-500 z-10">
+                                            <div class="absolute w-full h-1 bg-[#d4af37] top-2 transform -rotate-45 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel Kontrol (Kanan) -->
+                        <div class="w-full md:w-1/2 space-y-4">
+                            <p class="text-sm font-bold text-[#d4af37] uppercase tracking-widest border-b border-white/10 pb-2">Atribut Boleh/Wajib</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button id="btn-izar" onclick="toggleIhramItem('izar')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Kain Bawah (Izar)</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                </button>
+                                <button id="btn-rida" onclick="toggleIhramItem('rida')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Kain Atas (Rida')</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                </button>
+                                <button id="btn-sandal" onclick="toggleIhramItem('sandal')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Sandal (Tak tutup mata kaki)</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                </button>
+                                <button id="btn-sabuk" onclick="toggleIhramItem('sabuk')" class="bg-black/50 border border-white/10 hover:border-[#d4af37]/50 text-white font-medium p-3 rounded-xl transition shadow-md flex items-center justify-between group">
+                                    <span>Sabuk (Untuk Simpan Uang)</span> <span class="text-[#d4af37] opacity-0 group-hover:opacity-100 transition">Pilih</span>
+                                </button>
+                            </div>
+
+                            <p class="text-sm font-bold text-rose-400 uppercase tracking-widest border-b border-white/10 pb-2 mt-6">Larangan Khusus Pria</p>
+                            <div class="grid grid-cols-2 gap-3">
+                                <button id="btn-kopiah" onclick="checkWrongIhram('kopiah', 'Pria dilarang memakai penutup kepala melekat (kopiah, topi)!')" class="bg-rose-950/30 border border-rose-900/50 hover:border-rose-500 text-slate-300 p-3 rounded-xl transition shadow-md text-sm text-left">
+                                    Kopiah / Topi
+                                </button>
+                                <button id="btn-kemeja" onclick="checkWrongIhram('kemeja', 'Pria dilarang memakai pakaian berjahit yang membentuk tubuh (kemeja, celana)!')" class="bg-rose-950/30 border border-rose-900/50 hover:border-rose-500 text-slate-300 p-3 rounded-xl transition shadow-md text-sm text-left">
+                                    Kemeja / Celana
+                                </button>
+                            </div>
+
+                            <!-- Notifikasi Game -->
+                            <div id="game-error" class="hidden mt-4 p-3 bg-rose-950/80 border border-rose-500 rounded-xl text-rose-200 text-sm font-medium flex items-center gap-2"></div>
                             
-                            <!-- Sunnah Sebelum Ihram -->
-                            <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border shadow-sm">
-                                <h3 class="font-serif text-xl font-bold dark:text-white mb-4" data-i18n="c2_sunnah_title">Sunnah Sebelum Berihram</h3>
-                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                                    <div class="bg-white dark:bg-luxury-800 p-4 rounded-xl border flex flex-col items-center text-center hover:border-amber-400 transition cursor-default">
-                                        <div class="text-3xl mb-2">✂️</div>
-                                        <p class="text-sm font-medium dark:text-slate-300" data-i18n="c2_sunnah_1">Memotong kuku, merapikan kumis, mencabut bulu.</p>
-                                    </div>
-                                    <div class="bg-white dark:bg-luxury-800 p-4 rounded-xl border flex flex-col items-center text-center hover:border-blue-400 transition cursor-default">
-                                        <div class="text-3xl mb-2">🚿</div>
-                                        <p class="text-sm font-medium dark:text-slate-300" data-i18n="c2_sunnah_2">Mandi besar (Ghusl) dengan niat mandi sunnah ihram.</p>
-                                    </div>
-                                    <div class="bg-white dark:bg-luxury-800 p-4 rounded-xl border flex flex-col items-center text-center hover:border-pink-400 transition cursor-default">
-                                        <div class="text-3xl mb-2">🧴</div>
-                                        <p class="text-sm font-medium dark:text-slate-300" data-i18n="c2_sunnah_3">Memakai wewangian di badan (bukan di pakaian ihram).</p>
-                                    </div>
+                            <div id="game-success" class="hidden mt-4 p-4 bg-gradient-to-r from-emerald-900 to-emerald-800 border border-emerald-500 rounded-xl text-emerald-100 shadow-[0_0_15px_rgba(16,185,129,0.3)]">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="text-2xl">✅</span>
+                                    <h4 class="font-bold text-lg">Alhamdulillah, Siap Berihram!</h4>
                                 </div>
-                            </div>
-
-                            <!-- GAME INTERAKTIF: Memasang Pakaian Ihram -->
-                            <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border shadow-sm overflow-hidden">
-                                <div class="flex justify-between items-center mb-4">
-                                    <h3 class="font-serif text-xl font-bold dark:text-white" data-i18n="c2_game_title">Simulasi Pakaian Ihram Laki-Laki</h3>
-                                    <button onclick="resetIhramGame()" class="text-xs bg-slate-200 dark:bg-luxury-700 hover:bg-slate-300 px-3 py-1 rounded-full font-bold transition">🔄 Reset</button>
-                                </div>
-                                <p class="text-sm text-slate-600 dark:text-slate-400 mb-6" data-i18n="c2_game_desc">Sentuh perlengkapan yang benar untuk memakaikannya ke karakter. Perlengkapan yang dilarang akan memunculkan peringatan.</p>
-                                
-                                <div class="flex flex-col md:flex-row gap-6">
-                                    <!-- Avatar Area (Elegan & Modern) -->
-                                    <div class="w-full md:w-1/3 flex justify-center items-center bg-gradient-to-b from-sky-50 to-white dark:from-sky-900/20 dark:to-luxury-800 rounded-2xl p-6 relative border border-sky-100 dark:border-luxury-700 min-h-[320px]">
-                                        <div class="relative w-40 h-[280px] mx-auto flex justify-center">
-                                            <!-- Karakter Dasar (Modern Faceless) -->
-                                            <!-- Kepala -->
-                                            <div class="absolute top-4 w-12 h-14 bg-[#e5c2a8] rounded-[2rem] shadow-sm z-10"></div>
-                                            <!-- Leher -->
-                                            <div class="absolute top-[3.8rem] w-4 h-6 bg-[#d4aa8c] rounded-b-md z-0"></div>
-                                            <!-- Badan (Lebih natural) -->
-                                            <div class="absolute top-[4.5rem] w-16 h-[100px] bg-[#e5c2a8] rounded-t-3xl rounded-b-xl z-0"></div>
-                                            <!-- Lengan Kiri -->
-                                            <div class="absolute top-[4.8rem] left-8 w-4 h-24 bg-[#e5c2a8] rounded-full rotate-[15deg] origin-top z-0"></div>
-                                            <!-- Lengan Kanan -->
-                                            <div class="absolute top-[4.8rem] right-8 w-4 h-24 bg-[#e5c2a8] rounded-full -rotate-[15deg] origin-top z-0"></div>
-                                            <!-- Kaki Kiri -->
-                                            <div class="absolute top-[10rem] left-[4.5rem] w-4.5 h-28 bg-[#d4aa8c] rounded-full z-0"></div>
-                                            <!-- Kaki Kanan -->
-                                            <div class="absolute top-[10rem] right-[4.5rem] w-4.5 h-28 bg-[#d4aa8c] rounded-full z-0"></div>
-                                            <!-- Telapak Kaki -->
-                                            <div class="absolute bottom-2 left-[4.2rem] w-6 h-3 bg-[#e5c2a8] rounded-full z-0"></div>
-                                            <div class="absolute bottom-2 right-[4.2rem] w-6 h-3 bg-[#e5c2a8] rounded-full z-0"></div>
-
-                                            <!-- Pakaian yang Dipasang (Transisi halus) -->
-                                            <div id="svg-izar" class="absolute top-[9.5rem] w-[75px] h-[100px] bg-white rounded-sm shadow-[0_4px_10px_rgba(0,0,0,0.1)] border border-slate-100 z-10 transition-all duration-500 opacity-0 scale-95 translate-y-4">
-                                                <div class="w-full h-full opacity-30 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0IiBoZWlnaHQ9IjEwMCI+PHBhdGggZD0iTTEgMHYxMDBNMCAwdjEwMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjAuMSIvPjwvc3ZnPg==')]"></div>
-                                            </div>
-                                            <div id="svg-sabuk" class="absolute top-[9.3rem] w-[78px] h-3 bg-slate-700 rounded-sm shadow-md z-20 transition-all duration-300 opacity-0">
-                                                <div class="absolute left-1/2 -translate-x-1/2 w-4 h-full bg-slate-400 rounded-sm"></div>
-                                            </div>
-                                            <div id="svg-rida" class="absolute top-[4.5rem] w-[85px] h-[95px] bg-white rounded-t-3xl shadow-[0_4px_15px_rgba(0,0,0,0.12)] border border-slate-100 z-30 transition-all duration-500 opacity-0 scale-95 translate-y-[-10px] origin-top" style="clip-path: polygon(0 0, 100% 20%, 100% 100%, 0 100%);">
-                                                <div class="w-full h-full opacity-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PHBhdGggZD0iTTAgMTBMMTAgMCIgc3Ryb2tlPSIjMDAwIiBzdHJva2Utd2lkdGg9IjAuMiIvPjwvc3ZnPg==')]"></div>
-                                            </div>
-                                            <div id="svg-sandal" class="absolute bottom-[0.4rem] left-[4.2rem] w-6 h-2 bg-amber-800 rounded-full z-10 transition-all duration-300 opacity-0 translate-y-2">
-                                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-4 border-2 border-amber-900 rounded-t-full -mt-2"></div>
-                                            </div>
-                                            <div id="svg-sandal2" class="absolute bottom-[0.4rem] right-[4.2rem] w-6 h-2 bg-amber-800 rounded-full z-10 transition-all duration-300 opacity-0 translate-y-2">
-                                                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-4 border-2 border-amber-900 rounded-t-full -mt-2"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Pilihan Item -->
-                                    <div class="w-full md:w-2/3 flex flex-col justify-center">
-                                        <div id="game-success" class="hidden mb-4 p-4 bg-emerald-100 text-emerald-800 border border-emerald-200 rounded-xl text-sm font-bold flex gap-3 items-center animate-pulse">
-                                            <span class="text-2xl">✅</span> <span data-i18n="c2_game_success">Pakaian ihram lengkap. Anda siap berniat di miqat.</span>
-                                        </div>
-                                        
-                                        <div class="grid grid-cols-2 gap-3">
-                                            <!-- Tombol Benar -->
-                                            <button onclick="toggleIhramItem('izar')" id="btn-izar" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-emerald-400 hover:shadow-md transition">Kain bawah (Izar)</button>
-                                            <button onclick="toggleIhramItem('rida')" id="btn-rida" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-emerald-400 hover:shadow-md transition">Kain atas (Rida')</button>
-                                            <button onclick="toggleIhramItem('sandal')" id="btn-sandal" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-emerald-400 hover:shadow-md transition">Sandal terbuka</button>
-                                            <button onclick="toggleIhramItem('sabuk')" id="btn-sabuk" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-emerald-400 hover:shadow-md transition">Sabuk/Tas pinggang</button>
-                                            
-                                            <!-- Tombol Salah -->
-                                            <button onclick="checkWrongIhram('peci', 'Kepala jemaah laki-laki harus dibiarkan terbuka, tidak boleh memakai peci atau penutup kepala yang melekat.')" id="btn-peci" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-rose-400 hover:shadow-md transition">Peci atau topi</button>
-                                            <button onclick="checkWrongIhram('kemeja', 'Kemeja adalah pakaian berjahit yang membentuk anggota badan. Laki-laki dilarang memakainya saat ihram.')" id="btn-kemeja" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-rose-400 hover:shadow-md transition">Kemeja</button>
-                                            <button onclick="checkWrongIhram('celana', 'Celana adalah pakaian berjahit yang membentuk tubuh, dilarang dipakai oleh laki-laki saat ihram.')" id="btn-celana" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-rose-400 hover:shadow-md transition">Celana panjang</button>
-                                            <button onclick="checkWrongIhram('kaoskaki', 'Sandal tidak boleh menutupi mata kaki, begitu pula kaos kaki dilarang dipakai oleh laki-laki saat ihram.')" id="btn-kaoskaki" class="p-3 md:p-4 border-2 border-slate-200 dark:border-luxury-700 rounded-xl bg-white dark:bg-luxury-800 text-sm font-bold text-slate-700 dark:text-slate-300 hover:border-rose-400 hover:shadow-md transition">Kaos kaki</button>
-                                        </div>
-
-                                        <div id="game-error" class="hidden mt-4 p-4 bg-rose-50 text-rose-800 border border-rose-200 rounded-xl text-sm font-medium flex gap-2"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- KANAN: YANG PERLU DIINGAT -->
-                        <div class="lg:col-span-1">
-                            <div class="bg-slate-50 dark:bg-luxury-900 p-6 rounded-2xl border shadow-sm sticky top-6">
-                                <h3 class="font-serif text-xl font-bold text-slate-900 dark:text-white mb-4 border-b pb-2" data-i18n="note_title">📌 Yang perlu diingat</h3>
-                                <ul class="space-y-4 text-sm text-slate-700 dark:text-slate-300">
-                                    <li class="flex gap-2"><span class="text-amber-600 mt-1">•</span><span data-i18n="c2_note_1">Mandi sunnah ihram, rapikan kuku dan rambut, pakai wewangian di badan sebelum niat.</span></li>
-                                    <li class="flex gap-2"><span class="text-amber-600 mt-1">•</span><span data-i18n="c2_note_2">Gunakan 2 helai kain tanpa jahitan (izar & rida'), kepala terbuka, sandal tidak menutupi mata kaki.</span></li>
-                                    <li class="flex gap-2"><span class="text-amber-600 mt-1">•</span><span data-i18n="c2_note_3">Jemaah yang terbang langsung ke Mekkah dianjurkan sudah berpakaian ihram sejak di pesawat. Niat diucapkan ketika pesawat melewati garis miqat.</span></li>
-                                </ul>
+                                <p class="text-sm font-light">Atribut wajib pria (Izar, Rida', dan Sandal terbuka) sudah lengkap dipakai.</p>
+                                <button onclick="resetIhramGame()" class="mt-3 text-emerald-300 text-xs font-bold uppercase tracking-widest hover:text-white transition">↺ Reset Penampilan</button>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- KUIS MINI CARD 2 -->
-                    <div class="mt-6 bg-gradient-to-br from-indigo-900 to-slate-800 rounded-3xl p-6 md:p-8 shadow-xl relative overflow-hidden border border-slate-600">
-                        <div class="flex justify-between items-end mb-6">
-                            <h3 class="text-2xl font-serif font-bold text-white">Kuis Persiapan Ihram</h3>
-                            <div class="flex gap-2 items-center">
-                                <button onclick="ulangiKuisMini2()" class="bg-white/20 hover:bg-white/30 text-white text-xs px-3 py-1 rounded-full transition">🔄 Ulangi Kuis</button>
-                                <p class="text-sm text-slate-300 bg-slate-900/50 px-3 py-1 rounded-full">Kartu <span id="qz2-curr">1</span> / 4</p>
-                            </div>
+                <!-- EVALUASI MINI: PERSIAPAN IHRAM (Desain Kaca Eksklusif) -->
+                <div class="bg-black/60 backdrop-blur-2xl border border-[#d4af37]/40 rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative overflow-hidden">
+                    
+                    <!-- Latar Ornamen -->
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                    <div class="flex flex-col md:flex-row justify-between items-center mb-8 border-b border-white/10 pb-6 relative z-10">
+                        <div>
+                            <h3 class="font-serif text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f3e5ab] to-[#d4af37] mb-2">Evaluasi Persiapan</h3>
+                            <p class="text-slate-400 font-light text-sm">Uji pemahaman Anda tentang tata cara Ihram.</p>
                         </div>
-                        <div id="qz2-card" class="bg-white rounded-2xl p-10 text-center shadow-lg border-4 border-transparent flex flex-col items-center justify-center min-h-[150px] transition-all">
-                            <h4 id="qz2-term" class="text-xl md:text-2xl font-bold text-slate-900 mb-2">Soal dimuat...</h4>
+                        <div class="text-[#d4af37] font-bold text-sm tracking-widest uppercase bg-[#d4af37]/10 px-4 py-2 rounded-full border border-[#d4af37]/30 mt-4 md:mt-0 shadow-inner">
+                            Soal <span id="qz2-curr">1</span> / 4
                         </div>
-                        <div id="qz2-feedback-container" class="hidden mt-4 bg-white/10 backdrop-blur-md rounded-xl p-4 shadow-sm text-sm text-white border border-white/20"><span id="qz2-feedback-text"></span></div>
-                        <div id="qz2-btn-container" class="mt-6 flex flex-wrap justify-center gap-4"></div>
-                        <div id="qz2-next-container" class="hidden mt-6 flex justify-center"><button onclick="nextMiniQuiz2()" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-3 px-10 rounded-xl shadow-md transition">Kartu berikutnya</button></div>
                     </div>
 
-                    <button onclick="showPage('page-miqat')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl mt-8 shadow-md hover:scale-[1.01] transition-transform">Lanjut ke Miqat dan Niat →</button>
-                </section>
+                    <!-- Area Kartu Kuis -->
+                    <div id="qz2-card" class="bg-white/5 border border-white/10 rounded-3xl p-8 md:p-12 text-center transition-all duration-300 flex flex-col items-center justify-center min-h-[200px] shadow-lg relative z-10">
+                        <h4 id="qz2-term" class="text-2xl md:text-3xl font-serif font-bold text-white mb-2 leading-relaxed">
+                            (Pertanyaan akan muncul di sini)
+                        </h4>
+                        <p class="text-slate-400 text-sm font-light tracking-wide mt-2">Pernyataan ini Benar atau Salah?</p>
+                    </div>
+
+                    <!-- Area Tombol Kuis -->
+                    <div id="qz2-btn-container" class="mt-8 flex justify-center gap-4 relative z-10">
+                        <button onclick="answerMiniQuiz2('true')" class="bg-white/10 hover:bg-[#d4af37] text-white hover:text-black border border-white/20 hover:border-[#d4af37] font-bold py-4 px-12 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] tracking-widest uppercase">Benar</button>
+                        <button onclick="answerMiniQuiz2('false')" class="bg-white/10 hover:bg-[#d4af37] text-white hover:text-black border border-white/20 hover:border-[#d4af37] font-bold py-4 px-12 rounded-xl transition-all shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] tracking-widest uppercase">Salah</button>
+                    </div>
+
+                    <!-- Area Feedback & Next -->
+                    <div id="qz2-feedback-container" class="hidden mt-8 text-center relative z-10">
+                        <p id="qz2-feedback-text" class="text-lg font-medium text-white mb-6 p-4 rounded-xl bg-black/40 border border-white/10 shadow-inner"></p>
+                    </div>
+                    <div id="qz2-next-container" class="hidden mt-4 flex justify-center relative z-10">
+                        <button onclick="nextMiniQuiz2()" class="bg-gradient-to-r from-[#d4af37] to-[#b38b22] text-[#0f1115] font-bold py-3 px-10 rounded-full shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-105 transition flex items-center gap-2">Lanjut <span class="text-xl">→</span></button>
+                    </div>
+
+                    <!-- Tombol Ulangi -->
+                    <div class="mt-8 text-center relative z-10">
+                        <button onclick="ulangiKuisMini2()" class="text-slate-500 hover:text-[#d4af37] text-xs font-bold tracking-widest uppercase transition-colors">↺ Ulangi Kuis</button>
+                    </div>
+                </div>
+
+                <!-- Tombol Navigasi Lanjut -->
+                <div class="mt-12 flex justify-end">
+                    <button onclick="showPage('page-miqat')" class="bg-gradient-to-r from-[#d4af37] to-[#b38b22] text-[#0f1115] font-bold text-lg px-8 py-4 rounded-full shadow-[0_0_25px_rgba(212,175,55,0.4)] hover:scale-105 transition-all flex items-center gap-3 group">
+                        Selanjutnya: Miqat & Niat <span class="group-hover:translate-x-1 transition-transform">→</span>
+                    </button>
+                </div>
+
+            </section>
 <!-- 3. MIQAT DAN NIAT -->
                 <section id="page-miqat" class="hidden bg-white dark:bg-luxury-800 p-6 md:p-8 rounded-3xl shadow-sm border border-slate-100 dark:border-luxury-900 fade-in">
                     <button onclick="showPage('page-modul-umrah')" class="text-slate-500 hover:text-slate-900 dark:hover:text-white font-bold mb-6 flex items-center gap-2 transition">← <span data-i18n="btn_back_map">Kembali ke Peta Modul</span></button>
