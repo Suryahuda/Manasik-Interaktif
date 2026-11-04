@@ -66,11 +66,6 @@
             </div>
             
             <div class="flex items-center gap-3">
-                <div class="flex bg-slate-100 dark:bg-luxury-900 p-1 rounded-xl border border-slate-200 dark:border-luxury-700 text-xs font-bold">
-                    <button onclick="changeLanguage('id')" id="lang-id" class="px-2.5 py-1 rounded-lg bg-white dark:bg-luxury-800 text-slate-900 dark:text-white shadow-sm transition">ID</button>
-                    <button onclick="changeLanguage('en')" id="lang-en" class="px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition">EN</button>
-                    <button onclick="changeLanguage('ar')" id="lang-ar" class="px-2.5 py-1 rounded-lg text-slate-500 hover:text-slate-900 dark:hover:text-white transition">AR</button>
-                </div>
                 <button id="btnDarkMode" class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-luxury-900 transition text-lg">☀️</button>
             </div>
         </header>
@@ -583,11 +578,21 @@
                                 </button>
                             </div>
                             <button id="btn-niat" onclick="niatSekarang()" class="bg-[#4caf50] hover:bg-[#43a047] text-white font-bold py-3 px-6 rounded-xl shadow-lg transition flex items-center gap-2">
-                                🤲 Niat di bandara
+                                🤲 Niat ihrom
                             </button>
                         </div>
                     </div>
-                    
+                    <div class="mt-6 mb-8 bg-amber-50 dark:bg-amber-900/20 border-l-4 border-amber-500 p-6 rounded-r-2xl shadow-sm flex flex-col md:flex-row gap-6 items-center">
+    <div class="w-24 h-24 shrink-0 bg-white dark:bg-luxury-800 rounded-full flex items-center justify-center shadow-md border-4 border-amber-100 dark:border-amber-900/50">
+        <span class="text-4xl text-amber-500">⚠️</span>
+    </div>
+    <div>
+        <h3 class="text-xl font-serif font-bold text-amber-800 dark:text-amber-500 mb-2 tracking-widest uppercase">Perhatian</h3>
+        <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+            Barang siapa melewati miqat dan belum berihram, maka wajib baginya kembali ke miqat untuk berihram dari sana. Jika ia tidak kembali dan justru berihram setelah melewati miqat, maka wajib baginya membayar dam, yaitu menyembelih seekor kambing di Makkah dan membagikannya kepada orang-orang miskin.
+        </p>
+    </div>
+</div>
                     <!-- Kotak Hasil Game -->
                     <div id="plane-result" class="hidden mb-10 p-4 rounded-xl border text-sm font-medium"></div>
 
@@ -663,7 +668,103 @@
                     </div>
 
                     <button onclick="showPage('page-larangan-ihram')" class="w-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold py-4 rounded-xl mt-8 shadow-md hover:scale-[1.01] transition-transform">Lanjut ke Larangan Ihram →</button>
-                </section>                <section id="page-larangan-ihram" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">4. Larangan Ihram</h2></section>
+                </section>                
+<section id="page-larangan-ihram" class="hidden bg-[#0f1115] relative overflow-hidden p-6 md:p-10 rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.3)] border border-[#d4af37]/30 fade-in text-white">
+    <!-- Gambar Latar Makkah dengan Blend Mode Mewah -->
+    <div class="absolute inset-0 z-0 opacity-20" style="background-image: url('https://images.unsplash.com/photo-1565552643954-14eb015975bb?q=80&w=1920&auto=format&fit=crop'); background-size: cover; background-position: center; mix-blend-mode: luminosity;"></div>
+    <div class="absolute inset-0 z-0 bg-gradient-to-b from-[#0f1115]/90 via-[#0f1115]/80 to-[#0f1115]"></div>
+
+    <div class="relative z-10">
+        <button onclick="showPage('page-miqat')" class="text-[#d4af37] hover:text-white font-bold mb-6 flex items-center gap-2 transition">← Kembali ke Miqat</button>
+        
+        <div class="text-center mb-10">
+            <h2 class="text-4xl md:text-5xl font-serif font-bold text-[#d4af37] mb-3 drop-shadow-lg">4. Larangan Ihram</h2>
+            <p class="text-slate-300 max-w-2xl mx-auto font-medium">Mahdzurat Al-Ihram adalah hal-hal yang dilarang karena ihram. Melanggarnya dapat membatalkan ibadah atau mewajibkan Dam (denda).</p>
+        </div>
+
+        <!-- Larangan Utama (3 Kotak Emas) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-[#d4af37]/40 text-center hover:bg-white/10 hover:border-[#d4af37] transition duration-300 shadow-lg">
+                <div class="text-5xl mb-4 drop-shadow-md">👕<span class="text-red-500 text-3xl font-bold absolute -translate-x-4 translate-y-3">✕</span></div>
+                <h4 class="font-bold text-lg text-[#f3e5ab] mb-2">Pakaian Berjahit (Laki-laki)</h4>
+                <p class="text-sm text-slate-300">Dilarang memakai kemeja, celana, pakaian dalam, atau pakaian yang menempel membentuk tubuh.</p>
+            </div>
+            
+            <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-[#d4af37]/40 text-center hover:bg-white/10 hover:border-[#d4af37] transition duration-300 shadow-lg">
+                <div class="text-5xl mb-4 drop-shadow-md">🧢<span class="text-red-500 text-3xl font-bold absolute -translate-x-4 translate-y-3">✕</span></div>
+                <h4 class="font-bold text-lg text-[#f3e5ab] mb-2">Menutup Kepala (Laki-laki)</h4>
+                <p class="text-sm text-slate-300">Dilarang memakai topi, peci, atau penutup kepala lainnya yang menempel langsung.</p>
+            </div>
+
+            <div class="bg-white/5 backdrop-blur-md p-6 rounded-2xl border border-[#d4af37]/40 text-center hover:bg-white/10 hover:border-[#d4af37] transition duration-300 shadow-lg">
+                <div class="text-5xl mb-4 drop-shadow-md">🧕<span class="text-red-500 text-3xl font-bold absolute -translate-x-4 translate-y-3">✕</span></div>
+                <h4 class="font-bold text-lg text-[#f3e5ab] mb-2">Wajah & Tangan (Wanita)</h4>
+                <p class="text-sm text-slate-300">Dilarang memakai cadar/niqab dan sarung tangan. (Boleh menutup wajah bila ada laki-laki bukan mahram lewat).</p>
+            </div>
+        </div>
+
+        <!-- Larangan Lainnya (List) -->
+        <div class="bg-[#181a20]/80 backdrop-blur-md p-6 md:p-8 rounded-2xl border border-[#d4af37]/20 mb-10 shadow-xl">
+            <h3 class="text-2xl font-serif font-bold text-[#d4af37] mb-6 border-b border-[#d4af37]/20 pb-3">Larangan Ihram Lainnya</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-y-8 gap-x-8">
+                <div class="flex items-start gap-4">
+                    <div class="text-2xl bg-[#0f1115] p-3 rounded-full border border-[#d4af37]/30 shadow-md">✂️</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Memotong Kuku & Rambut</h4>
+                        <p class="text-sm text-slate-400">Mencabut atau memotong bulu/rambut di seluruh badan dan memotong kuku.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-2xl bg-[#0f1115] p-3 rounded-full border border-[#d4af37]/30 shadow-md">🧴</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Memakai Wewangian</h4>
+                        <p class="text-sm text-slate-400">Memakai parfum di badan, pakaian, atau makanan setelah niat ihram.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-2xl bg-[#0f1115] p-3 rounded-full border border-[#d4af37]/30 shadow-md">🦌</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Membunuh Hewan Buruan</h4>
+                        <p class="text-sm text-slate-400">Berburu atau membunuh binatang darat. (Pohon di area Haram juga dilarang ditebang).</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-2xl bg-[#0f1115] p-3 rounded-full border border-[#d4af37]/30 shadow-md">💍</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Akad Nikah / Melamar</h4>
+                        <p class="text-sm text-slate-400">Melakukan akad nikah, menikahkan orang lain, atau melamar wanita.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-2xl bg-[#0f1115] p-3 rounded-full border border-red-500/50 shadow-[0_0_15px_rgba(239,68,68,0.3)]">👩‍❤️‍👨</div>
+                    <div>
+                        <h4 class="font-bold text-red-400 text-lg">Berhubungan Suami Istri</h4>
+                        <p class="text-sm text-slate-300"><span class="font-bold">Pelanggaran terberat (Jima').</span> Ibadah umrah batal, harus diulang, dan wajib membayar Dam seekor unta.</p>
+                    </div>
+                </div>
+                <div class="flex items-start gap-4">
+                    <div class="text-2xl bg-[#0f1115] p-3 rounded-full border border-[#d4af37]/30 shadow-md">🤬</div>
+                    <div>
+                        <h4 class="font-bold text-white text-lg">Rafats, Fusuq, Jidal</h4>
+                        <p class="text-sm text-slate-400">Berkata kotor/syahwat, berbuat fasik (maksiat), dan berbantah-bantahan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ketentuan Lupa / Tidak Tahu (Syafi'i) -->
+        <div class="bg-gradient-to-r from-blue-900/40 to-emerald-900/40 border-l-4 border-emerald-500 p-6 rounded-r-2xl shadow-lg relative overflow-hidden">
+            <div class="absolute -right-4 -top-4 text-8xl opacity-10">📖</div>
+            <h3 class="font-bold text-xl text-emerald-400 mb-2 font-serif">Keringanan (Mazhab Syafi'i)</h3>
+            <p class="text-sm text-slate-200 leading-relaxed font-medium relative z-10">
+                Bila melanggar larangan karena <span class="text-white font-bold bg-emerald-500/20 px-2 py-0.5 rounded">Lupa, Tidak Tahu (Jahil), atau Dipaksa</span> (misal: selesai mandi tidak sengaja memakai baju biasa/wangi-wangian), maka <b>tidak dikenai Dam</b>.<br><br>
+                Namun, segera lepaskan/hentikan pelanggaran saat teringat, dan bertanyalah kepada pembimbing muthawwif.
+            </p>
+        </div>
+        
+        <button onclick="showPage('page-masjidilharam')" class="w-full bg-gradient-to-r from-[#d4af37] to-[#b38b22] text-[#0f1115] font-bold text-lg py-5 rounded-xl mt-10 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:scale-[1.01] transition-transform">Lanjut ke Masjidil Haram →</button>
+    </div>
+</section>
                 <section id="page-masjidilharam" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">5. Masuk Masjidil Haram</h2></section>
                 <section id="page-tawaf" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">6. Tawaf</h2></section>
                 <section id="page-maqam-zamzam" class="hidden bg-white p-8 rounded-3xl shadow-sm border fade-in"><button onclick="showPage('page-modul-umrah')" class="text-slate-500 font-bold mb-6 flex gap-2">← Kembali</button><h2 class="text-3xl font-serif font-bold mb-2">7. Maqam Ibrahim & Zamzam</h2></section>
