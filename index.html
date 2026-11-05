@@ -18,6 +18,32 @@
         }
     </script>
 <style>
+/* ========================================================
+   TAMBAHAN CSS KHUSUS MODUL 6 THAWAF (MEWAH & AGAMIS)
+   ======================================================== */
+.tawaf-map-container { transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1); transform-origin: 80% 80%; }
+.zoom-hajar-aswad { transform: scale(1.8) translate(-15%, -15%); }
+.walker-ring { animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite; }
+.istilam-toast { animation: slideUpFade 0.4s ease-out forwards; }
+
+@keyframes slideUpFade {
+    0% { opacity: 0; transform: translate(-50%, 20px) scale(0.9); }
+    100% { opacity: 1; transform: translate(-50%, 0) scale(1); }
+}
+
+/* Modal Idhthiba' */
+.idhthiba-modal { backdrop-filter: blur(8px); animation: fadeIn 0.3s ease-out forwards; }
+.idhthiba-box { animation: scaleIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+@keyframes scaleIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+/* Custom Checkbox Mewah */
+.checkbox-mewah:checked { background-color: #d4af37; border-color: #d4af37; }
+.checkbox-mewah:checked::before {
+    content: "✓"; display: block; color: black; font-weight: bold; font-size: 12px; text-align: center; line-height: 16px;
+}
 /* Animasi Khusus Peta Thawaf & Game Modul 6 */
         .zoom-hajar-aswad { transform-origin: center right; transform: scale(1.5) translate(-10%, 10%); transition: transform 1.5s ease-in-out; }
         .zoom-reset { transform-origin: center; transform: scale(1) translate(0, 0); transition: transform 1s ease-in-out; }
@@ -1322,64 +1348,216 @@
 <!-- ========================================== -->
             <!-- MODUL 6: THAWAF UMRAH (Simulasi Interaktif) -->
             <!-- ========================================== -->
-            <section id="page-tawaf" class="max-w-6xl mx-auto pb-20 fade-in relative z-10 mt-6 md:mt-0">
+            <section id="page-tawaf" class="hidden max-w-7xl mx-auto pb-20 fade-in relative z-10 mt-6 md:mt-0">
                 
                 <!-- Header Section -->
-                <div class="mb-10 flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-6 gap-4">
+                <div class="mb-8 flex flex-col md:flex-row md:items-center justify-between border-b border-white/10 pb-6 gap-4">
                     <div>
                         <button onclick="showPage('page-masjidilharam')" class="text-[#d4af37] hover:text-[#f3e5ab] font-medium text-sm mb-3 flex items-center gap-2 transition">← Sebelumnya: Masuk Masjid</button>
                         <h2 class="text-3xl md:text-5xl font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-[#f3e5ab] to-[#d4af37] drop-shadow-md">
                             06. Thawaf Umrah
                         </h2>
                     </div>
-                    <div class="text-5xl md:text-6xl opacity-20 drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]">🔄</div>
+                    <div class="flex items-center gap-2 text-sm text-slate-400 bg-black/40 px-4 py-2 rounded-full border border-white/10">
+                        <span class="text-[#d4af37]">📍</span> Mataf, Masjidil Haram <span class="mx-2">|</span> <strong class="text-white">Rukun Umrah</strong>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                     
-                    <!-- KOLOM KIRI: TEORI & KONTROL -->
-                    <div class="lg:col-span-5 space-y-6">
+                    <!-- KOLOM KIRI: TEORI & MATERI -->
+                    <div class="lg:col-span-4 space-y-5 h-[650px] overflow-y-auto hide-scrollbar pr-2">
                         
-                        <!-- Box Panduan -->
-                        <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl relative overflow-hidden group">
-                            <div class="absolute -left-10 -top-10 w-32 h-32 bg-[#d4af37]/10 rounded-full blur-3xl transition-all"></div>
-                            
-                            <h3 class="font-serif text-xl text-[#d4af37] mb-3 flex items-center gap-2 relative z-10">
-                                <span>🕋</span> Mengenal Mataf
-                            </h3>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4 relative z-10">
-                                Inilah <strong>mataf</strong>, pelataran di sekeliling Ka’bah. Thawaf berarti mengelilingi Ka’bah tujuh kali, dengan Ka’bah selalu di sebelah kiri Anda.
+                        <!-- Box 1: Mengenal Mataf -->
+                        <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl">
+                            <h3 class="font-serif text-xl text-[#d4af37] mb-3 flex items-center gap-2"><span>🕋</span> Mengenal Mataf</h3>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">
+                                Inilah mataf, pelataran di sekeliling Ka’bah. Thawaf berarti mengelilingi Ka’bah tujuh kali, dengan Ka’bah selalu di sebelah kiri Anda.
                             </p>
+                            <div class="bg-emerald-900/20 border border-emerald-500/30 rounded-xl p-3 text-sm text-emerald-100 flex items-start gap-3">
+                                <span>💧</span>
+                                <div>Pastikan Anda <strong>suci dari hadas dan najis</strong> serta menutup aurat. Thawaf seperti sholat: Anda perlu berwudhu.</div>
+                            </div>
+                        </div>
+
+                        <!-- Box 2: Titik Mulai & Idhthiba' -->
+                        <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl">
+                            <h3 class="font-serif text-xl text-[#d4af37] mb-3 flex items-center gap-2"><span>🟢</span> Titik Mulai</h3>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">
+                                Thawaf dimulai dari sudut <strong>Hajar Aswad</strong>. Patokannya lampu hijau di dinding seberang yang sejajar dengan Hajar Aswad.
+                            </p>
+                            <button onclick="zoomToHajarAswad()" class="w-full mb-4 text-xs bg-white/5 hover:bg-[#d4af37]/20 border border-white/10 hover:border-[#d4af37]/50 text-[#f3e5ab] px-4 py-3 rounded-xl transition flex items-center justify-center gap-2 font-bold uppercase tracking-wider">
+                                🔍 Lihat Hajar Aswad di Peta
+                            </button>
+                            <div class="border-t border-white/10 pt-4 mt-2">
+                                <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">
+                                    Sebelum mulai, lakukan <strong>Idhthiba’</strong>: selempangkan kain atas di bawah ketiak kanan sehingga bahu kanan terbuka sampai tujuh putaran selesai.
+                                </p>
+                                <button onclick="bukaModalIdhthiba()" id="btn-buka-idhthiba" class="w-full bg-[#d4af37]/20 hover:bg-[#d4af37] border border-[#d4af37]/50 text-[#d4af37] hover:text-black font-bold py-3 rounded-xl transition-colors text-sm shadow-md">
+                                    👕 Mainkan Game Idhthiba'
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Box 3: Istilam & Doa Yamani -->
+                        <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl">
+                            <h3 class="font-serif text-xl text-[#d4af37] mb-3">Istilam & Doa</h3>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">
+                                Setiap kali sejajar Hajar Aswad: menghadap, mengangkat tangan kanan, lalu mengucapkan bacaan istilam.
+                            </p>
+                            <!-- Teks Istilam -->
+                            <div class="bg-[#0f1115] border border-white/5 rounded-xl p-4 mb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-bold text-amber-500 uppercase tracking-widest">Istilam</span>
+                                    <button onclick="putarSuaraDoa('istilam')" class="w-8 h-8 rounded-full bg-[#d4af37]/20 text-[#d4af37] flex items-center justify-center hover:bg-[#d4af37] hover:text-black transition">▶</button>
+                                </div>
+                                <p class="font-serif text-lg text-white text-right mb-1">بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ</p>
+                                <p class="text-xs text-slate-400 font-light">"Dengan nama Allah, dan Allah Mahabesar."</p>
+                            </div>
+
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">
+                                Berjalanlah tujuh putaran dengan menahan tombol Jalan atau tombol spasi. Setiap sejajar rukun yamani, bacalah doa ini:
+                            </p>
+                            <!-- Teks Doa Yamani -->
+                            <div id="box-teks-yamani" class="bg-emerald-900/10 border border-emerald-500/20 rounded-xl p-4 transition-all duration-300">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-xs font-bold text-emerald-500 uppercase tracking-widest">Doa Yamani</span>
+                                    <button onclick="putarSuaraDoa('yamani')" class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition">▶</button>
+                                </div>
+                                <p class="font-serif text-lg text-white text-right mb-2 leading-relaxed" dir="rtl">
+                                    رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ
+                                </p>
+                                <p class="text-xs text-slate-400 font-light italic">"Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat..."</p>
+                            </div>
+                        </div>
+
+                        <!-- Box 4: Selesai -->
+                        <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl">
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-3">
+                                <strong class="text-white">Raml:</strong> Pada 3 putaran pertama, laki-laki berjalan cepat dengan langkah pendek.
+                            </p>
+                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-3">
+                                <strong class="text-white">Selesai:</strong> Alhamdulillah, tujuh putaran selesai. Tutup kembali bahu kanan Anda, lalu menuju Maqam Ibrahim.
+                            </p>
+                            <div class="bg-rose-900/20 border border-rose-500/30 rounded-xl p-3 text-sm text-rose-200">
+                                <strong>Ingat:</strong> bila ragu sudah berapa putaran, pegang jumlah yang yakin, yaitu yang lebih sedikit.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- KOLOM KANAN: PETA INTERAKTIF -->
+                    <div class="lg:col-span-8 flex flex-col h-[650px] relative">
+                        
+                        <!-- Area Utama Peta -->
+                        <div class="bg-[#15171d] rounded-[2rem] border border-[#d4af37]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden relative flex-1 flex flex-col">
                             
-                            <div class="bg-amber-900/20 border border-amber-500/30 rounded-xl p-3 text-sm text-amber-100 flex items-start gap-3">
-                                <span>⚠️</span>
-                                <div>
-                                    Pastikan Anda <strong>suci dari hadas dan najis</strong> serta menutup aurat. Thawaf seperti sholat: Anda perlu berwudhu.
+                            <!-- Area Visual (SVG MAP) -->
+                            <div class="relative flex-1 bg-[#15171d] overflow-hidden flex items-center justify-center">
+                                <div id="peta-thawaf-container" class="tawaf-map-container w-full max-w-[800px] aspect-square relative">
+                                    <!-- Map SVG persis seperti referensi -->
+                                    <svg viewBox="0 0 500 500" class="absolute inset-0 w-full h-full drop-shadow-2xl">
+                                        <!-- Titik-titik latar (Mataf) -->
+                                        <g stroke="#ffffff" stroke-opacity="0.1" stroke-width="6" stroke-dasharray="1 30" fill="none" stroke-linecap="round">
+                                            <circle cx="250" cy="250" r="100"/>
+                                            <circle cx="250" cy="250" r="140"/>
+                                            <circle cx="250" cy="250" r="180"/>
+                                            <circle cx="250" cy="250" r="220"/>
+                                        </g>
+
+                                        <!-- Hijr Ismail (Atas/Top-Left di diagram) -->
+                                        <path d="M 210 210 A 40 40 0 0 1 290 210" fill="#f8fafc" fill-opacity="0.05" stroke="#cbd5e1" stroke-width="4"/>
+                                        <rect x="230" y="170" width="40" height="15" fill="#f8fafc" fill-opacity="0.1" rx="4"/>
+                                        <text x="250" y="180" fill="#94a3b8" font-size="8" font-weight="bold" text-anchor="middle">Hijr Ismail</text>
+
+                                        <!-- Maqam Ibrahim (Kanan) -->
+                                        <circle cx="340" cy="250" r="8" fill="#d4af37" stroke="#f3e5ab" stroke-width="1.5"/>
+                                        <text x="355" y="253" fill="#cbd5e1" font-size="10" font-weight="bold">Maqam Ibrahim</text>
+
+                                        <!-- Ka'bah Center -->
+                                        <rect x="210" y="210" width="80" height="80" fill="#0f1115" stroke="#d4af37" stroke-width="4"/>
+                                        <rect x="214" y="214" width="72" height="72" fill="none" stroke="#d4af37" stroke-opacity="0.5" stroke-width="1"/>
+                                        <text x="250" y="255" fill="#d4af37" font-size="14" font-weight="bold" font-serif="true" text-anchor="middle">Ka'bah</text>
+
+                                        <!-- Rukun & Hajar Aswad Labels -->
+                                        <text x="200" y="200" fill="#94a3b8" font-size="9" font-weight="bold" text-anchor="end">Rukun Syami</text>
+                                        <text x="300" y="200" fill="#94a3b8" font-size="9" font-weight="bold" text-anchor="start">Rukun Iraqi</text>
+                                        <text x="200" y="300" fill="#94a3b8" font-size="9" font-weight="bold" text-anchor="end">Rukun Yamani</text>
+                                        
+                                        <!-- Hajar Aswad Corner -->
+                                        <circle cx="290" cy="290" r="4" fill="#000" stroke="#fff" stroke-width="1.5"/>
+                                        <text x="300" y="300" fill="#f8fafc" font-size="10" font-weight="bold" text-anchor="start" class="drop-shadow-md">Hajar Aswad</text>
+
+                                        <!-- Garis Lampu Hijau (Start) -->
+                                        <line x1="290" y1="290" x2="450" y2="450" stroke="#10b981" stroke-width="1.5" stroke-dasharray="5 5" opacity="0.8"/>
+                                        <circle cx="450" cy="450" r="10" fill="#10b981" class="walker-ring opacity-50"/>
+                                        <circle cx="450" cy="450" r="5" fill="#10b981"/>
+                                        <text x="465" y="455" fill="#34d399" font-size="10" font-weight="bold">Lampu hijau</text>
+                                    </svg>
+
+                                    <!-- Karakter Walker (HTML base agar bisa ada Popup) -->
+                                    <!-- Posisi default di Lampu Hijau (radius 180, angle 45 deg) -->
+                                    <div id="tawaf-walker" class="absolute top-[50%] left-[50%] w-[30px] h-[30px] -mt-[15px] -ml-[15px] z-10 transition-transform duration-75" style="transform: translate(127.28px, 127.28px);">
+                                        <div class="relative w-full h-full flex items-center justify-center">
+                                            <!-- Ring Luar -->
+                                            <div class="absolute inset-0 border-2 border-[#10b981] rounded-full opacity-60"></div>
+                                            <!-- Ring Putih -->
+                                            <div class="absolute w-5 h-5 bg-white rounded-full shadow-lg"></div>
+                                            <!-- Titik Hijau -->
+                                            <div class="absolute w-2.5 h-2.5 bg-[#10b981] rounded-full"></div>
+                                            <!-- Label Anda -->
+                                            <span class="absolute -top-5 text-[10px] font-bold text-white bg-black/50 px-2 py-0.5 rounded-md">Anda</span>
+                                        </div>
+
+                                        <!-- Toast Istilam Pop-up di Walker -->
+                                        <div id="toast-istilam" class="istilam-toast hidden absolute bottom-10 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur-md border border-[#d4af37]/50 text-white px-4 py-2 rounded-xl flex-col items-center shadow-2xl whitespace-nowrap z-30">
+                                            <div class="text-2xl mb-1">✋</div>
+                                            <h4 class="font-bold text-[#d4af37] text-xs">Bismillahi wallahu akbar</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Panel Kontrol Bawah -->
+                            <div class="bg-[#0b0c10] p-4 md:px-6 md:py-5 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 z-20">
+                                
+                                <!-- Status Putaran -->
+                                <div class="flex flex-col gap-1 w-full md:w-auto">
+                                    <span class="text-xs font-bold text-slate-400 uppercase tracking-widest" id="status-tujuan">Menuju Hajar Aswad</span>
+                                    <div class="flex gap-1.5" id="lap-indicators">
+                                        <div class="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">1</div>
+                                        <div class="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">2</div>
+                                        <div class="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">3</div>
+                                        <div class="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">4</div>
+                                        <div class="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">5</div>
+                                        <div class="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">6</div>
+                                        <div class="w-7 h-7 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">7</div>
+                                    </div>
+                                </div>
+
+                                <!-- Tombol Aksi -->
+                                <div class="flex flex-wrap items-center gap-3">
+                                    <button id="btn-walk" class="bg-slate-700 hover:bg-slate-600 text-white px-5 py-3 rounded-xl text-sm font-bold transition shadow-lg flex items-center gap-2 active:scale-95 disabled:opacity-50 select-none">
+                                        <span>🚶</span> Tahan untuk berjalan
+                                    </button>
+                                    
+                                    <button id="btn-istilam" onclick="lakukanIstilam()" class="bg-black/50 border border-white/10 text-slate-500 px-5 py-3 rounded-xl text-sm font-bold transition flex items-center gap-2 disabled:cursor-not-allowed">
+                                        <span class="text-lg">✋</span> Istilam
+                                    </button>
+
+                                    <label class="flex items-center gap-2 text-sm font-medium text-slate-300 cursor-pointer pl-2">
+                                        <input type="checkbox" id="cb-auto-walk" class="checkbox-mewah appearance-none w-5 h-5 border-2 border-slate-500 rounded bg-black/50 transition-colors cursor-pointer">
+                                        Jalan otomatis
+                                    </label>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Box Titik Mulai & Idhthiba' -->
-                        <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-                            <h3 class="font-serif text-xl text-[#d4af37] mb-3 relative z-10">
-                                Persiapan Mulai
-                            </h3>
-                            <p class="text-slate-300 font-light text-sm leading-relaxed mb-4 relative z-10" id="teks-titik-mulai">
-                                Thawaf dimulai dari sudut <strong>Hajar Aswad</strong>. Patokannya adalah lampu hijau di dinding seberang yang sejajar dengan Hajar Aswad.
-                            </p>
-                            
-                            <button onclick="zoomToHajarAswad()" class="mb-5 text-xs bg-white/10 hover:bg-[#d4af37]/20 border border-white/20 text-[#f3e5ab] px-3 py-1.5 rounded-lg transition flex items-center gap-2">
-                                <span>🔍</span> Tunjukkan Hajar Aswad
-                            </button>
-
-                            <div class="border-t border-white/10 pt-4 mt-2">
-                                <p class="text-slate-300 font-light text-sm leading-relaxed mb-4">
-                                    Sebelum mulai, lakukan <strong>Idhthiba’</strong> (khusus laki-laki): selempangkan kain atas di bawah ketiak kanan sehingga bahu kanan terbuka, dipertahankan sampai 7 putaran selesai.
-                                </p>
-                                
-                                <!-- Game Idhthiba Mini -->
-                                <div class="bg-[#0f1115] border border-white/5 rounded-xl p-4 flex flex-col items-center">
-                                    <div id="mannequin" class="mannequin-container mb-4">
+                        <!-- MODAL IDHTHIBA' (Pop-up di atas peta) -->
+                        <div id="modal-idhthiba" class="idhthiba-modal hidden absolute inset-0 z-50 flex items-center justify-center bg-black/70 rounded-[2rem]">
+                            <div class="idhthiba-box bg-white text-center p-6 md:p-8 rounded-3xl w-[85%] max-w-sm shadow-2xl relative">
+                                <div class="mb-4 flex justify-center">
+                                    <!-- Manekin Interaktif -->
+                                    <div id="game-mannequin" class="mannequin-container">
                                         <div class="m-head"></div>
                                         <div class="m-body"></div>
                                         <div class="m-arm-l"></div>
@@ -1388,121 +1566,19 @@
                                         <div class="m-leg-r"></div>
                                         <div class="ihram-rida"></div>
                                     </div>
-                                    <button onclick="toggleIdhthiba()" id="btn-idhthiba" class="w-full bg-[#d4af37]/20 hover:bg-[#d4af37] border border-[#d4af37]/50 text-[#d4af37] hover:text-black font-bold py-2 rounded-lg transition-colors text-sm">
-                                        Lakukan Idhthiba'
-                                    </button>
                                 </div>
+                                <p class="text-slate-700 font-medium text-sm mb-6 px-4">
+                                    Selempangkan kain atas di bawah ketiak kanan.
+                                </p>
+                                <button onclick="toggleIdhthibaGame()" id="btn-toggle-idhthiba" class="w-full bg-[#10b981] hover:bg-[#059669] text-white font-bold py-3.5 rounded-xl transition-colors shadow-lg text-lg tracking-wide mb-3">
+                                    Idhthiba'
+                                </button>
+                                <button onclick="tutupModalIdhthiba()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-3 rounded-xl transition-colors text-sm hidden" id="btn-tutup-idhthiba">
+                                    Siap Thawaf
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Doa Rukun Yamani - Hajar Aswad -->
-                        <div class="bg-gradient-to-r from-emerald-900/30 to-black/40 border border-emerald-500/30 rounded-2xl p-6 shadow-xl relative overflow-hidden" id="box-doa-yamani">
-                            <div class="flex justify-between items-start mb-2">
-                                <h3 class="font-serif text-lg text-emerald-400">Doa Rukun Yamani - Hajar Aswad</h3>
-                                <button onclick="putarSuaraDoa('yamani')" class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center hover:bg-emerald-500 hover:text-white transition">▶</button>
-                            </div>
-                            <p class="font-serif text-xl text-white text-right mb-2 leading-loose" dir="rtl">
-                                رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ
-                            </p>
-                            <p class="text-xs text-slate-400 font-light italic">"Ya Tuhan kami, berilah kami kebaikan di dunia dan kebaikan di akhirat, dan lindungilah kami dari azab neraka."</p>
-                        </div>
-                        
-                        <!-- Panel Info Raml & Selesai -->
-                        <div class="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-6 shadow-xl relative overflow-hidden">
-                             <ul class="text-sm text-slate-300 space-y-3 font-light">
-                                 <li><strong class="text-white">Raml:</strong> Pada 3 putaran pertama, disunnahkan jalan cepat dengan langkah pendek (khusus laki-laki).</li>
-                                 <li><strong class="text-white">Selesai:</strong> Tutup kembali bahu kanan, lalu menuju Maqam Ibrahim. Bila ragu jumlah putaran, ambil yang paling sedikit (yakinkan).</li>
-                             </ul>
-                        </div>
-
-                    </div>
-
-                    <!-- KOLOM KANAN: PETA INTERAKTIF -->
-                    <div class="lg:col-span-7 flex flex-col h-full">
-                        
-                        <div class="bg-[#1c1f26] rounded-[2rem] border border-[#d4af37]/30 shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden relative flex-1 flex flex-col min-h-[500px]">
-                            
-                            <!-- Area Visual Peta Mataf -->
-                            <div class="relative flex-1 bg-gradient-to-br from-[#1c1f26] to-[#0f1115] overflow-hidden flex items-center justify-center p-4">
-                                <!-- Lingkaran Latar Belakang (Mataf) -->
-                                <div id="map-mataf" class="relative w-full max-w-[500px] aspect-square rounded-full bg-slate-100/5 border border-white/10 shadow-inner flex items-center justify-center transition-all">
-                                    
-                                    <!-- Garis Start Hijau (Sejajar Hajar Aswad) -->
-                                    <div class="absolute w-1/2 h-1 bg-emerald-500/40 right-0 top-1/2 origin-left rotate-45 transform"></div>
-                                    <div class="absolute w-3 h-3 bg-emerald-500 rounded-full right-[-5px] top-[85%] shadow-[0_0_15px_rgba(16,185,129,0.8)]"></div>
-                                    <span class="absolute right-[-60px] top-[88%] text-xs text-emerald-400 font-bold">Lampu Hijau</span>
-
-                                    <!-- Label Rukun-rukun -->
-                                    <div class="absolute w-full h-full pointer-events-none">
-                                        <span class="absolute top-[25%] left-[25%] text-[10px] text-slate-400 font-bold">Rukun Syami</span>
-                                        <span class="absolute top-[25%] right-[25%] text-[10px] text-slate-400 font-bold">Rukun Iraqi</span>
-                                        <span class="absolute bottom-[35%] left-[25%] text-[10px] text-slate-400 font-bold">Rukun Yamani</span>
-                                    </div>
-
-                                    <!-- Hijr Ismail -->
-                                    <div class="absolute w-[120px] h-[60px] border-t-[8px] border-l-[8px] border-r-[8px] border-slate-300 rounded-t-full top-[30%] opacity-80"></div>
-                                    <span class="absolute top-[28%] text-[9px] text-slate-300 font-bold">Hijr Ismail</span>
-
-                                    <!-- Maqam Ibrahim -->
-                                    <div class="absolute w-4 h-4 bg-amber-600/80 rounded-full right-[35%] top-[45%] shadow-[0_0_10px_rgba(216,180,254,0.5)] border border-amber-300"></div>
-                                    <span class="absolute right-[18%] top-[45%] text-[9px] text-amber-200 font-bold">Maqam Ibrahim</span>
-
-                                    <!-- Ka'bah Center -->
-                                    <div class="absolute w-24 h-28 bg-[#18181b] border-2 border-[#d4af37] flex items-center justify-center shadow-2xl z-10 z-index-10 relative">
-                                        <!-- Kiswah Pattern -->
-                                        <div class="absolute top-4 w-full h-[2px] bg-[#d4af37]/80"></div>
-                                        <div class="absolute top-8 w-full h-[6px] bg-[#d4af37]/90 text-center text-[4px] leading-tight overflow-hidden text-black font-arabic">سبحان الله</div>
-                                        <span class="font-serif font-bold text-[#d4af37] text-lg tracking-wider">Ka'bah</span>
-                                        
-                                        <!-- Hajar Aswad (Sudut Kanan Bawah) -->
-                                        <div id="hajar-aswad-point" class="absolute -right-2 -bottom-2 w-4 h-4 bg-black border border-white rounded-full flex items-center justify-center z-20">
-                                            <div class="w-2 h-2 bg-slate-400 rounded-full"></div>
-                                        </div>
-                                        <span class="absolute -right-20 -bottom-4 text-[10px] text-white font-bold drop-shadow-md">Hajar Aswad</span>
-                                    </div>
-
-                                    <!-- Jalur Thawaf dan User (Walker) -->
-                                    <div class="orbit-container"></div>
-                                    <div id="user-walker" class="walker" style="transform: rotate(45deg) translateX(170px);">
-                                        <div class="pulse-ring"></div>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <!-- Panel Kontrol Game Bawah -->
-                            <div class="bg-[#12141a] p-4 md:p-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
-                                
-                                <!-- Counter Putaran -->
-                                <div class="flex gap-1.5">
-                                    <div id="lap-1" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">1</div>
-                                    <div id="lap-2" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">2</div>
-                                    <div id="lap-3" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">3</div>
-                                    <div id="lap-4" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">4</div>
-                                    <div id="lap-5" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">5</div>
-                                    <div id="lap-6" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">6</div>
-                                    <div id="lap-7" class="w-8 h-8 rounded bg-white/10 flex items-center justify-center text-xs font-bold text-slate-500 border border-white/5">7</div>
-                                </div>
-
-                                <!-- Tombol Aksi -->
-                                <div class="flex flex-wrap justify-center items-center gap-3">
-                                    <button id="btn-istilam" onclick="lakukanIstilam()" class="bg-black/50 hover:bg-[#d4af37]/20 border border-white/20 hover:border-[#d4af37] text-white px-5 py-2.5 rounded-lg text-sm font-bold transition flex items-center gap-2 group disabled:opacity-30 disabled:cursor-not-allowed">
-                                        <span class="text-lg group-hover:scale-110 transition">✋</span> Istilam
-                                    </button>
-                                    
-                                    <button id="btn-walk" class="bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-500 hover:to-blue-700 text-white px-6 py-2.5 rounded-lg text-sm font-bold transition shadow-lg flex items-center gap-2 active:scale-95 disabled:opacity-50">
-                                        <span>🚶</span> Tahan untuk Jalan
-                                    </button>
-                                </div>
-                            </div>
-                            
-                            <!-- Notifikasi Pop-up di Peta -->
-                            <div id="toast-istilam" class="absolute top-1/4 left-1/2 -translate-x-1/2 bg-black/80 backdrop-blur border border-[#d4af37]/50 text-white px-6 py-4 rounded-xl text-center hidden flex-col items-center shadow-2xl z-30">
-                                <h4 class="font-bold text-[#d4af37] mb-1">Bismillahi Allahu Akbar</h4>
-                                <p class="text-xs text-slate-300">Menghadap Hajar Aswad & angkat tangan kanan.</p>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
                 
@@ -1574,141 +1650,232 @@
                 window.speechSynthesis.speak(suara);
             }
         }
-    // --- LOGIKA GAME THAWAF MODUL 6 ---
-        let isIdhthiba = false;
-        function toggleIdhthiba() {
-            const manekin = document.getElementById('mannequin');
-            const btn = document.getElementById('btn-idhthiba');
-            isIdhthiba = !isIdhthiba;
-            if (isIdhthiba) {
-                manekin.classList.add('is-idhthiba');
-                btn.innerHTML = "✓ Idhthiba' Aktif";
-                btn.classList.remove('bg-[#d4af37]/20', 'text-[#d4af37]');
-                btn.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border-emerald-500/50');
-            } else {
-                manekin.classList.remove('is-idhthiba');
-                btn.innerHTML = "Lakukan Idhthiba'";
-                btn.classList.remove('bg-emerald-500/20', 'text-emerald-400', 'border-emerald-500/50');
-                btn.classList.add('bg-[#d4af37]/20', 'text-[#d4af37]');
-            }
-        }
+   // ============================================
+// LOGIKA GAME THAWAF MODUL 6 (PREMIUM)
+// ============================================
 
-        function zoomToHajarAswad() {
-            const map = document.getElementById('map-mataf');
-            if (map.classList.contains('zoom-hajar-aswad')) {
-                map.classList.remove('zoom-hajar-aswad');
-                map.classList.add('zoom-reset');
-                setTimeout(() => map.classList.remove('zoom-reset'), 1000);
-            } else {
-                map.classList.add('zoom-hajar-aswad');
-            }
-        }
+// --- 1. Fitur Idhthiba Modal ---
+let isIdhthibaGame = false;
+window.bukaModalIdhthiba = function() {
+    document.getElementById('modal-idhthiba').classList.remove('hidden');
+    document.getElementById('modal-idhthiba').classList.add('flex');
+}
+window.tutupModalIdhthiba = function() {
+    document.getElementById('modal-idhthiba').classList.remove('flex');
+    document.getElementById('modal-idhthiba').classList.add('hidden');
+    // Jika sudah idhthiba, ubah tombol di materi kiri
+    if(isIdhthibaGame) {
+        let btnLuar = document.getElementById('btn-buka-idhthiba');
+        btnLuar.innerHTML = "✓ Idhthiba' Selesai";
+        btnLuar.classList.replace('bg-[#d4af37]/20', 'bg-emerald-500/20');
+        btnLuar.classList.replace('text-[#d4af37]', 'text-emerald-400');
+        btnLuar.classList.replace('border-[#d4af37]/50', 'border-emerald-500/50');
+    }
+}
+window.toggleIdhthibaGame = function() {
+    isIdhthibaGame = true;
+    document.getElementById('game-mannequin').classList.add('is-idhthiba');
+    document.getElementById('btn-toggle-idhthiba').innerHTML = "✓ Selesai";
+    document.getElementById('btn-toggle-idhthiba').classList.replace('bg-[#10b981]', 'bg-slate-300');
+    document.getElementById('btn-toggle-idhthiba').classList.replace('hover:bg-[#059669]', 'hover:bg-slate-400');
+    document.getElementById('btn-toggle-idhthiba').disabled = true;
+    document.getElementById('btn-tutup-idhthiba').classList.remove('hidden');
+}
 
-        const walker = document.getElementById('user-walker');
-        const btnWalk = document.getElementById('btn-walk');
-        const btnIstilam = document.getElementById('btn-istilam');
-        const boxDoaYamani = document.getElementById('box-doa-yamani');
-        const radius = 170; 
-        let angle = 45; 
-        let lap = 0;
-        let isWalking = false;
-        let walkInterval;
+// --- 2. Fitur Zoom Hajar Aswad ---
+window.zoomToHajarAswad = function() {
+    const map = document.getElementById('peta-thawaf-container');
+    if (map.classList.contains('zoom-hajar-aswad')) {
+        map.classList.remove('zoom-hajar-aswad');
+    } else {
+        map.classList.add('zoom-hajar-aswad');
+        // Auto reset setelah 3 detik
+        setTimeout(() => map.classList.remove('zoom-hajar-aswad'), 3000);
+    }
+}
+
+// --- 3. Logika Jalan Thawaf & Posisi Peta ---
+const walker = document.getElementById('tawaf-walker');
+const btnWalk = document.getElementById('btn-walk');
+const btnIstilam = document.getElementById('btn-istilam');
+const cbAutoWalk = document.getElementById('cb-auto-walk');
+const statusTujuan = document.getElementById('status-tujuan');
+const boxYamani = document.getElementById('box-teks-yamani');
+
+const radiusPath = 180; // Sesuai ring ke-3 pada SVG
+let totalDegrees = 0;   // Akumulasi derajat putaran
+let lapCount = 0;
+let isWalking = false;
+let walkInterval;
+
+// Posisi awal di Hajar Aswad (45 Derajat dari pusat SVG karena Y ke bawah, X ke kanan)
+// Rumus SVG X,Y : X = r * cos(a), Y = r * sin(a)
+function updateWalkerPosition() {
+    if(!walker) return;
+    
+    // Thawaf berlawanan arah jarum jam. Dalam SVG, berarti sudut ber-KURANG.
+    let currentAngle = 45 - totalDegrees; 
+    let rad = currentAngle * (Math.PI / 180);
+    let x = radiusPath * Math.cos(rad);
+    let y = radiusPath * Math.sin(rad);
+    
+    // Translate ke posisi SVG map
+    walker.style.transform = `translate(${x}px, ${y}px)`;
+
+    // Normalisasi sudut 0-360 untuk deteksi Rukun
+    let normalizedAngle = currentAngle % 360;
+    if (normalizedAngle < 0) normalizedAngle += 360;
+
+    // --- DETEKSI ZONA YAMANI (Antara Yamani 135 deg hingga Hajar Aswad 45 deg) ---
+    // Karena kita jalan mundur, range-nya 135 menurun ke 45.
+    if (normalizedAngle <= 135 && normalizedAngle >= 45) {
+        statusTujuan.innerText = "Membaca Doa Yamani";
+        boxYamani.classList.add('shadow-[0_0_20px_rgba(16,185,129,0.4)]', 'border-emerald-400');
+    } else {
+        boxYamani.classList.remove('shadow-[0_0_20px_rgba(16,185,129,0.4)]', 'border-emerald-400');
+    }
+
+    // --- DETEKSI ZONA HAJAR ASWAD / ISTILAM (Sudut 45 deg +/- 10 deg) ---
+    if (normalizedAngle <= 55 && normalizedAngle >= 35) {
+        btnIstilam.disabled = false;
+        btnIstilam.classList.remove('bg-black/50', 'border-white/10', 'text-slate-500');
+        btnIstilam.classList.add('bg-[#d4af37]/20', 'border-[#d4af37]', 'text-[#d4af37]', 'animate-pulse');
+        if (normalizedAngle > 45) {
+            statusTujuan.innerText = "Lakukan Istilam";
+        }
+    } else {
+        btnIstilam.disabled = true;
+        btnIstilam.classList.add('bg-black/50', 'border-white/10', 'text-slate-500');
+        btnIstilam.classList.remove('bg-[#d4af37]/20', 'border-[#d4af37]', 'text-[#d4af37]', 'animate-pulse');
         
-        function updateWalkerPosition() {
-            if(!walker) return; // Mencegah error jika belum buka halaman
-            const rad = angle * (Math.PI / 180);
-            const x = radius * Math.cos(rad);
-            const y = radius * Math.sin(rad);
-            walker.style.transform = `translate(${x}px, ${y}px)`;
-
-            let currentAngle = angle % 360;
-            if (currentAngle < 0) currentAngle += 360;
-
-            if (currentAngle >= 35 && currentAngle <= 55) {
-                btnIstilam.disabled = false;
-                btnIstilam.classList.add('animate-pulse', 'border-[#d4af37]', 'bg-[#d4af37]/20');
-            } else {
-                btnIstilam.disabled = true;
-                btnIstilam.classList.remove('animate-pulse', 'border-[#d4af37]', 'bg-[#d4af37]/20');
-            }
-
-            if (currentAngle <= 135 && currentAngle >= 45) {
-                boxDoaYamani.classList.add('shadow-[0_0_20px_rgba(16,185,129,0.4)]', 'border-emerald-400');
-            } else {
-                boxDoaYamani.classList.remove('shadow-[0_0_20px_rgba(16,185,129,0.4)]', 'border-emerald-400');
-            }
+        if (normalizedAngle > 135 && normalizedAngle <= 225) {
+            statusTujuan.innerText = "Menuju Rukun Syami & Iraqi";
+        } else if (normalizedAngle > 225 && normalizedAngle <= 315) {
+            statusTujuan.innerText = "Melewati Hijr Ismail";
+        } else if (normalizedAngle > 315 || normalizedAngle < 35) {
+            statusTujuan.innerText = "Menuju Rukun Yamani";
         }
+    }
+}
 
-        const startWalk = () => {
-            if(lap >= 7) return; 
+// Fungsi Berjalan
+const walkStep = () => {
+    if(lapCount >= 7) return stopWalk();
+    
+    // Kecepatan Raml (putaran 1-3 lebih cepat)
+    let speed = (lapCount < 3) ? 1.5 : 1.0;
+    totalDegrees += speed;
+    
+    // Cek penambahan putaran (Setiap kelipatan 360 derajat)
+    let currentLapCalc = Math.floor(totalDegrees / 360);
+    if(currentLapCalc > lapCount && currentLapCalc <= 7) {
+        lapCount = currentLapCalc;
+        updateLapUI(lapCount);
+        if(lapCount === 7) {
+            stopWalk();
+            alertSelesaiThawaf();
+        }
+    }
+    updateWalkerPosition();
+}
+
+const startWalk = () => {
+    if(lapCount >= 7 || isWalking) return;
+    isWalking = true;
+    btnWalk.classList.replace('bg-slate-700', 'bg-blue-600');
+    btnWalk.classList.add('scale-95');
+    walkInterval = setInterval(walkStep, 25);
+};
+
+const stopWalk = () => {
+    if(!isWalking || cbAutoWalk.checked) return;
+    isWalking = false;
+    btnWalk.classList.replace('bg-blue-600', 'bg-slate-700');
+    btnWalk.classList.remove('scale-95');
+    clearInterval(walkInterval);
+};
+
+// Event Listeners Tombol Tahan Jalan
+if(btnWalk) {
+    btnWalk.addEventListener('mousedown', startWalk);
+    btnWalk.addEventListener('mouseup', stopWalk);
+    btnWalk.addEventListener('mouseleave', stopWalk);
+    btnWalk.addEventListener('touchstart', (e) => { e.preventDefault(); startWalk(); });
+    btnWalk.addEventListener('touchend', (e) => { e.preventDefault(); stopWalk(); });
+}
+
+// Event Keyboard Spasi
+window.addEventListener('keydown', (e) => {
+    if(e.code === 'Space' && !isWalking && !cbAutoWalk.checked && document.getElementById('page-tawaf').classList.contains('hidden') === false) {
+        e.preventDefault();
+        startWalk();
+    }
+});
+window.addEventListener('keyup', (e) => {
+    if(e.code === 'Space' && document.getElementById('page-tawaf').classList.contains('hidden') === false) {
+        stopWalk();
+    }
+});
+
+// Event Jalan Otomatis
+if(cbAutoWalk) {
+    cbAutoWalk.addEventListener('change', (e) => {
+        if(e.target.checked) {
             isWalking = true;
-            btnWalk.classList.add('scale-95', 'opacity-80');
-            let speed = (lap < 3) ? 1.2 : 0.8;
-
-            walkInterval = setInterval(() => {
-                angle -= speed; 
-                updateWalkerPosition();
-                let expectedAngle = 45 - ((lap + 1) * 360);
-                if (angle <= expectedAngle) {
-                    lap++;
-                    updateLapUI(lap);
-                    if(lap >= 7) {
-                        stopWalk();
-                        alertSelesai();
-                    }
-                }
-            }, 20);
-        };
-
-        const stopWalk = () => {
-            isWalking = false;
-            btnWalk.classList.remove('scale-95', 'opacity-80');
+            btnWalk.classList.replace('bg-slate-700', 'bg-emerald-600');
+            btnWalk.innerHTML = "<span>🤖</span> Jalan Otomatis Aktif";
             clearInterval(walkInterval);
-        };
-
-        // Menunda binding event sampai halaman dimuat penuh (mencegah error tombol null)
-        setTimeout(() => {
-            if(btnWalk) {
-                btnWalk.addEventListener('mousedown', startWalk);
-                btnWalk.addEventListener('mouseup', stopWalk);
-                btnWalk.addEventListener('mouseleave', stopWalk);
-                btnWalk.addEventListener('touchstart', (e) => { e.preventDefault(); startWalk(); });
-                btnWalk.addEventListener('touchend', (e) => { e.preventDefault(); stopWalk(); });
-                updateWalkerPosition();
-            }
-        }, 1000);
-
-        function updateLapUI(currentLap) {
-            if(currentLap > 0 && currentLap <= 7) {
-                const el = document.getElementById(`lap-${currentLap}`);
-                if(el) {
-                    el.classList.remove('bg-white/10', 'text-slate-500');
-                    el.classList.add('bg-[#d4af37]', 'text-black');
-                }
-            }
+            walkInterval = setInterval(walkStep, 25);
+        } else {
+            btnWalk.classList.replace('bg-emerald-600', 'bg-slate-700');
+            btnWalk.innerHTML = "<span>🚶</span> Tahan untuk berjalan";
+            isWalking = false;
+            clearInterval(walkInterval);
         }
+    });
+}
 
-        function lakukanIstilam() {
-            if(btnIstilam.disabled) return;
-            walker.classList.add('istilam-effect');
-            setTimeout(() => walker.classList.remove('istilam-effect'), 1000);
-            putarSuaraDoa('istilam');
-            const toast = document.getElementById('toast-istilam');
-            toast.style.display = 'flex';
-            setTimeout(() => toast.style.display = 'none', 2000);
+function updateLapUI(lap) {
+    const indicators = document.getElementById('lap-indicators').children;
+    for(let i=0; i<7; i++) {
+        if(i < lap) {
+            indicators[i].className = "w-7 h-7 rounded bg-[#d4af37] flex items-center justify-center text-xs font-bold text-black border border-[#d4af37]";
         }
+    }
+}
 
-        function alertSelesai() {
-            btnWalk.innerHTML = "✅ Thawaf Selesai";
-            btnWalk.disabled = true;
-            btnWalk.classList.replace('from-blue-600', 'from-emerald-600');
-            btnWalk.classList.replace('to-blue-800', 'to-emerald-800');
-            
-            setTimeout(() => {
-                alert("Alhamdulillah, 7 putaran Thawaf telah selesai.\nSegera tutup kembali bahu kanan Anda (akhiri Idhthiba') dan bersiap menuju Maqam Ibrahim.");
-                if(isIdhthiba) toggleIdhthiba();
-            }, 500);
+// --- 4. Istilam & Selesai ---
+window.lakukanIstilam = function() {
+    if(btnIstilam.disabled) return;
+    putarSuaraDoa('istilam');
+    const toast = document.getElementById('toast-istilam');
+    toast.classList.remove('hidden');
+    toast.classList.add('flex');
+    setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+    }, 2000);
+}
+
+function alertSelesaiThawaf() {
+    btnWalk.innerHTML = "✅ Thawaf Selesai";
+    btnWalk.disabled = true;
+    cbAutoWalk.disabled = true;
+    statusTujuan.innerText = "Alhamdulillah Selesai";
+    statusTujuan.classList.replace('text-slate-400', 'text-emerald-400');
+    
+    setTimeout(() => {
+        alert("Alhamdulillah, 7 putaran Thawaf telah selesai.\nTutup kembali bahu kanan Anda (akhiri Idhthiba') lalu bersiap menuju Maqam Ibrahim.");
+        // Kembalikan manekin ke posisi normal otomatis
+        if(isIdhthibaGame) {
+            document.getElementById('game-mannequin').classList.remove('is-idhthiba');
+            document.getElementById('btn-buka-idhthiba').innerHTML = "Bahu Tertutup (Selesai)";
         }
+    }, 800);
+}
+
+// Inisialisasi awal walker
+setTimeout(updateWalkerPosition, 500);
 </script>
 </body>
 </html>

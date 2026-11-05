@@ -429,52 +429,6 @@ window.playDoaAudio = function(type) {
 let planeInterval;
 let planeProgress = 0; 
 let isGameRunning = false;
-
-window.startPlaneGame = function() {
-    if (isGameRunning) return;
-    
-    document.getElementById('plane-result').classList.add('hidden');
-    document.getElementById('btn-niat').innerHTML = '🤲 Niat Sekarang!';
-    planeProgress = 0;
-    isGameRunning = true;
-    
-    const planeIcon = document.getElementById('plane-icon');
-    // Mulai dari sudut tenggara (Indonesia/Samudra Hindia)
-    planeIcon.style.left = '95%';
-    planeIcon.style.top = '95%';
-
-    planeInterval = setInterval(() => {
-        planeProgress += 0.5; 
-        
-        // Terbang menuju titik koordinat Jeddah (berdasarkan gambar baru: X 31%, Y 58%)
-        let currentLeft = 95 - (planeProgress * (95 - 31) / 100); 
-        let currentTop = 95 - (planeProgress * (95 - 58) / 100);
-        
-        planeIcon.style.left = currentLeft + '%';
-        planeIcon.style.top = currentTop + '%';
-        
-        if (planeProgress >= 100) {
-            clearInterval(planeInterval);
-            isGameRunning = false;
-            document.getElementById('btn-niat').innerHTML = '🤲 Niat Ihrom';
-            showPlaneResult("terlewat_bandara");
-        }
-    }, 50);
-}
-
-window.niatSekarang = function() {
-    if (!isGameRunning) {
-        if (planeProgress === 0 || planeProgress >= 100) {
-            showPlaneResult("terlewat_bandara");
-        } else {
-            alert("Klik '▶ Mulai Perjalanan' terlebih dahulu!");
-        }
-        return;
-    }
-    
-    clearInterval(planeInterval);
-    isGameRunning = false;
-    document.getElementById('btn-niat').innerHTML = '🤲 Niat Ihrom';
     
     // KALIBRASI VISUAL:
     // Garis putus-putus antara Yalamlam & Qarnul Manazil dilewati pesawat pada progres 40% - 58%
