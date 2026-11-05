@@ -443,7 +443,9 @@ window.playDoaAudio = function(type) {
 let planeInterval;
 let planeProgress = 0; 
 let isGameRunning = false;
-    
+
+// TAMBAHKAN PEMBUKA FUNGSI INI
+window.checkPlanePosition = function() { 
     // KALIBRASI VISUAL:
     // Garis putus-putus antara Yalamlam & Qarnul Manazil dilewati pesawat pada progres 40% - 58%
     if (planeProgress < 40) {
@@ -453,7 +455,8 @@ let isGameRunning = false;
     } else {
         showPlaneResult("terlewat");
     }
-}// 3. KUIS MINI 3 (MIQAT)
+} // <--- Sekarang kurung tutup ini aman karena ada fungsi pembukanya//
+3. KUIS MINI 3 (MIQAT)
 const masterQuizBank3 = [
     { term: "Berniat ihram sejurus selepas pesawat berlepas dari Indonesia adalah yang paling utama.", ans: "false", expl: "Berniat sebelum miqat hukumnya sah namun makruh. Yang paling utama adalah tepat di miqat." },
     { term: "Jika pesawat mendarat di Jeddah dan jemaah baru berniat ihram di bandara, maka ia wajib membayar dam.", ans: "true", expl: "Benar. Bandara Jeddah berada di dalam batas miqat, sehingga ia telah melewati miqat tanpa ihram." },
