@@ -12,6 +12,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+signOut(auth);
 const btnLogin = document.getElementById('btnMulaiSimulasi');
 
 window.changeLanguage = function() {
