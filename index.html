@@ -1541,42 +1541,38 @@
     let currentAudio = null;
 
     function putarSuaraDoa(jenisDoa) {
-        // Matikan audio yang sedang menyala sebelumnya
-        if (currentAudio) {
-            currentAudio.pause();
-            currentAudio.currentTime = 0;
-        }
-        if ('speechSynthesis' in window) {
-            window.speechSynthesis.cancel();
-        }
+            // Hentikan suara sebelumnya jika masih memutar
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
 
-        let teksArab = "";
-
-        if (jenisDoa === 'masuk_masjid') {
-            teksArab = "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ";
-        } else if (jenisDoa === 'melihat_kabah') {
-            teksArab = "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ فَحَيِّنَا رَبَّنَا بِالسَّلَامِ";
-        } else if (jenisDoa === 'niat') {
-            teksArab = "لَبَّيْكَ اللَّهُمَّ عُمْرَةً";
-        } else if (jenisDoa === 'syarat') {
-            teksArab = "اللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي";
-        } else if (jenisDoa === 'talbiyah') {
-            teksArab = "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ";
-        }
-
-        if (teksArab !== "") {
-            // MENGGUNAKAN SERVER GOOGLE APIS (Anti-Blokir / Bebas CORS)
-            let urlAudio = "https://translate.googleapis.com/translate_tts?client=gtx&ie=UTF-8&tl=ar&q=" + encodeURIComponent(teksArab);
+            let teksArab = "";
             
-            currentAudio = new Audio(urlAudio);
-            
-            // Putar audio, jika gagal (misal karena jaringan), gunakan suara robot lokal
-            currentAudio.play().catch(function(error) {
-                console.log("Beralih ke suara cadangan lokal...", error);
+            // Logika lengkap untuk seluruh jenis doa dari semua modul
+            if (jenisDoa === 'masuk_masjid') {
+                teksArab = "اللَّهُمَّ افْتَحْ لِي أَبْوَابَ رَحْمَتِكَ";
+            } else if (jenisDoa === 'melihat_kabah') {
+                teksArab = "اللَّهُمَّ أَنْتَ السَّلَامُ وَمِنْكَ السَّلَامُ فَحَيِّنَا رَبَّنَا بِالسَّلَامِ";
+            } else if (jenisDoa === 'niat') {
+                teksArab = "لَبَّيْكَ اللَّهُمَّ عُمْرَةً";
+            } else if (jenisDoa === 'syarat') {
+                teksArab = "اللَّهُمَّ مَحِلِّي حَيْثُ حَبَسْتَنِي";
+            } else if (jenisDoa === 'talbiyah') {
+                teksArab = "لَبَّيْكَ اللَّهُمَّ لَبَّيْكَ، لَبَّيْكَ لَا شَرِيكَ لَكَ لَبَّيْكَ";
+            } else if (jenisDoa === 'yamani') {
+                teksArab = "رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ";
+            } else if (jenisDoa === 'istilam') {
+                teksArab = "بِسْمِ اللَّهِ وَاللَّهُ أَكْبَرُ";
+            }
+
+            if (teksArab !== "") {
+                // Menggunakan Web Speech API bawaan browser secara sinkron
+                // 100% bunyi karena dieksekusi langsung saat tombol diklik tanpa blokir
                 let suara = new SpeechSynthesisUtterance(teksArab);
                 suara.lang = 'ar-SA';
+                suara.rate = 0.85; // Kecepatan sedikit diperlambat agar pelafalan jelas
                 window.speechSynthesis.speak(suara);
-            });
+            }
         }
     // --- LOGIKA GAME THAWAF MODUL 6 ---
         let isIdhthiba = false;
