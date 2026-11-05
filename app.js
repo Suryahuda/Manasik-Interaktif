@@ -44,27 +44,32 @@ window.showPage = function(pageId) {
 if (btnLogin) {
     btnLogin.addEventListener('click', () => {
         const kode = document.getElementById('kodeAkses').value;
+        
+        // 1. Cek apakah input kosong
         if (kode.trim() === "") { 
             alert("Silakan masukkan Kode Akses terlebih dahulu!"); 
             return; 
         }
         
+        // 2. TAMBAHKAN PENGECEKAN INI: Validasi kode 12345
+        if (kode.trim() !== "12345") {
+            alert("Kode Akses yang Anda masukkan salah!");
+            return;
+        }
+        
         btnLogin.innerText = "Memeriksa...";
         
-        // Menjalankan login anonim ke Firebase
+        // 3. Menjalankan login anonim ke Firebase
         signInAnonymously(auth)
             .then(() => {
                 btnLogin.innerText = "Mulai Simulasi";
-                // showPage tidak perlu dipanggil di sini karena onAuthStateChanged 
-                // akan otomatis mendeteksi perubahan status dan memindahkan halaman
             })
             .catch((error) => {
                 alert("Gagal masuk: " + error.message);
                 btnLogin.innerText = "Mulai Simulasi";
             });
     });
-}
-// QURAN AUDIO (SYAIKH)
+}// QURAN AUDIO (SYAIKH)
 let quranAudio = new Audio('https://everyayah.com/data/Alafasy_128kbps/022027.mp3');
 window.playQuranAudio = function() {
     if(quranAudio.paused) { quranAudio.play(); } else { quranAudio.pause(); quranAudio.currentTime = 0; quranAudio.play(); }
@@ -143,6 +148,10 @@ window.ulangiKuisMini = function() {
 }
 
 window.renderMiniQuiz = function() {
+const wadahKuis = document.getElementById('id-wadah-kuis');
+    if (!wadahKuis) {
+        return; // Hentikan fungsi jika elemen kuis belum dimuat di halaman
+    }
     if(activeQuiz.length === 0) activeQuiz = shuffle([...masterQuizBank]).slice(0, 6);
     
     if(mqIdx >= activeQuiz.length) {
@@ -483,6 +492,10 @@ window.ulangiKuisMini3 = function() {
 }
 
 window.renderMiniQuiz3 = function() {
+const wadahKuis = document.getElementById('id-wadah-kuis');
+    if (!wadahKuis) {
+        return; // Hentikan fungsi jika elemen kuis belum dimuat di halaman
+    }
     if(activeQuiz3.length === 0) activeQuiz3 = shuffle([...masterQuizBank3]);
     
     const card = document.getElementById('qz3-card');
