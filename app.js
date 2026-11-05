@@ -456,7 +456,7 @@ window.checkPlanePosition = function() {
         showPlaneResult("terlewat");
     }
 } // <--- Sekarang kurung tutup ini aman karena ada fungsi pembukanya//
-3. KUIS MINI 3 (MIQAT)
+// 3. KUIS MINI 3 (MIQAT)
 const masterQuizBank3 = [
     { term: "Berniat ihram sejurus selepas pesawat berlepas dari Indonesia adalah yang paling utama.", ans: "false", expl: "Berniat sebelum miqat hukumnya sah namun makruh. Yang paling utama adalah tepat di miqat." },
     { term: "Jika pesawat mendarat di Jeddah dan jemaah baru berniat ihram di bandara, maka ia wajib membayar dam.", ans: "true", expl: "Benar. Bandara Jeddah berada di dalam batas miqat, sehingga ia telah melewati miqat tanpa ihram." },
