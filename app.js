@@ -44,12 +44,26 @@ window.showPage = function(pageId) {
 if (btnLogin) {
     btnLogin.addEventListener('click', () => {
         const kode = document.getElementById('kodeAkses').value;
-        if (kode.trim() === "") { alert("Silakan masukkan Kode Akses terlebih dahulu!"); return; }
+        if (kode.trim() === "") { 
+            alert("Silakan masukkan Kode Akses terlebih dahulu!"); 
+            return; 
+        }
+        
         btnLogin.innerText = "Memeriksa...";
-        setTimeout(() => { btnLogin.innerText = "Mulai Simulasi"; showPage('page-dashboard'); }, 800);
+        
+        // Menjalankan login anonim ke Firebase
+        signInAnonymously(auth)
+            .then(() => {
+                btnLogin.innerText = "Mulai Simulasi";
+                // showPage tidak perlu dipanggil di sini karena onAuthStateChanged 
+                // akan otomatis mendeteksi perubahan status dan memindahkan halaman
+            })
+            .catch((error) => {
+                alert("Gagal masuk: " + error.message);
+                btnLogin.innerText = "Mulai Simulasi";
+            });
     });
 }
-
 // QURAN AUDIO (SYAIKH)
 let quranAudio = new Audio('https://everyayah.com/data/Alafasy_128kbps/022027.mp3');
 window.playQuranAudio = function() {
